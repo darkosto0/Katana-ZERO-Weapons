@@ -1,0 +1,3 @@
+displayName = Katana ZERO Weapons
+author = Darkosto
+version = 1.0

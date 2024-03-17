@@ -1,0 +1,18 @@
+# This file will automatically update with entries for new content after a build and reload
+
+Items: {
+	MasterSword: {
+		DisplayName: Sword of Masters
+		Tooltip:
+			'''
+			Can Deflect Bullets
+			Shoots an otherworldly beam when charged
+			''You stopped a suicide. With a [c/E11919:murder]''
+			'''
+	}
+}
+
+Projectiles: {
+	MasterSwordSlash.DisplayName: Master Sword Slash
+	MasterSwordBeam.DisplayName: Master Sword Beam
+}
