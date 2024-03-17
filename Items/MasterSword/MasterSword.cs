@@ -2,11 +2,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using System;
-using rail;
-using System.Threading.Tasks;
-using Microsoft.CodeAnalysis;
+using Microsoft.Xna.Framework;
 
 namespace KatanaZERO.Items.MasterSword
 {
