@@ -5,9 +5,19 @@ Items: {
 		DisplayName: Sword of Masters
 		Tooltip:
 			'''
-			Can Deflect Bullets
+			[c/4C34EB:Can Deflect Bullts]
 			Shoots an otherworldly beam when charged
 			''You stopped a suicide. With a [c/E11919:murder]''
+			'''
+	}
+
+	ZerosKatana: {
+		DisplayName: Katana
+		Tooltip:
+			'''
+			[c/4C34EB:Can Deflect Bullts]
+			No Special Effects.
+			''It reminds me that [c/E67E39:no matter what I'm doing, I did something good once.]''
 			'''
 	}
 }
@@ -15,4 +25,5 @@ Items: {
 Projectiles: {
 	MasterSwordSlash.DisplayName: Master Sword Slash
 	MasterSwordBeam.DisplayName: Master Sword Beam
+	ZerosKatanaSlash.DisplayName: Zeros Katana Slash
 }
