@@ -19,7 +19,7 @@ namespace KatanaZERO.Items.PrismSword
         {
             Projectile.width = 129; //default 129
             Projectile.height = 140; //default 140
-            Projectile.knockBack = 4;
+            Projectile.knockBack = 3;
             Projectile.aiStyle = 6;
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Melee;
