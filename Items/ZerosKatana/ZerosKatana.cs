@@ -29,7 +29,8 @@ namespace KatanaZERO.Items.ZerosKatana
             Item.useTime = 20;
             Item.useAnimation = 1;
 
-            Item.useStyle = ItemUseStyleID.Rapier;
+            Item.useStyle = ItemUseStyleID.Swing;
+            Item.holdStyle = ItemHoldStyleID.HoldRadio;
             Item.holdStyle = 0;
             Item.knockBack = 6;
 
