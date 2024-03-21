@@ -2,15 +2,19 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
+using System;
+using rail;
+using System.Threading.Tasks;
+using Microsoft.CodeAnalysis;
 
 namespace KatanaZERO.Items.MasterSword
 {
     public class MasterSword : ModItem
     {
-        public static readonly SoundStyle MasterSwordCharge = new SoundStyle("KatanaZERO/Sounds/Items/MasterSword/sound_player_mastersword_charged_01");
-        public static readonly SoundStyle MasterSwordImpact = new SoundStyle("");
-        public static readonly SoundStyle MasterSwordShot = new SoundStyle("");
+        //public static readonly SoundStyle MasterSwordCharge = new SoundStyle("KatanaZERO/Sounds/Items/MasterSword/sound_player_mastersword_charged_01");
+        //public static readonly SoundStyle MasterSwordImpact = new SoundStyle("");
+        //public static readonly SoundStyle MasterSwordShot = new SoundStyle("");
         public static readonly SoundStyle Slash1 = new SoundStyle("KatanaZERO/Sounds/Items/MasterSword/sound_player_mastersword_slash_01");
         public static readonly SoundStyle Slash2 = new SoundStyle("KatanaZERO/Sounds/Items/MasterSword/sound_player_mastersword_slash_02");
         public static readonly SoundStyle Slash3 = new SoundStyle("KatanaZERO/Sounds/Items/MasterSword/sound_player_mastersword_slash_03");
