@@ -14,8 +14,6 @@ namespace KatanaZERO.Items.MasterSword
                                                     //like the empty space between a hydrogen atom core and its electron
         private float bulletDeflectionAmount = 1;
 
-        private Vector2 beamVelocity = new Vector2(10f, 0f);
-
         public override void SetDefaults()
         {
             Projectile.width = 185; //default 185
@@ -32,7 +30,7 @@ namespace KatanaZERO.Items.MasterSword
             Projectile.tileCollide = false;
             Projectile.ownerHitCheck = true;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 5;
+            Projectile.localNPCHitCooldown = 6;
 
             Main.projFrames[Projectile.type] = 5;
         }
@@ -50,15 +48,20 @@ namespace KatanaZERO.Items.MasterSword
                 }
             }
 
-            foreach (NPC target in Main.npc) //apply knockback to hit targets
+            foreach (NPC target in Main.npc) //apply knockback to hit targets and give immunity
             {
-                if (target.active && !target.friendly && target.boss && Projectile.Hitbox.Intersects(target.Hitbox))
+                if (target.active && !target.friendly && !target.boss && Projectile.Hitbox.Intersects(target.Hitbox))
                 {
                     player.immune = true;
-                    player.immuneTime = 20;
+                    player.immuneTime = 10;
 
                     float angleToTarget = (float)Math.Atan2(target.Center.Y - Projectile.Center.Y, target.Center.X - Projectile.Center.X);
                     target.velocity = new Vector2((float)Math.Cos(angleToTarget), (float)Math.Sin(angleToTarget)) * Projectile.knockBack;
+                }
+                if (target.active && !target.friendly && target.boss && Projectile.Hitbox.Intersects(target.Hitbox))
+                {
+                    player.immune = true;
+                    player.immuneTime = 10;
                 }
             }
 
@@ -70,7 +73,7 @@ namespace KatanaZERO.Items.MasterSword
                     if (p.active && p.hostile && p.getRect().Intersects(Projectile.getRect()))
                     {
                         p.velocity *= -2;
-                        p.damage = Projectile.damage * 4;
+                        p.damage = Projectile.damage * 6;
                         p.hostile = false;
                         p.friendly = true;
                         SoundEngine.PlaySound(new SoundStyle("KatanaZERO/Sounds/bullet_deflect")
@@ -102,7 +105,7 @@ namespace KatanaZERO.Items.MasterSword
             {
                 Projectile.rotation = angleToCursor; //normal rotation
                 Projectile.spriteDirection = 1; //normal sprite direction
-            }
+            }    
         }
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
