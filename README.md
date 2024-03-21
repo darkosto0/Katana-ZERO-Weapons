@@ -1,14 +1,20 @@
 # Katana-ZERO-Weapons
 Terraria mod that aims to add all 7 katanas from Katana ZERO into Terraria as their own weapons.
 
-- Items Added:
+- Weapons Added:
 
-Sword of Masters: Everything done, projectile shot not implemented.
+ZERO's Katana: The original, no special effects, just bullet deflection 
+(Early Pre-Hardmode)
 
-ZERO's Katana: Everything Works.
+Prism Sword: Slightly increased stats from the original, with a colorful slash 
+(Late Pre-Hardmode)
 
-Prism Sword: The same as ZERO's Katana, but increased stats.
+(Half-assed)Sword of Masters: Slower attack speed, increased range, shoots a projectile, more hits per slash (Post-Destroyer)
 
-the code here in this repo is actual trash and i dont recommend anyone to learn anything from it, it is mostly made by chatgpt and i stitched everything together, cause i dont know shit about math and vectors for this game i had to get assistance.
+Savant Knife: Faster attack speed, low range, high amount of hits per slash (Post-Mechs)
 
-you are free to use this code however you see fit, as for the MIT License
+(Not Added)Claymore Prototype: Slow attack speed, big hit range and width, unlimited amount of bullet deflections per swing (Post-Golem)
+
+(Not Added)Phoenix's Edge: Slow attack speed, very high range, shoots flames that burn enemies (Post-Cultist)
+
+(Not Added)Fifteen's Blade: High attack speed, very high reach, teleports to the mouse cursor on holding and releasing right click, meant to kill everything in one hit (Post-Moonlord)
