@@ -30,6 +30,16 @@ Items: {
 			''Most people go right. You went left.''
 			'''
 	}
+
+	SavantKnife: {
+		DisplayName: Savant Knife
+		Tooltip:
+			'''
+			Can Deflect Bullts
+			A short blade with quick attack.
+			''Didn't wake up Leon.''
+			'''
+	}
 }
 
 Projectiles: {
@@ -37,4 +47,5 @@ Projectiles: {
 	MasterSwordBeam.DisplayName: Master Sword Beam
 	ZerosKatanaSlash.DisplayName: Zeros Katana Slash
 	PrismSwordSlash.DisplayName: Prism Sword Slash
+	SavantSlash.DisplayName: Savant Slash
 }
