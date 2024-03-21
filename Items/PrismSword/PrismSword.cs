@@ -30,7 +30,7 @@ namespace KatanaZERO.Items.PrismSword
             Item.useAnimation = 1;
 
             Item.useStyle = ItemUseStyleID.Swing;
-            Item.holdStyle = ItemHoldStyleID.HoldGolfClub;
+            Item.holdStyle = ItemHoldStyleID.HoldRadio;
             Item.holdStyle = 0;
             Item.knockBack = 6;
 
