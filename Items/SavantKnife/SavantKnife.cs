@@ -24,7 +24,7 @@ namespace KatanaZERO.Items.SavantKnife
             Item.rare = ItemRarityID.Purple;
             Item.value = Item.sellPrice(gold: 10, silver: 24);
             Item.UseSound = Slash1;
-            Item.crit = 15;
+            Item.crit = 50;
 
             Item.useTime = 20;
             Item.useAnimation = 1;
