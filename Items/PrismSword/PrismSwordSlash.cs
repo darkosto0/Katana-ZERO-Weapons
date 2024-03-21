@@ -75,7 +75,7 @@ namespace KatanaZERO.Items.PrismSword
                     if (p.active && p.hostile && p.getRect().Intersects(Projectile.getRect()))
                     {
                         p.velocity *= -2;
-                        p.damage = Projectile.damage * 4;
+                        p.damage = Projectile.damage * 5;
                         p.hostile = false;
                         p.friendly = true;
                         SoundEngine.PlaySound(new SoundStyle("KatanaZERO/Sounds/bullet_deflect")
