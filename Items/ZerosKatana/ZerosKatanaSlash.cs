@@ -31,7 +31,7 @@ namespace KatanaZERO.Items.ZerosKatana
             Projectile.tileCollide = false;
             Projectile.ownerHitCheck = true;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 6;
+            Projectile.localNPCHitCooldown = 7;
             
 
             Main.projFrames[Projectile.type] = 5;
@@ -75,7 +75,7 @@ namespace KatanaZERO.Items.ZerosKatana
                     if (p.active && p.hostile && p.getRect().Intersects(Projectile.getRect()))
                     {
                         p.velocity *= -2;
-                        p.damage = Projectile.damage * 4;
+                        p.damage = Projectile.damage * 3;
                         p.hostile = false;
                         p.friendly = true;
                         SoundEngine.PlaySound(new SoundStyle("KatanaZERO/Sounds/bullet_deflect")
