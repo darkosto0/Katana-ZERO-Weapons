@@ -13,7 +13,7 @@ Prism Sword: Slightly increased stats from the original, with a colorful slash
 
 Savant Knife: Faster attack speed, low range, high amount of hits per slash (Post-Mechs)
 
-(Not Added)Claymore Prototype: Slow attack speed, big hit range and width, unlimited amount of bullet deflections per swing (Post-Golem)
+Claymore Prototype: Slow attack speed, big hit range and width, unlimited amount of bullet deflections per swing (Post-Golem)
 
 (Not Added)Phoenix's Edge: Slow attack speed, very high range, shoots flames that burn enemies (Post-Cultist)
 
