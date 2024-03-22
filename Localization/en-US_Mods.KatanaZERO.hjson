@@ -37,7 +37,17 @@ Items: {
 			'''
 			Can Deflect Bullts
 			A short blade with quick attack.
-			''Didn't wake up Leon.''
+			''Didn't wake up [c/ffcc00:Leon.]''
+			'''
+	}
+
+	Claymore: {
+		DisplayName: Claymore Prototype
+		Tooltip:
+			'''
+			Can Deflect [c/0099cc:a Lot] of Bullets at Once
+			Giant cleaver that crushes bullets and defenses.
+			''Fulfilled your [c/009900:secondary goal] in the prison.''
 			'''
 	}
 }
@@ -48,4 +58,5 @@ Projectiles: {
 	ZerosKatanaSlash.DisplayName: Zeros Katana Slash
 	PrismSwordSlash.DisplayName: Prism Sword Slash
 	SavantSlash.DisplayName: Savant Slash
+	ClaymoreSlash.DisplayName: Claymore Slash
 }
