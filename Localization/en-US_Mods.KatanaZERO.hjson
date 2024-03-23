@@ -50,6 +50,16 @@ Items: {
 			''Fulfilled your [c/009900:secondary goal] in the prison.''
 			'''
 	}
+
+	Phoenix: {
+		DisplayName: Phoenix Edge
+		Tooltip:
+			'''
+			Can Deflect Bullets
+			Cuts through foes with the phoenix's flame slice.
+			''Found what the robber [c/006600:left behind.]''
+			'''
+	}
 }
 
 Projectiles: {
@@ -59,4 +69,5 @@ Projectiles: {
 	PrismSwordSlash.DisplayName: Prism Sword Slash
 	SavantSlash.DisplayName: Savant Slash
 	ClaymoreSlash.DisplayName: Claymore Slash
+	PhoenixSlash.DisplayName: Phoenix Slash
 }

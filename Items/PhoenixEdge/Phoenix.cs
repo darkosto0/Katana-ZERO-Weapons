@@ -17,12 +17,12 @@ namespace KatanaZERO.Items.PhoenixEdge
 
         public override void SetDefaults()
         {
-            Item.damage = 145;
+            Item.damage = 179;
             Item.DamageType = DamageClass.Melee;
             Item.width = 40;
             Item.height = 40;
-            Item.rare = ItemRarityID.LightRed;
-            Item.value = Item.sellPrice(gold: 17, silver: 79);
+            Item.rare = ItemRarityID.Quest;
+            Item.value = Item.sellPrice(gold: 29, silver: 79);
             Item.UseSound = Slash1;
             Item.crit = 70;
 
