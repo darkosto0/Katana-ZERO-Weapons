@@ -60,6 +60,11 @@ Items: {
 			''Found what the robber [c/006600:left behind.]''
 			'''
 	}
+
+	FifteensBlade: {
+		DisplayName: Fifteens Blade
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
@@ -70,4 +75,5 @@ Projectiles: {
 	SavantSlash.DisplayName: Savant Slash
 	ClaymoreSlash.DisplayName: Claymore Slash
 	PhoenixSlash.DisplayName: Phoenix Slash
+	FifteensSlash.DisplayName: Fifteens Slash
 }

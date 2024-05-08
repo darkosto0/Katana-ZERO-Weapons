@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Darko\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\KatanaZERO\\KatanaZERO.csproj": {}
+    "C:\\Users\\Darko\\Documents\\GitHub\\Katana-ZERO-Weapons\\KatanaZERO.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Darko\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\KatanaZERO\\KatanaZERO.csproj": {
+    "C:\\Users\\Darko\\Documents\\GitHub\\Katana-ZERO-Weapons\\KatanaZERO.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Darko\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\KatanaZERO\\KatanaZERO.csproj",
+        "projectUniqueName": "C:\\Users\\Darko\\Documents\\GitHub\\Katana-ZERO-Weapons\\KatanaZERO.csproj",
         "projectName": "KatanaZERO",
-        "projectPath": "C:\\Users\\Darko\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\KatanaZERO\\KatanaZERO.csproj",
+        "projectPath": "C:\\Users\\Darko\\Documents\\GitHub\\Katana-ZERO-Weapons\\KatanaZERO.csproj",
         "packagesPath": "C:\\Users\\Darko\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Darko\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\KatanaZERO\\obj\\",
+        "outputPath": "C:\\Users\\Darko\\Documents\\GitHub\\Katana-ZERO-Weapons\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Darko\\AppData\\Roaming\\NuGet\\NuGet.Config",
