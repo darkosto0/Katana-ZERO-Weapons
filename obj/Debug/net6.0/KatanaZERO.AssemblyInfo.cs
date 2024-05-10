@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KatanaZERO")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b5065c40d8ee9e01f67e095c9abc10d7e9d58d5b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1feaf9bd6fcc7b5b942a882d46fc9319978e9dbe")]
 [assembly: System.Reflection.AssemblyProductAttribute("KatanaZERO")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KatanaZERO")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

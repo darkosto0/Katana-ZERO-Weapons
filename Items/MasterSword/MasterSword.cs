@@ -4,22 +4,17 @@ using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using System;
-using rail;
-using System.Threading.Tasks;
-using Microsoft.CodeAnalysis;
+using Terraria.DataStructures;
 
 namespace KatanaZERO.Items.MasterSword
 {
     public class MasterSword : ModItem
     {
-        //public static readonly SoundStyle MasterSwordCharge = new SoundStyle("KatanaZERO/Sounds/Items/MasterSword/sound_player_mastersword_charged_01");
-        //public static readonly SoundStyle MasterSwordImpact = new SoundStyle("");
-        //public static readonly SoundStyle MasterSwordShot = new SoundStyle("");
         public static readonly SoundStyle Slash1 = new SoundStyle("KatanaZERO/Sounds/Items/MasterSword/sound_player_mastersword_slash_01");
         public static readonly SoundStyle Slash2 = new SoundStyle("KatanaZERO/Sounds/Items/MasterSword/sound_player_mastersword_slash_02");
         public static readonly SoundStyle Slash3 = new SoundStyle("KatanaZERO/Sounds/Items/MasterSword/sound_player_mastersword_slash_03");
 
-        private float attackCooldown = 0f;
+        private float attackCooldown;
         public bool hasAttacked = false;
 
         public override void SetDefaults()
@@ -43,7 +38,6 @@ namespace KatanaZERO.Items.MasterSword
             Item.noUseGraphic = true;
             Item.noMelee = true;
             Item.shoot = ModContent.ProjectileType<MasterSwordSlash>();
-          //  Item.shoot = ModContent.ProjectileType<MasterSwordBeam>();
         }
 
         public override void AddRecipes()
@@ -94,6 +88,13 @@ namespace KatanaZERO.Items.MasterSword
             }
             return true;
         }
+        public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
+        {
+            type = ModContent.ProjectileType<MasterSwordBeam>();
+            Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position, velocity, type, damage, knockback, player.whoAmI);
+            return true;
+        }
+
         public override void HoldItem(Player player)
         {
             if (attackCooldown > 0f)
@@ -112,6 +113,6 @@ namespace KatanaZERO.Items.MasterSword
                 hasAttacked = false;
             }
         }
-    } 
+    }
 }
 

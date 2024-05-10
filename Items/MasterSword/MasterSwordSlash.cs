@@ -3,6 +3,7 @@ using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Player = Terraria.Player;
 
@@ -110,7 +111,7 @@ namespace KatanaZERO.Items.MasterSword
 
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            
+            target.AddBuff(BuffID.ShadowFlame, 10 * 60);
         }
     }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8P6PEB/LZ4wuK2V6rG+vf5et6iAiR4uBNu5yDXloprnDIL3gvCFihRpl7QEt7IGBl6df3iC5vHuULErD8RLHcA==",
+  "dgSpecHash": "FZOle38gZIDIQBcJa2RVjT7ILPs+QxUHJZCSXXMEQCNqok7sM21nkm5vEfCGcMyYFVGbVcIs3glN27GF++gL/g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Darko\\Documents\\GitHub\\Katana-ZERO-Weapons\\KatanaZERO.csproj",
+  "projectFilePath": "C:\\Users\\Darko\\Documents\\My Games\\Terraria\\tModLoader\\ModSources\\KatanaZERO\\KatanaZERO.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Darko\\.nuget\\packages\\crc32.net\\1.2.0\\crc32.net.1.2.0.nupkg.sha512",
     "C:\\Users\\Darko\\.nuget\\packages\\jose-jwt\\3.1.1\\jose-jwt.3.1.1.nupkg.sha512",

@@ -3,6 +3,7 @@ using System;
 using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
+using Terraria.ID;
 using Terraria.ModLoader;
 using Player = Terraria.Player;
 
@@ -16,22 +17,21 @@ namespace KatanaZERO.Items.FifteensBlade
 
         public override void SetDefaults()
         {
-            Projectile.width = 154; //default 154
-            Projectile.height = 160; //default 160
-            Projectile.knockBack = 3;
+            Projectile.width = 154; //default 185
+            Projectile.height = 160; //default 45
+            Projectile.knockBack = 7;
             Projectile.aiStyle = 6;
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Melee;
             Projectile.penetrate = -1;
-            Projectile.timeLeft = 20;
+            Projectile.timeLeft = 30;
             Projectile.light = 0.5f;
             Projectile.extraUpdates = 1;
             Projectile.ignoreWater = true;
             Projectile.tileCollide = false;
             Projectile.ownerHitCheck = true;
             Projectile.usesLocalNPCImmunity = true;
-            Projectile.localNPCHitCooldown = 10;
-            
+            Projectile.localNPCHitCooldown = 6;
 
             Main.projFrames[Projectile.type] = 5;
         }
@@ -54,7 +54,7 @@ namespace KatanaZERO.Items.FifteensBlade
                 if (target.active && !target.friendly && !target.boss && Projectile.Hitbox.Intersects(target.Hitbox))
                 {
                     player.immune = true;
-                    player.immuneTime = 3;
+                    player.immuneTime = 10;
 
                     float angleToTarget = (float)Math.Atan2(target.Center.Y - Projectile.Center.Y, target.Center.X - Projectile.Center.X);
                     target.velocity = new Vector2((float)Math.Cos(angleToTarget), (float)Math.Sin(angleToTarget)) * Projectile.knockBack;
@@ -62,11 +62,11 @@ namespace KatanaZERO.Items.FifteensBlade
                 if (target.active && !target.friendly && target.boss && Projectile.Hitbox.Intersects(target.Hitbox))
                 {
                     player.immune = true;
-                    player.immuneTime = 3;
+                    player.immuneTime = 10;
                 }
             }
 
-            if (bulletDeflectionAmount > 0)
+            if (bulletDeflectionAmount > 0) //check how many bullets you can deflect (infinite for claymore prototype)
             {
                 for (int i = 0; i < Main.maxProjectiles; ++i) //deflect projectiles in contact with the hitbox
                 {
@@ -74,7 +74,7 @@ namespace KatanaZERO.Items.FifteensBlade
                     if (p.active && p.hostile && p.getRect().Intersects(Projectile.getRect()))
                     {
                         p.velocity *= -2;
-                        p.damage = Projectile.damage * 15;
+                        p.damage = Projectile.damage * 6;
                         p.hostile = false;
                         p.friendly = true;
                         SoundEngine.PlaySound(new SoundStyle("KatanaZERO/Sounds/bullet_deflect")
@@ -107,11 +107,6 @@ namespace KatanaZERO.Items.FifteensBlade
                 Projectile.rotation = angleToCursor; //normal rotation
                 Projectile.spriteDirection = 1; //normal sprite direction
             }
-        }
-
-        public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
-        {
-
         }
     }
 }
