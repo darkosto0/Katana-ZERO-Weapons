@@ -76,4 +76,5 @@ Projectiles: {
 	ClaymoreSlash.DisplayName: Claymore Slash
 	PhoenixSlash.DisplayName: Phoenix Slash
 	FifteensSlash.DisplayName: Fifteens Slash
+	PhoenixFlames.DisplayName: Phoenix Flames
 }

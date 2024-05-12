@@ -17,8 +17,8 @@ namespace KatanaZERO.Items.FifteensBlade
 
         public override void SetDefaults()
         {
-            Projectile.width = 154; //default 185
-            Projectile.height = 160; //default 45
+            Projectile.width = 188; //default 185
+            Projectile.height = 190; //default 45
             Projectile.knockBack = 7;
             Projectile.aiStyle = 6;
             Projectile.friendly = true;

@@ -78,13 +78,13 @@ namespace KatanaZERO.Items.FifteensBlade
             switch (randomNumber)
             {
                 case 1:
-                    SoundEngine.PlaySound(new SoundStyle("KatanaZERO/Sounds/Items/FifteensBlade/fifteen_slash1"));
+                    Item.UseSound = Slash1;
                     break;
                 case 2:
-                    SoundEngine.PlaySound(new SoundStyle("KatanaZERO/Sounds/Items/FifteensBlade/fifteen_slash2"));
+                    Item.UseSound = Slash2;
                     break;
                 case 3:
-                    SoundEngine.PlaySound(new SoundStyle("KatanaZERO/Sounds/Items/FifteensBlade/fifteen_slash3"));
+                    Item.UseSound = Slash3;
                     break;
             }
             return true;

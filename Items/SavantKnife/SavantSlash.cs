@@ -24,7 +24,7 @@ namespace KatanaZERO.Items.SavantKnife
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Melee;
             Projectile.penetrate = -1;
-            Projectile.timeLeft = 20;
+            Projectile.timeLeft = 15;
             Projectile.light = 0.5f;
             Projectile.extraUpdates = 1;
             Projectile.ignoreWater = true;
@@ -41,7 +41,7 @@ namespace KatanaZERO.Items.SavantKnife
         {
             Player player = Main.player[Projectile.owner];
 
-            if (++Projectile.frameCounter >= 4) //animate slash
+            if (++Projectile.frameCounter >= 3) //animate slash
             {
                 Projectile.frameCounter = 0;
                 if (++Projectile.frame >= Main.projFrames[Projectile.type])

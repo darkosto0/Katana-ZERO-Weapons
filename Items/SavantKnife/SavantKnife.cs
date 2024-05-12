@@ -26,7 +26,7 @@ namespace KatanaZERO.Items.SavantKnife
             Item.UseSound = Slash1;
             Item.crit = 50;
 
-            Item.useTime = 20;
+            Item.useTime = 10;
             Item.useAnimation = 1;
 
             Item.useStyle = ItemUseStyleID.Rapier;
@@ -62,7 +62,7 @@ namespace KatanaZERO.Items.SavantKnife
 
             if (hasAttacked)
             {
-                player.velocity = direction * 3f;
+                player.velocity = direction * 2.2f;
             }
             else
             {
@@ -71,7 +71,7 @@ namespace KatanaZERO.Items.SavantKnife
             }
 
 
-            attackCooldown = 15f; //artificial cooldown
+            attackCooldown = 10f; //artificial cooldown
 
             System.Random random = new System.Random();
             int randomNumber = random.Next(1, 4);
