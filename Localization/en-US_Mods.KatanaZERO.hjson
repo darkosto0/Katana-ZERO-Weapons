@@ -6,7 +6,8 @@ Items: {
 		Tooltip:
 			'''
 			Can Deflect Bullts
-			Shoots an otherworldly beam when charged
+			Shoots an otherworldly beam.
+			Inflicts [c/993399:Shadowflame]
 			''You stopped a suicide. With a [c/E11919:murder]''
 			'''
 	}
@@ -47,6 +48,7 @@ Items: {
 			'''
 			Can Deflect [c/0099cc:a Lot] of Bullets at Once
 			Giant cleaver that crushes bullets and defenses.
+			Inflicts [c/999966:Broken Armor]
 			''Fulfilled your [c/009900:secondary goal] in the prison.''
 			'''
 	}
@@ -57,13 +59,20 @@ Items: {
 			'''
 			Can Deflect Bullets
 			Cuts through foes with the phoenix's flame slice.
+			Inflicts [c/ff9900:Daybroken]
 			''Found what the robber [c/006600:left behind.]''
 			'''
 	}
 
 	FifteensBlade: {
-		DisplayName: Fifteens Blade
-		Tooltip: ""
+		DisplayName: Dragon's Whisper [UNFINISHED]
+		Tooltip:
+			'''
+			Can Deflect Bullets
+			Right click to perform Dragon Dash.
+			Draogn Dash teleports you to the mouse cursor, slicing everything in between to shreds.
+			''He is not the Dragon. [c/ff3300:I am].''
+			'''
 	}
 }
 
@@ -77,4 +86,7 @@ Projectiles: {
 	PhoenixSlash.DisplayName: Phoenix Slash
 	FifteensSlash.DisplayName: Fifteens Slash
 	PhoenixFlames.DisplayName: Phoenix Flames
+	FifteenBar.DisplayName: Fifteen Bar
+	FifteenCircle.DisplayName: Fifteen Circle
+	FifteenDot.DisplayName: Fifteen Dot
 }
