@@ -13,7 +13,6 @@ namespace KatanaZERO.Items.SavantKnife
     {
         private const float DistanceFromCore = 66f; //offset from the center of the player to the sprite
                                                     //like the empty space between a hydrogen atom core and its electron
-        private float bulletDeflectionAmount = 1;
 
         public override void SetDefaults()
         {
@@ -67,23 +66,19 @@ namespace KatanaZERO.Items.SavantKnife
                 }
             }
 
-            if (bulletDeflectionAmount > 0) //check how many bullets you can deflect (infinite for claymore prototype)
+            for (int i = 0; i < Main.maxProjectiles; ++i) //deflect projectiles in contact with the hitbox
             {
-                for (int i = 0; i < Main.maxProjectiles; ++i) //deflect projectiles in contact with the hitbox
+                Projectile p = Main.projectile[i];
+                if (p.active && p.hostile && p.getRect().Intersects(Projectile.getRect()))
                 {
-                    Projectile p = Main.projectile[i];
-                    if (p.active && p.hostile && p.getRect().Intersects(Projectile.getRect()))
+                    p.velocity *= -2;
+                    p.damage = Projectile.damage * 7;
+                    p.hostile = false;
+                    p.friendly = true;
+                    SoundEngine.PlaySound(new SoundStyle("KatanaZERO/Sounds/bullet_deflect")
                     {
-                        p.velocity *= -2;
-                        p.damage = Projectile.damage * 7;
-                        p.hostile = false;
-                        p.friendly = true;
-                        SoundEngine.PlaySound(new SoundStyle("KatanaZERO/Sounds/bullet_deflect")
-                        {
-                            Volume = 0.5f,
-                        });
-                    }
-                    bulletDeflectionAmount--;
+                        Volume = 0.5f,
+                    });
                 }
             }
         }

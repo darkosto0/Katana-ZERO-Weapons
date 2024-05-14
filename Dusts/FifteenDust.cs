@@ -7,13 +7,13 @@ namespace KatanaZERO.Dusts
     {
         public override void OnSpawn(Dust dust)
         {
-            dust.scale = 1f;
+            dust.scale = 0.8f;
         }
 
         public override bool Update(Dust dust)
         {
             dust.scale -= 0.001f;
-            if (dust.scale <0.999f)
+            if (dust.scale <0.799f)
             {
                 dust.active = false;
             }

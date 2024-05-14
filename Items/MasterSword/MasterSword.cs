@@ -26,7 +26,7 @@ namespace KatanaZERO.Items.MasterSword
             Item.rare = ItemRarityID.Cyan;
             Item.value = Item.sellPrice(gold: 15, silver: 57);
             Item.UseSound = Slash1;
-            Item.crit = 40;
+            Item.crit = 20;
 
             Item.useTime = 20;
             Item.useAnimation = 1;
@@ -42,13 +42,17 @@ namespace KatanaZERO.Items.MasterSword
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.EnchantedSword, 1);
-            recipe.AddIngredient(ItemID.BluePhasesaber, 1);
-            recipe.AddIngredient(ItemID.Sapphire, 10);
-            recipe.AddIngredient(ItemID.SoulofMight, 5);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.Register();
+            CreateRecipe()
+                .AddIngredient(ItemID.EnchantedSword, 1)
+                .AddIngredient(ItemID.BluePhasesaber, 1)
+                .AddIngredient(ItemID.Sapphire, 10)
+                .AddIngredient(ItemID.SoulofMight, 5)
+                .AddTile(TileID.MythrilAnvil)
+                .AddCustomShimmerResult(ItemID.EnchantedSword, 1)
+                .AddCustomShimmerResult(ItemID.BluePhasesaber, 1)
+                .AddCustomShimmerResult(ItemID.Sapphire, 10)
+                .AddCustomShimmerResult(ItemID.SoulofMight, 5)
+                .Register();
         }
 
         public override bool? UseItem(Player player)

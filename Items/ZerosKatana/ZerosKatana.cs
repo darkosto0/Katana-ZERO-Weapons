@@ -24,7 +24,7 @@ namespace KatanaZERO.Items.ZerosKatana
             Item.rare = ItemRarityID.White;
             Item.value = Item.sellPrice(gold: 1, silver: 10); //same sell price as katana and 5 silver bars
             Item.UseSound = Slash1;
-            Item.crit = 15;
+            Item.crit = 10;
 
             Item.useTime = 20;
             Item.useAnimation = 1;
@@ -42,11 +42,11 @@ namespace KatanaZERO.Items.ZerosKatana
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.Katana, 1);
-            recipe.AddIngredient(ItemID.SilverBar, 5);
-            recipe.AddTile(TileID.Anvils);
-            recipe.Register();
+            CreateRecipe()
+                .AddIngredient(ItemID.Katana, 1)
+                .AddIngredient(ItemID.SilverBar, 5)
+                .AddTile(TileID.Anvils)
+                .Register();
         }
 
         public override bool? UseItem(Player player)

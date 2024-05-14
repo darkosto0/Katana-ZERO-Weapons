@@ -27,7 +27,7 @@ namespace KatanaZERO.Items.PhoenixEdge
             Item.rare = ItemRarityID.Quest;
             Item.value = Item.sellPrice(gold: 29, silver: 79);
             Item.UseSound = Slash1;
-            Item.crit = 70;
+            Item.crit = 45;
 
             Item.useTime = 20;
             Item.useAnimation = 1;
@@ -44,14 +44,21 @@ namespace KatanaZERO.Items.PhoenixEdge
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(Mod, "ZerosKatana");
-            recipe.AddIngredient(ItemID.FragmentSolar, 10);
-            recipe.AddIngredient(ItemID.LivingFireBlock, 5);
-            recipe.AddIngredient(ItemID.CursedFlame, 3);
-            recipe.AddTile(TileID.LunarCraftingStation);
-            recipe.Register();
+            CreateRecipe()
+                .AddIngredient(Mod, "ZerosKatana")
+                .AddIngredient(ItemID.FragmentSolar, 10)
+                .AddIngredient(ItemID.LivingFireBlock, 5)
+                .AddIngredient(ItemID.CursedFlame, 3)
+                .AddTile(TileID.LunarCraftingStation)
+                .AddCustomShimmerResult(ItemID.Katana, 1)
+                .AddCustomShimmerResult(ItemID.SilverBar, 5)
+                .AddCustomShimmerResult(ItemID.FragmentSolar, 10)
+                .AddCustomShimmerResult(ItemID.LivingFireBlock, 5)
+                .AddCustomShimmerResult(ItemID.CursedFlame, 3)
+                .Register();
         }
+
+        
 
         public override bool? UseItem(Player player)
         {

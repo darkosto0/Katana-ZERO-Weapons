@@ -3,6 +3,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
+using KatanaZERO.Items.ZerosKatana;
 
 namespace KatanaZERO.Items.Claymore
 {
@@ -24,7 +25,7 @@ namespace KatanaZERO.Items.Claymore
             Item.rare = ItemRarityID.LightRed;
             Item.value = Item.sellPrice(gold: 17, silver: 79);
             Item.UseSound = Slash1;
-            Item.crit = 60;
+            Item.crit = 40;
 
             Item.useTime = 20;
             Item.useAnimation = 1;
@@ -41,13 +42,17 @@ namespace KatanaZERO.Items.Claymore
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.BreakerBlade, 1);
-            recipe.AddIngredient(ItemID.SpectreBar, 10);
-            recipe.AddIngredient(ItemID.BeetleShell, 3);
-            recipe.AddIngredient(ItemID.EyeoftheGolem, 1);
-            recipe.AddTile(TileID.MythrilAnvil);
-            recipe.Register();
+            CreateRecipe()
+                .AddIngredient(ItemID.BreakerBlade, 1)
+                .AddIngredient(ItemID.SpectreBar, 10)
+                .AddIngredient(ItemID.BeetleShell, 3)
+                .AddIngredient(ItemID.EyeoftheGolem, 1)
+                .AddTile(TileID.MythrilAnvil)
+                .AddCustomShimmerResult(ItemID.BreakerBlade, 1)
+                .AddCustomShimmerResult(ItemID.SpectreBar, 10)
+                .AddCustomShimmerResult(ItemID.BeetleShell, 3)
+                .AddCustomShimmerResult(ItemID.EyeoftheGolem, 1)
+                .Register();
         }
 
         public override bool? UseItem(Player player)

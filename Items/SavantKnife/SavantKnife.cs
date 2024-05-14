@@ -24,14 +24,14 @@ namespace KatanaZERO.Items.SavantKnife
             Item.rare = ItemRarityID.Purple;
             Item.value = Item.sellPrice(gold: 10, silver: 24);
             Item.UseSound = Slash1;
-            Item.crit = 50;
+            Item.crit = 30;
 
             Item.useTime = 10;
             Item.useAnimation = 1;
 
             Item.useStyle = ItemUseStyleID.Rapier;
             Item.holdStyle = ItemHoldStyleID.HoldRadio;
-            Item.holdStyle = 0;
+
             Item.knockBack = 6;
 
             Item.autoReuse = false;
@@ -42,15 +42,21 @@ namespace KatanaZERO.Items.SavantKnife
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(ItemID.Katana, 1);
-            recipe.AddIngredient(ItemID.ChlorophyteBar, 10);
-            recipe.AddIngredient(ItemID.SoulofMight, 3);
-            recipe.AddIngredient(ItemID.SoulofSight, 3);
-            recipe.AddIngredient(ItemID.SoulofFright, 3);
-            recipe.AddTile(TileID.SharpeningStation);
-            recipe.Register();
-        }
+            CreateRecipe()
+                .AddIngredient(Mod, "ZerosKatana")
+                .AddIngredient(ItemID.ChlorophyteBar, 10)
+                .AddIngredient(ItemID.SoulofMight, 3)
+                .AddIngredient(ItemID.SoulofSight, 3)
+                .AddIngredient(ItemID.SoulofFright, 3)
+                .AddTile(TileID.SharpeningStation)
+                .AddCustomShimmerResult(ItemID.Katana, 1)
+                .AddCustomShimmerResult(ItemID.SilverBar, 5)
+                .AddCustomShimmerResult(ItemID.ChlorophyteBar, 10)
+                .AddCustomShimmerResult(ItemID.SoulofMight, 3)
+                .AddCustomShimmerResult(ItemID.SoulofSight, 3)
+                .AddCustomShimmerResult(ItemID.SoulofFright, 3)
+                .Register();
+    }
 
         public override bool? UseItem(Player player)
         {

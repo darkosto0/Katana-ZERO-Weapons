@@ -24,7 +24,7 @@ namespace KatanaZERO.Items.PrismSword
             Item.rare = ItemRarityID.Expert;
             Item.value = Item.sellPrice(gold: 5, silver: 10);
             Item.UseSound = Slash1;
-            Item.crit = 20;
+            Item.crit = 15;
 
             Item.useTime = 20;
             Item.useAnimation = 1;
@@ -42,13 +42,18 @@ namespace KatanaZERO.Items.PrismSword
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(Mod, "ZerosKatana");
-            recipe.AddIngredient(ItemID.RedDye, 1);
-            recipe.AddIngredient(ItemID.GreenDye, 1);
-            recipe.AddIngredient(ItemID.BlueDye, 1);
-            recipe.AddTile(TileID.Anvils);
-            recipe.Register();
+            CreateRecipe()
+                .AddIngredient(Mod, "ZerosKatana")
+                .AddIngredient(ItemID.RedDye, 1)
+                .AddIngredient(ItemID.GreenDye, 1)
+                .AddIngredient(ItemID.BlueDye, 1)
+                .AddTile(TileID.MythrilAnvil)
+                .AddCustomShimmerResult(ItemID.Katana, 1)
+                .AddCustomShimmerResult(ItemID.SilverBar, 5)
+                .AddCustomShimmerResult(ItemID.RedDye, 1)
+                .AddCustomShimmerResult(ItemID.GreenDye, 1)
+                .AddCustomShimmerResult(ItemID.BlueDye, 1)
+                .Register();
         }
 
         public override bool? UseItem(Player player)
