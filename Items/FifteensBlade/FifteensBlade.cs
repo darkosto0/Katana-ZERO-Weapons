@@ -5,6 +5,8 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using System;
 using KatanaZERO.Dusts;
+using Terraria.DataStructures;
+using Mono.Cecil;
 
 namespace KatanaZERO.Items.FifteensBlade
 {
@@ -13,10 +15,13 @@ namespace KatanaZERO.Items.FifteensBlade
         public static readonly SoundStyle Slash1 = new SoundStyle("KatanaZERO/Sounds/Items/FifteensBlade/fifteen_slash1");
         public static readonly SoundStyle Slash2 = new SoundStyle("KatanaZERO/Sounds/Items/FifteensBlade/fifteen_slash2");
         public static readonly SoundStyle Slash3 = new SoundStyle("KatanaZERO/Sounds/Items/FifteensBlade/fifteen_slash3");
+        public static readonly SoundStyle Special1 = new SoundStyle("KatanaZERO/Sounds/Items/FifteensBlade/fifteen_special1");
+        public static readonly SoundStyle Special2 = new SoundStyle("KatanaZERO/Sounds/Items/FifteensBlade/fifteen_special2");
+        public static readonly SoundStyle ChronosActivate = new SoundStyle("KatanaZERO/Sounds/slomo_engage");
+        public static readonly SoundStyle ChronosDeadctivate = new SoundStyle("KatanaZERO/Sounds/slomo_disengage");
 
         private float attackCooldown = 0f;
         private float dragonCooldown = 0f;
-
         public bool hasAttacked = false;
         public bool hasRightClicked = false;
         public bool hasReleasedRightClick = false;
@@ -101,8 +106,28 @@ namespace KatanaZERO.Items.FifteensBlade
             {
                 attackCooldown -= 1f;
             }
+            if (dragonCooldown > 0f)
+            {
+                dragonCooldown -= 1f;
+            }
 
-            CreateAllDust(player); //create the big circle and trajectory
+            if (dragonCooldown <= 0f)
+            {
+                if (Main.mouseRight)
+                {
+                    // SoundEngine.PlaySound(ChronosActivate);
+                    hasRightClicked = true;
+                }
+                if (Main.mouseRight == false && hasRightClicked == true)
+                {
+                    Main.NewText("Right Click Released!"); //debug message
+                    SoundEngine.PlaySound(ChronosDeadctivate);
+                    DragonDash(player);
+                    hasRightClicked = false;
+                    dragonCooldown = 180;
+                }
+                CreateAllDust(player); //create the big circle and 
+            }
         }
 
         public override void UpdateInventory(Player player)
@@ -114,22 +139,19 @@ namespace KatanaZERO.Items.FifteensBlade
         }
         public override bool CanUseItem(Player player)
         {
-            if (player.altFunctionUse == 2) // Right-click
+            if (Main.mouseRight == false && attackCooldown <= 0f && dragonCooldown <= 0f)
             {
-                Main.NewText("This is a message in the chat from right-clicking.", 255, 255, 255); // White text
-                return false; // Prevent the item from being used normally (optional)
+                return true;
             }
             else
             {
-                return attackCooldown <= 0f;
-
+                return false;
             }
         }
 
         public override bool AltFunctionUse(Player player)
         {
-
-            return base.AltFunctionUse(player);
+            return false;
         }
 
         public bool CreateAllDust(Player player)
@@ -139,7 +161,6 @@ namespace KatanaZERO.Items.FifteensBlade
                 int dustAmount = 800; // Total number of dust particles in the circle
                 float radius = 464f; // Radius for the circle
                 int dustType = ModContent.DustType<FifteenDust>(); // Dust type
-                int dustType2 = ModContent.DustType<BigDot>();
 
                 for (int i = 0; i < dustAmount; i++) //create circle
                 {
@@ -153,34 +174,81 @@ namespace KatanaZERO.Items.FifteensBlade
                 float distanceToCursor = Vector2.Distance(player.Center, Main.MouseWorld);
                 float maxLerpAmount = Math.Min(1f, radius / distanceToCursor);
 
-                int dustLineAmount = (int)Math.Round(distanceToCursor / 3); //spawn one dust every 3 pixels
-
-                for (int i = 0; i <= dustLineAmount; i++) //create trajectory
+                for (float lerpAmount = 0; lerpAmount <= maxLerpAmount; lerpAmount += 0.005f) // Use smaller increments for smoother trajectory
                 {
-                    float lerpAmount = (float)i / dustLineAmount;
-                    if (lerpAmount > maxLerpAmount) break;
-
                     Vector2 barPosition = Vector2.Lerp(player.Center, Main.MouseWorld, lerpAmount);
-                    if (!Collision.SolidCollision(barPosition, 10, 10))
+                    if (Collision.SolidCollision(barPosition, 10, 10))
                     {
-                        Dust dust = Dust.NewDustPerfect(barPosition, dustType);
-                        Dust dust2 = Dust.NewDustPerfect(barPosition, dustType);
-                        dust.noGravity = true;
+                        break; // Stop drawing when collision occurs
                     }
+
+                    Dust dust = Dust.NewDustPerfect(barPosition, dustType);
+                    dust.noGravity = true;
+                }
+
+                Vector2 endPosition = Vector2.Lerp(player.Center, Main.MouseWorld, maxLerpAmount);
+                int dustAmount1 = 10;
+                // Create a larger circle centered at the end position
+                float largerRadius = 3.3f; // Adjust the size as needed
+                for (int i = 0; i < dustAmount1; i++)
+                {
+                    float angle = MathHelper.TwoPi / dustAmount1 * i;
+                    Vector2 position = endPosition + largerRadius * new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle));
+                    if (Collision.SolidCollision(position, 1, 1))
+                    {
+                        break; // Stop drawing when collision occurs
+                    }
+                    Dust dustLargerCircle = Dust.NewDustPerfect(position, dustType);
+                    dustLargerCircle.noGravity = true;
+                    dustLargerCircle.noLight = true;
                 }
                 player.velocity = Vector2.Zero;
             }
             return true; //return true to make the dust spawn 
         }
 
-        public bool CreateDotDust(Player player)
+        public bool DragonDash(Player player)
         {
-            if (Main.mouseRight)
-            {
+            int cursorX = (int)(Main.MouseWorld.X / 16);
+            int cursorY = (int)(Main.MouseWorld.Y / 16);
 
+            float cursorWorldX = cursorX * 16;
+            float cursorWorldY = cursorY * 16;
+
+            // Calculate rectangle dimensions
+            float width = Math.Abs(cursorWorldX - player.Center.X);
+            float height = Math.Abs(cursorWorldY - player.Center.Y);
+
+            // Determine top-left corner
+            float topLeftX = Math.Min(player.Center.X, cursorWorldX);
+            float topLeftY = Math.Min(player.Center.Y, cursorWorldY);
+
+            player.Teleport(Main.MouseWorld - new Vector2(player.width / 2, player.height / 2));
+            // Create the hitbox rectangle
+            Rectangle hitbox = new Rectangle((int)topLeftX, (int)topLeftY, (int)width, (int)height);
+
+            Random random = new Random();
+            int randomNumber = random.Next(1, 3);
+            switch (randomNumber)
+            {
+                case 1:
+                    SoundEngine.PlaySound(Special1);
+                    break;
+                case 2:
+                    SoundEngine.PlaySound(Special2);
+                    break;
             }
-            return true;
+
+            foreach (NPC enemy in Main.npc)
+            {
+                if (!enemy.friendly && enemy.Hitbox.Intersects(hitbox))
+                {
+                    enemy.SimpleStrikeNPC(Item.damage * 8, 0, true, player.direction * 2f, DamageClass.Melee, true, 0, false);
+                }
+            }
+            return false;
         }
+
     }
 }
 

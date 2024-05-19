@@ -1,10 +1,11 @@
+using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.Audio;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using Terraria.DataStructures;
+using static Terraria.ModLoader.ModContent;
 using System;
+using Terraria.Audio;
 
 namespace KatanaZERO.Items.PhoenixEdge
 {
@@ -116,26 +117,6 @@ namespace KatanaZERO.Items.PhoenixEdge
             }
         }
 
-        /* public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
-         {
-             int numProjectiles = 4; // This is the number of projectiles you want to shoot
-             float spread = MathHelper.ToRadians(45); // 45 degrees in radians for the spread
-             float baseSpeed = velocity.Length();
-             float baseAngle = velocity.ToRotation();
-
-
-             for (int i = 0; i < numProjectiles; i++)
-             {
-                 type = ModContent.ProjectileType<PhoenixFlames>();
-                 float variation = Main.rand.NextFloat(-spread, spread);
-                 Vector2 perturbedSpeed = velocity.RotatedBy(variation);
-
-                 Projectile.NewProjectile(player.GetSource_ItemUse(player.HeldItem), position, perturbedSpeed, type, damage, knockback, player.whoAmI);
-             }
-
-             return true;
-         } */
-
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)
         {
             int NumProjectiles = Main.rand.Next(3, 6); // Number of projectiles to shoot
@@ -150,8 +131,7 @@ namespace KatanaZERO.Items.PhoenixEdge
                 float baseAngle = angleToCursor + Main.rand.NextFloat(-spread, spread); // Randomize angle within the spread
                 velocity = new Vector2((float)Math.Cos(baseAngle), (float)Math.Sin(baseAngle)) * speed;
 
-                type = ModContent.ProjectileType<PhoenixFlames>(); // Uncomment and use your own projectile type if needed
-                //type = ProjectileID.DD2FlameBurstTowerT1Shot; // Example projectile type
+                type = ModContent.ProjectileType<PhoenixFlames>();
 
                 Projectile.NewProjectileDirect(
                     source,
