@@ -5,8 +5,6 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using System;
 using KatanaZERO.Dusts;
-using Terraria.DataStructures;
-using Mono.Cecil;
 
 namespace KatanaZERO.Items.FifteensBlade
 {
@@ -17,14 +15,17 @@ namespace KatanaZERO.Items.FifteensBlade
         public static readonly SoundStyle Slash3 = new SoundStyle("KatanaZERO/Sounds/Items/FifteensBlade/fifteen_slash3");
         public static readonly SoundStyle Special1 = new SoundStyle("KatanaZERO/Sounds/Items/FifteensBlade/fifteen_special1");
         public static readonly SoundStyle Special2 = new SoundStyle("KatanaZERO/Sounds/Items/FifteensBlade/fifteen_special2");
-        public static readonly SoundStyle ChronosActivate = new SoundStyle("KatanaZERO/Sounds/slomo_engage");
-        public static readonly SoundStyle ChronosDeadctivate = new SoundStyle("KatanaZERO/Sounds/slomo_disengage");
 
         private float attackCooldown = 0f;
         private float dragonCooldown = 0f;
         public bool hasAttacked = false;
         public bool hasRightClicked = false;
         public bool hasReleasedRightClick = false;
+
+        public override void SetStaticDefaults()
+        {
+
+        }
 
         public override void SetDefaults()
         {
@@ -60,8 +61,15 @@ namespace KatanaZERO.Items.FifteensBlade
             recipe.AddIngredient(ItemID.FragmentVortex, 20);
             recipe.AddIngredient(ItemID.FragmentNebula, 20);
             recipe.AddIngredient(ItemID.LunarOre, 50);
-            // recipe.AddTile(TileID.LunarCraftingStation);
-            // recipe.Register();
+            recipe.AddTile(TileID.LunarCraftingStation);
+            recipe.AddCustomShimmerResult(ItemID.Katana, 1);
+            recipe.AddCustomShimmerResult(ItemID.SilverBar, 5);
+            recipe.AddCustomShimmerResult(ItemID.FragmentSolar, 20);
+            recipe.AddCustomShimmerResult(ItemID.FragmentStardust, 20);
+            recipe.AddCustomShimmerResult(ItemID.FragmentVortex, 20);
+            recipe.AddCustomShimmerResult(ItemID.FragmentNebula, 20);
+            recipe.AddCustomShimmerResult(ItemID.LunarOre, 50);
+            recipe.Register();
         }
 
         public override bool? UseItem(Player player)
@@ -98,7 +106,7 @@ namespace KatanaZERO.Items.FifteensBlade
                     break;
             }
             return true;
-        } 
+        }
 
         public override void HoldItem(Player player)
         {
@@ -115,13 +123,10 @@ namespace KatanaZERO.Items.FifteensBlade
             {
                 if (Main.mouseRight)
                 {
-                    // SoundEngine.PlaySound(ChronosActivate);
                     hasRightClicked = true;
                 }
                 if (Main.mouseRight == false && hasRightClicked == true)
                 {
-                    Main.NewText("Right Click Released!"); //debug message
-                    SoundEngine.PlaySound(ChronosDeadctivate);
                     DragonDash(player);
                     hasRightClicked = false;
                     dragonCooldown = 180;
@@ -154,7 +159,7 @@ namespace KatanaZERO.Items.FifteensBlade
             return false;
         }
 
-        public bool CreateAllDust(Player player)
+        public bool CreateAllDust(Player player) //i used AI for all the math since thats my weakpoint, im just a skid i guess
         {
             if (Main.mouseRight)
             {
@@ -174,7 +179,7 @@ namespace KatanaZERO.Items.FifteensBlade
                 float distanceToCursor = Vector2.Distance(player.Center, Main.MouseWorld);
                 float maxLerpAmount = Math.Min(1f, radius / distanceToCursor);
 
-                for (float lerpAmount = 0; lerpAmount <= maxLerpAmount; lerpAmount += 0.005f) // Use smaller increments for smoother trajectory
+                for (float lerpAmount = 0; lerpAmount <= maxLerpAmount; lerpAmount += 0.004f) // Use smaller increments for smoother trajectory
                 {
                     Vector2 barPosition = Vector2.Lerp(player.Center, Main.MouseWorld, lerpAmount);
                     if (Collision.SolidCollision(barPosition, 10, 10))
@@ -207,25 +212,41 @@ namespace KatanaZERO.Items.FifteensBlade
             return true; //return true to make the dust spawn 
         }
 
-        public bool DragonDash(Player player)
+        public bool DragonDash(Player player) //same thing here, i couldnt do all the math myself even if i tried
         {
-            int cursorX = (int)(Main.MouseWorld.X / 16);
-            int cursorY = (int)(Main.MouseWorld.Y / 16);
+            Vector2 cursorPosition = Main.MouseWorld;
+            Vector2 playerPosition = player.Center;
 
-            float cursorWorldX = cursorX * 16;
-            float cursorWorldY = cursorY * 16;
+            float maxRadius = 464f; // 29 blocks
 
-            // Calculate rectangle dimensions
-            float width = Math.Abs(cursorWorldX - player.Center.X);
-            float height = Math.Abs(cursorWorldY - player.Center.Y);
+            float distanceToCursor = Vector2.Distance(playerPosition, cursorPosition);
 
-            // Determine top-left corner
-            float topLeftX = Math.Min(player.Center.X, cursorWorldX);
-            float topLeftY = Math.Min(player.Center.Y, cursorWorldY);
+            if (distanceToCursor > maxRadius)  // If the distance to the cursor is greater than the max radius, adjust the cursor position
+            {
+                Vector2 direction = Vector2.Normalize(cursorPosition - playerPosition);
+                cursorPosition = playerPosition + direction * maxRadius;
+                distanceToCursor = maxRadius; // Update the distance to the new cursor position
+            }
 
-            player.Teleport(Main.MouseWorld - new Vector2(player.width / 2, player.height / 2));
-            // Create the hitbox rectangle
-            Rectangle hitbox = new Rectangle((int)topLeftX, (int)topLeftY, (int)width, (int)height);
+            Vector2 midPoint = (playerPosition + cursorPosition) / 2; // Calculate the mid-point between player and cursor
+
+            int hitboxWidth = player.width * 2; // Define hitbox dimension
+            int hitboxHeight = player.height * 2;
+
+            // Create hitboxes
+            Rectangle playerHitbox = new Rectangle((int)playerPosition.X - hitboxWidth / 2, (int)playerPosition.Y - hitboxHeight / 2, hitboxWidth, hitboxHeight);
+            Rectangle cursorHitbox = new Rectangle((int)cursorPosition.X - hitboxWidth / 2, (int)cursorPosition.Y - hitboxHeight / 2, hitboxWidth, hitboxHeight);
+            Rectangle midHitbox = new Rectangle((int)midPoint.X - hitboxWidth / 2, (int)midPoint.Y - hitboxHeight / 2, hitboxWidth, hitboxHeight);
+
+            // Calculate distances for additional hitboxes
+            float distanceToMid = Vector2.Distance(playerPosition, midPoint);
+            float distanceFromMidToCursor = Vector2.Distance(midPoint, cursorPosition);
+
+            // Create additional hitboxes
+            Rectangle playerToMidHitbox = new Rectangle((int)playerPosition.X - hitboxWidth / 2, (int)(playerPosition.Y - distanceToMid / 2) - hitboxHeight / 2, hitboxWidth, (int)distanceToMid);
+            Rectangle midToCursorHitbox = new Rectangle((int)midPoint.X - hitboxWidth / 2, (int)(midPoint.Y - distanceFromMidToCursor / 2) - hitboxHeight / 2, hitboxWidth, (int)distanceFromMidToCursor);
+
+            player.Teleport(cursorPosition - new Vector2(player.width / 2, player.height / 2));
 
             Random random = new Random();
             int randomNumber = random.Next(1, 3);
@@ -239,16 +260,74 @@ namespace KatanaZERO.Items.FifteensBlade
                     break;
             }
 
-            foreach (NPC enemy in Main.npc)
+            foreach (NPC enemy in Main.npc) // i am sorry for your eyes for what youre about to see, im desperate to get his working.
             {
-                if (!enemy.friendly && enemy.Hitbox.Intersects(hitbox))
+                if (!enemy.friendly && !enemy.boss && enemy.Hitbox.Intersects(cursorHitbox))
                 {
-                    enemy.SimpleStrikeNPC(Item.damage * 8, 0, true, player.direction * 2f, DamageClass.Melee, true, 0, false);
+                    enemy.SimpleStrikeNPC(Item.damage * 3, 0, true, player.direction * 2f, DamageClass.Melee, true, 0, false);
+                    player.immune = true;
+                    player.immuneTime = 60;
+                }
+                else if (!enemy.friendly && enemy.boss && enemy.Hitbox.Intersects(cursorHitbox))
+                {
+                    enemy.SimpleStrikeNPC(enemy.lifeMax / 5, 0, true, player.direction * 2f, DamageClass.Melee, true, 0, false);
+                    player.immune = true;
+                    player.immuneTime = 60;
+                }
+                /////// This can definitely be simplified some way, ill try to find a way. (you cant use the || operator to check for any hitbox mind you)
+                if (!enemy.friendly && !enemy.boss && enemy.Hitbox.Intersects(playerHitbox))
+                {
+                    enemy.SimpleStrikeNPC(Item.damage * 3, 0, true, player.direction * 2f, DamageClass.Melee, true, 0, false);
+                    player.immune = true;
+                    player.immuneTime = 60;
+                }
+                else if (!enemy.friendly && enemy.boss && enemy.Hitbox.Intersects(playerHitbox))
+                {
+                    enemy.SimpleStrikeNPC(enemy.lifeMax / 5, 0, true, player.direction * 2f, DamageClass.Melee, true, 0, false);
+                    player.immune = true;
+                    player.immuneTime = 60;
+                }
+                ///////
+                if (!enemy.friendly && !enemy.boss && enemy.Hitbox.Intersects(midHitbox))
+                {
+                    enemy.SimpleStrikeNPC(Item.damage * 3, 0, true, player.direction * 2f, DamageClass.Melee, true, 0, false);
+                    player.immune = true;
+                    player.immuneTime = 60;
+                }
+                else if (!enemy.friendly && enemy.boss && enemy.Hitbox.Intersects(midHitbox))
+                {
+                    enemy.SimpleStrikeNPC(enemy.lifeMax / 5, 0, true, player.direction * 2f, DamageClass.Melee, true, 0, false);
+                    player.immune = true;
+                    player.immuneTime = 60;
+                }
+                ///////
+                if (!enemy.friendly && !enemy.boss && enemy.Hitbox.Intersects(playerToMidHitbox))
+                {
+                    enemy.SimpleStrikeNPC(Item.damage * 2, 0, true, player.direction * 2f, DamageClass.Melee, true, 0, false);
+                    player.immune = true;
+                    player.immuneTime = 60;
+                }
+                else if (!enemy.friendly && enemy.boss && enemy.Hitbox.Intersects(playerToMidHitbox))
+                {
+                    enemy.SimpleStrikeNPC(enemy.lifeMax / 5, 0, true, player.direction * 2f, DamageClass.Melee, true, 0, false);
+                    player.immune = true;
+                    player.immuneTime = 60;
+                }
+                ///////
+                if (!enemy.friendly && !enemy.boss && enemy.Hitbox.Intersects(midToCursorHitbox))
+                {
+                    enemy.SimpleStrikeNPC(Item.damage * 2, 0, true, player.direction * 2f, DamageClass.Melee, true, 0, false);
+                    player.immune = true;
+                    player.immuneTime = 60;
+                }
+                else if (!enemy.friendly && enemy.boss && enemy.Hitbox.Intersects(midToCursorHitbox))
+                {
+                    enemy.SimpleStrikeNPC(enemy.lifeMax / 5, 0, true, player.direction * 2f, DamageClass.Melee, true, 0, false);
+                    player.immune = true;
+                    player.immuneTime = 60;
                 }
             }
-            return false;
+            return true;
         }
-
     }
 }
-

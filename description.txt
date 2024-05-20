@@ -17,4 +17,4 @@ Claymore Prototype: Slow attack speed, big hit range and width, unlimited amount
 
 Phoenix's Edge: Slow attack speed, very high range, shoots flames that burn enemies (Post-Cultist)
 
-(Unfinished) Fifteen's Blade: High attack speed, very high reach, teleports to the mouse cursor on holding and releasing right click, meant to most enemies in one hit (Post-Moonlord)
+Fifteen's Blade: High attack speed, very high reach, teleports to the mouse cursor on holding and releasing right click, meant to most enemies in one hit (Post-Moonlord)
