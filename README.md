@@ -1,8 +1,7 @@
 # Katana ZERO Weapons
 Terraria mod that aims to add all 7 katanas from Katana ZERO into Terraria as their own weapons.
 
-Current mod status: Need to finish Fifteen's Dash attack and recieve permission from Askiisoft to publish the mod to Steam Workshop.
-
+Current mod status: Fifteen's Blade needs polishing but it works as intended.
 # Weapons Added:
 
 ZERO's Katana: The original, no special effects, just bullet deflection 
@@ -19,4 +18,4 @@ Claymore Prototype: Slow attack speed, big hit range and width, unlimited amount
 
 Phoenix's Edge: Medium attack speed, very high range, shoots flames that burn enemies (Post-Cultist)
 
-(Unfinished) Fifteen's Blade: High attack speed, very high reach, teleports to the mouse cursor on holding and releasing right click, meant to kill most enemies in one hit (Post-Moonlord)
+Fifteen's Blade: High attack speed, very high reach, teleports to the mouse cursor on holding and releasing right click, meant to kill most enemies in one hit (Post-Moonlord)
