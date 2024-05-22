@@ -110,15 +110,6 @@ namespace KatanaZERO.Items.FifteensBlade
 
         public override void HoldItem(Player player)
         {
-            if (attackCooldown > 0f)
-            {
-                attackCooldown -= 1f;
-            }
-            if (dragonCooldown > 0f)
-            {
-                dragonCooldown -= 1f;
-            }
-
             if (dragonCooldown <= 0f)
             {
                 if (Main.mouseRight)
@@ -131,7 +122,7 @@ namespace KatanaZERO.Items.FifteensBlade
                     hasRightClicked = false;
                     dragonCooldown = 180;
                 }
-                CreateAllDust(player); //create the big circle and 
+                CreateAllDust(player); //create the big circle and the trajectory
             }
         }
 
@@ -140,6 +131,15 @@ namespace KatanaZERO.Items.FifteensBlade
             if (player.velocity.Y == 0f)
             {
                 hasAttacked = false;
+            }
+
+            if (attackCooldown > 0f)
+            {
+                attackCooldown -= 1f;
+            }
+            if (dragonCooldown > 0f)
+            {
+                dragonCooldown -= 1f;
             }
         }
         public override bool CanUseItem(Player player)
@@ -159,7 +159,7 @@ namespace KatanaZERO.Items.FifteensBlade
             return false;
         }
 
-        public bool CreateAllDust(Player player) //i used AI for all the math since thats my weakpoint, im just a skid i guess
+        public bool CreateAllDust(Player player) //i used AI for all the math since thats my weakpoint
         {
             if (Main.mouseRight)
             {
@@ -230,8 +230,8 @@ namespace KatanaZERO.Items.FifteensBlade
 
             Vector2 midPoint = (playerPosition + cursorPosition) / 2; // Calculate the mid-point between player and cursor
 
-            int hitboxWidth = player.width * 2; // Define hitbox dimension
-            int hitboxHeight = player.height * 2;
+            int hitboxWidth = player.width * 12; // Define hitbox dimension
+            int hitboxHeight = player.height * 10;
 
             // Create hitboxes
             Rectangle playerHitbox = new Rectangle((int)playerPosition.X - hitboxWidth / 2, (int)playerPosition.Y - hitboxHeight / 2, hitboxWidth, hitboxHeight);
@@ -243,8 +243,8 @@ namespace KatanaZERO.Items.FifteensBlade
             float distanceFromMidToCursor = Vector2.Distance(midPoint, cursorPosition);
 
             // Create additional hitboxes
-            Rectangle playerToMidHitbox = new Rectangle((int)playerPosition.X - hitboxWidth / 2, (int)(playerPosition.Y - distanceToMid / 2) - hitboxHeight / 2, hitboxWidth, (int)distanceToMid);
-            Rectangle midToCursorHitbox = new Rectangle((int)midPoint.X - hitboxWidth / 2, (int)(midPoint.Y - distanceFromMidToCursor / 2) - hitboxHeight / 2, hitboxWidth, (int)distanceFromMidToCursor);
+            Rectangle playerToMidHitbox = new Rectangle((int)playerPosition.X - hitboxWidth, (int)(playerPosition.Y - distanceToMid / 2) - hitboxHeight, hitboxWidth, (int)distanceToMid);
+            Rectangle midToCursorHitbox = new Rectangle((int)midPoint.X - hitboxWidth, (int)(midPoint.Y - distanceFromMidToCursor / 2) - hitboxHeight, hitboxWidth, (int)distanceFromMidToCursor);
 
             player.Teleport(cursorPosition - new Vector2(player.width / 2, player.height / 2));
 
@@ -260,69 +260,17 @@ namespace KatanaZERO.Items.FifteensBlade
                     break;
             }
 
-            foreach (NPC enemy in Main.npc) // i am sorry for your eyes for what youre about to see, im desperate to get his working.
+            foreach (NPC enemy in Main.npc)
             {
-                if (!enemy.friendly && !enemy.boss && enemy.Hitbox.Intersects(cursorHitbox))
+                if (!enemy.friendly && !enemy.boss && (enemy.Hitbox.Intersects(cursorHitbox) || enemy.Hitbox.Intersects(playerHitbox) || enemy.Hitbox.Intersects(midHitbox) || enemy.Hitbox.Intersects(playerToMidHitbox) || enemy.Hitbox.Intersects(midToCursorHitbox)))
                 {
-                    enemy.SimpleStrikeNPC(Item.damage * 3, 0, true, player.direction * 2f, DamageClass.Melee, true, 0, false);
+                    enemy.SimpleStrikeNPC(Item.damage * 5, 0, true, 0, DamageClass.Melee, true, 0, false);
                     player.immune = true;
                     player.immuneTime = 60;
                 }
-                else if (!enemy.friendly && enemy.boss && enemy.Hitbox.Intersects(cursorHitbox))
+                else if (!enemy.friendly && enemy.boss && (enemy.Hitbox.Intersects(cursorHitbox) || enemy.Hitbox.Intersects(playerHitbox) || enemy.Hitbox.Intersects(midHitbox) || enemy.Hitbox.Intersects(playerToMidHitbox) || enemy.Hitbox.Intersects(midToCursorHitbox)))
                 {
-                    enemy.SimpleStrikeNPC(enemy.lifeMax / 5, 0, true, player.direction * 2f, DamageClass.Melee, true, 0, false);
-                    player.immune = true;
-                    player.immuneTime = 60;
-                }
-                /////// This can definitely be simplified some way, ill try to find a way. (you cant use the || operator to check for any hitbox mind you)
-                if (!enemy.friendly && !enemy.boss && enemy.Hitbox.Intersects(playerHitbox))
-                {
-                    enemy.SimpleStrikeNPC(Item.damage * 3, 0, true, player.direction * 2f, DamageClass.Melee, true, 0, false);
-                    player.immune = true;
-                    player.immuneTime = 60;
-                }
-                else if (!enemy.friendly && enemy.boss && enemy.Hitbox.Intersects(playerHitbox))
-                {
-                    enemy.SimpleStrikeNPC(enemy.lifeMax / 5, 0, true, player.direction * 2f, DamageClass.Melee, true, 0, false);
-                    player.immune = true;
-                    player.immuneTime = 60;
-                }
-                ///////
-                if (!enemy.friendly && !enemy.boss && enemy.Hitbox.Intersects(midHitbox))
-                {
-                    enemy.SimpleStrikeNPC(Item.damage * 3, 0, true, player.direction * 2f, DamageClass.Melee, true, 0, false);
-                    player.immune = true;
-                    player.immuneTime = 60;
-                }
-                else if (!enemy.friendly && enemy.boss && enemy.Hitbox.Intersects(midHitbox))
-                {
-                    enemy.SimpleStrikeNPC(enemy.lifeMax / 5, 0, true, player.direction * 2f, DamageClass.Melee, true, 0, false);
-                    player.immune = true;
-                    player.immuneTime = 60;
-                }
-                ///////
-                if (!enemy.friendly && !enemy.boss && enemy.Hitbox.Intersects(playerToMidHitbox))
-                {
-                    enemy.SimpleStrikeNPC(Item.damage * 2, 0, true, player.direction * 2f, DamageClass.Melee, true, 0, false);
-                    player.immune = true;
-                    player.immuneTime = 60;
-                }
-                else if (!enemy.friendly && enemy.boss && enemy.Hitbox.Intersects(playerToMidHitbox))
-                {
-                    enemy.SimpleStrikeNPC(enemy.lifeMax / 5, 0, true, player.direction * 2f, DamageClass.Melee, true, 0, false);
-                    player.immune = true;
-                    player.immuneTime = 60;
-                }
-                ///////
-                if (!enemy.friendly && !enemy.boss && enemy.Hitbox.Intersects(midToCursorHitbox))
-                {
-                    enemy.SimpleStrikeNPC(Item.damage * 2, 0, true, player.direction * 2f, DamageClass.Melee, true, 0, false);
-                    player.immune = true;
-                    player.immuneTime = 60;
-                }
-                else if (!enemy.friendly && enemy.boss && enemy.Hitbox.Intersects(midToCursorHitbox))
-                {
-                    enemy.SimpleStrikeNPC(enemy.lifeMax / 5, 0, true, player.direction * 2f, DamageClass.Melee, true, 0, false);
+                    enemy.SimpleStrikeNPC(enemy.lifeMax / 10, 0, true, 0, DamageClass.Melee, true, 0, false);
                     player.immune = true;
                     player.immuneTime = 60;
                 }

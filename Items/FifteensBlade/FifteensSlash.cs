@@ -17,8 +17,8 @@ namespace KatanaZERO.Items.FifteensBlade
 
         public override void SetDefaults()
         {
-            Projectile.width = 188; //default 185
-            Projectile.height = 190; //default 45
+            Projectile.width = 188; 
+            Projectile.height = 190;
             Projectile.knockBack = 7;
             Projectile.aiStyle = 6;
             Projectile.friendly = true;
@@ -34,6 +34,12 @@ namespace KatanaZERO.Items.FifteensBlade
             Projectile.localNPCHitCooldown = 6;
 
             Main.projFrames[Projectile.type] = 5;
+        }
+
+        public override void ModifyHitNPC(NPC target, ref NPC.HitModifiers modifiers)
+        {
+            modifiers.ScalingArmorPenetration += 1f;
+            base.ModifyHitNPC(target, ref modifiers);
         }
 
         public override void AI()
