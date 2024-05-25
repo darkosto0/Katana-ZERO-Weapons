@@ -72,7 +72,7 @@ namespace KatanaZERO.Items.SavantKnife
             }
             else
             {
-                player.velocity = direction * 12f;
+                player.velocity = direction * 8f;
                 hasAttacked = true;
             }
 
