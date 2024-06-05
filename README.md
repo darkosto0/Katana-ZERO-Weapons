@@ -23,5 +23,5 @@ Fifteen's Blade: High attack speed, very high reach, teleports to the mouse curs
 # Extra Info
 - This mod is made by me in attempt to learn the ropes of programming, There might be bugs I haven't found yet that could break the mod.
 - I am not very experienced in programming like I said, regarding Fifteen's Blade, some enemies will slip past the hitbox between the slash (There are 5 in total, one at the player position, one at the mouse cusror, one in the middle, and one in between the middle and player and between the middle and cursor)
-- If you are more experienced and want to help me making this weapon better, send me a DM on Discord (.darkosto) and I'll gladly reach back.
+- If you are more experienced and want to help me making this weapon better, send me a DM on Discord (zerono_0) and I'll gladly reach back.
 - I plan on making the mod better with time like making special effects but that will be left for the future.
