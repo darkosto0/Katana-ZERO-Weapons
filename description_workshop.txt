@@ -19,5 +19,7 @@ These weapons have unique slashing animations, can deflect bullets, and lunge yo
 
 - Fifteen's Blade: High attack speed, very high reach, teleports to the mouse cursor on holding and releasing right click, meant to most enemies in one hit (Post-Moonlord)
 
+* Special Thanks To *
+- [url=https://github.com/g113g]g113g[/url] for a Russian translation and for uploading the mod to Steam Workshop for me.
 
 The source code is available for everyone on [url=https://github.com/darkosto0/Katana-ZERO-Weapons]GitHub[/url].

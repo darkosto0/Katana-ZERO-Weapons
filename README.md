@@ -26,5 +26,5 @@ Fifteen's Blade: High attack speed, very high reach, teleports to the mouse curs
 - If you are more experienced and want to help me making this weapon better, send me a DM on Discord (darkosto0) and I'll gladly reach back.
 - I plan on making the mod better with time like making special effects but that will be left for the future.
 
-# Special Thanks
-- To [g113g](https://github.com/g113g) for publishing the mod to the Steam Workshop because I wasn't able to.
+# Special Thanks To:
+- [g113g](https://github.com/g113g) for Russian translation and for publishing the mod to the Steam Workshop.
