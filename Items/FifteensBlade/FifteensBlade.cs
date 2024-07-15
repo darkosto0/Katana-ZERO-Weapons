@@ -15,7 +15,7 @@ namespace KatanaZERO.Items.FifteensBlade
         public static readonly SoundStyle Slash3 = new SoundStyle("KatanaZERO/Sounds/Items/FifteensBlade/fifteen_slash3");
         public static readonly SoundStyle Special1 = new SoundStyle("KatanaZERO/Sounds/Items/FifteensBlade/fifteen_special1");
         public static readonly SoundStyle Special2 = new SoundStyle("KatanaZERO/Sounds/Items/FifteensBlade/fifteen_special2");
-
+        public static readonly SoundStyle Special3 = new SoundStyle("KatanaZERO/Sounds/Items/FifteensBlade/fifteen_special3");
         private float attackCooldown = 0f;
         private float dragonCooldown = 0f;
         public bool hasAttacked = false;
@@ -159,7 +159,7 @@ namespace KatanaZERO.Items.FifteensBlade
             return false;
         }
 
-        public bool CreateAllDust(Player player) //i used AI for all the math since thats my weakpoint
+        public bool CreateAllDust(Player player)
         {
             if (Main.mouseRight)
             {
@@ -212,7 +212,7 @@ namespace KatanaZERO.Items.FifteensBlade
             return true; //return true to make the dust spawn 
         }
 
-        public bool DragonDash(Player player) //same thing here, i couldnt do all the math myself even if i tried
+        public bool DragonDash(Player player)
         {
             Vector2 cursorPosition = Main.MouseWorld;
             Vector2 playerPosition = player.Center;
@@ -221,61 +221,115 @@ namespace KatanaZERO.Items.FifteensBlade
 
             float distanceToCursor = Vector2.Distance(playerPosition, cursorPosition);
 
-            if (distanceToCursor > maxRadius)  // If the distance to the cursor is greater than the max radius, adjust the cursor position
+            if (distanceToCursor > maxRadius)
             {
                 Vector2 direction = Vector2.Normalize(cursorPosition - playerPosition);
                 cursorPosition = playerPosition + direction * maxRadius;
-                distanceToCursor = maxRadius; // Update the distance to the new cursor position
+                distanceToCursor = maxRadius;
             }
 
-            Vector2 midPoint = (playerPosition + cursorPosition) / 2; // Calculate the mid-point between player and cursor
 
-            int hitboxWidth = player.width * 12; // Define hitbox dimension
-            int hitboxHeight = player.height * 10;
+            Vector2 directionToCursor = Vector2.Normalize(cursorPosition - playerPosition);
+            float moveDistance = distanceToCursor;
 
-            // Create hitboxes
-            Rectangle playerHitbox = new Rectangle((int)playerPosition.X - hitboxWidth / 2, (int)playerPosition.Y - hitboxHeight / 2, hitboxWidth, hitboxHeight);
-            Rectangle cursorHitbox = new Rectangle((int)cursorPosition.X - hitboxWidth / 2, (int)cursorPosition.Y - hitboxHeight / 2, hitboxWidth, hitboxHeight);
-            Rectangle midHitbox = new Rectangle((int)midPoint.X - hitboxWidth / 2, (int)midPoint.Y - hitboxHeight / 2, hitboxWidth, hitboxHeight);
+            bool collisionWithTerrain = false;
+            Vector2 newPosition = playerPosition;
 
-            // Calculate distances for additional hitboxes
-            float distanceToMid = Vector2.Distance(playerPosition, midPoint);
-            float distanceFromMidToCursor = Vector2.Distance(midPoint, cursorPosition);
-
-            // Create additional hitboxes
-            Rectangle playerToMidHitbox = new Rectangle((int)playerPosition.X - hitboxWidth, (int)(playerPosition.Y - distanceToMid / 2) - hitboxHeight, hitboxWidth, (int)distanceToMid);
-            Rectangle midToCursorHitbox = new Rectangle((int)midPoint.X - hitboxWidth, (int)(midPoint.Y - distanceFromMidToCursor / 2) - hitboxHeight, hitboxWidth, (int)distanceFromMidToCursor);
-
-            player.Teleport(cursorPosition - new Vector2(player.width / 2, player.height / 2));
-
-            Random random = new Random();
-            int randomNumber = random.Next(1, 3);
-            switch (randomNumber)
+            while (moveDistance > 0)
             {
-                case 1:
-                    SoundEngine.PlaySound(Special1);
-                    break;
-                case 2:
-                    SoundEngine.PlaySound(Special2);
-                    break;
-            }
 
-            foreach (NPC enemy in Main.npc)
-            {
-                if (!enemy.friendly && !enemy.boss && (enemy.Hitbox.Intersects(cursorHitbox) || enemy.Hitbox.Intersects(playerHitbox) || enemy.Hitbox.Intersects(midHitbox) || enemy.Hitbox.Intersects(playerToMidHitbox) || enemy.Hitbox.Intersects(midToCursorHitbox)))
+                newPosition = playerPosition + directionToCursor * moveDistance;
+
+
+                collisionWithTerrain = Collision.SolidCollision(newPosition, player.width, player.height);
+
+                if (!collisionWithTerrain)
                 {
-                    enemy.SimpleStrikeNPC(Item.damage * 5, 0, true, 0, DamageClass.Melee, true, 0, false);
-                    player.immune = true;
-                    player.immuneTime = 60;
+
+                    player.position = newPosition - new Vector2(player.width / 2, player.height / 2);
+                    break;
                 }
-                else if (!enemy.friendly && enemy.boss && (enemy.Hitbox.Intersects(cursorHitbox) || enemy.Hitbox.Intersects(playerHitbox) || enemy.Hitbox.Intersects(midHitbox) || enemy.Hitbox.Intersects(playerToMidHitbox) || enemy.Hitbox.Intersects(midToCursorHitbox)))
+                else
                 {
-                    enemy.SimpleStrikeNPC(enemy.lifeMax / 10, 0, true, 0, DamageClass.Melee, true, 0, false);
-                    player.immune = true;
-                    player.immuneTime = 60;
+
+                    moveDistance -= 1f;
                 }
             }
+
+            if (collisionWithTerrain)
+            {
+                player.position = playerPosition;
+            }
+            else
+            {
+
+                Vector2 midPoint = (playerPosition + cursorPosition) / 2;
+
+                int hitboxWidth = player.width * 12;
+                int hitboxHeight = player.height * 10;
+
+                Rectangle playerHitbox = new Rectangle((int)playerPosition.X - hitboxWidth / 2, (int)playerPosition.Y - hitboxHeight / 2, hitboxWidth, hitboxHeight);
+                Rectangle cursorHitbox = new Rectangle((int)cursorPosition.X - hitboxWidth / 2, (int)cursorPosition.Y - hitboxHeight / 2, hitboxWidth, hitboxHeight);
+                Rectangle midHitbox = new Rectangle((int)midPoint.X - hitboxWidth / 2, (int)midPoint.Y - hitboxHeight / 2, hitboxWidth, hitboxHeight);
+
+                float distanceToMid = Vector2.Distance(playerPosition, midPoint);
+                float distanceFromMidToCursor = Vector2.Distance(midPoint, cursorPosition);
+
+                Rectangle playerToMidHitbox = new Rectangle((int)playerPosition.X - hitboxWidth, (int)(playerPosition.Y - distanceToMid / 2) - hitboxHeight, hitboxWidth, (int)distanceToMid);
+                Rectangle midToCursorHitbox = new Rectangle((int)midPoint.X - hitboxWidth, (int)(midPoint.Y - distanceFromMidToCursor / 2) - hitboxHeight, hitboxWidth, (int)distanceFromMidToCursor);
+
+                bool hitEnemy = false;
+
+                foreach (NPC enemy in Main.npc)
+                {
+                    if (!enemy.friendly && (enemy.Hitbox.Intersects(cursorHitbox) || enemy.Hitbox.Intersects(playerHitbox) || enemy.Hitbox.Intersects(midHitbox) || enemy.Hitbox.Intersects(playerToMidHitbox) || enemy.Hitbox.Intersects(midToCursorHitbox)))
+                    {
+                        hitEnemy = true;
+                        if (!enemy.boss)
+                        {
+                            enemy.SimpleStrikeNPC(Item.damage * 5, 0, true, 0, DamageClass.Melee, true, 0, false);
+                        }
+                        else
+                        {
+                            enemy.SimpleStrikeNPC(enemy.lifeMax / 10, 0, true, 0, DamageClass.Melee, true, 0, false);
+                        }
+                        player.immune = true;
+                        player.immuneTime = 60;
+                    }
+                }
+
+                if (hitEnemy)
+                {
+                    SoundEngine.PlaySound(Special3);
+                }
+                else
+                {
+                    Random random = new Random();
+                    int randomNumber = random.Next(1, 3);
+                    switch (randomNumber)
+                    {
+                        case 1:
+                            SoundEngine.PlaySound(Special1);
+                            break;
+                        case 2:
+                            SoundEngine.PlaySound(Special2);
+                            break;
+                    }
+                }
+            }
+
             return true;
         }
+
+
+
+
+
+
+
+
+
+
+
     }
 }
