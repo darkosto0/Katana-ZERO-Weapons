@@ -13,7 +13,6 @@ namespace KatanaZERO.Items.Claymore
     {
         private const float DistanceFromCore = 66f; //offset from the center of the player to the sprite
                                                     //like the empty space between a hydrogen atom core and its electron
-        private float bulletDeflectionAmount = 1;
 
         public override void SetDefaults()
         {
@@ -81,9 +80,7 @@ namespace KatanaZERO.Items.Claymore
                         Volume = 0.5f,
                     });
                 }
-                bulletDeflectionAmount--;
             }
-
         }
 
         public override void OnSpawn(IEntitySource source)

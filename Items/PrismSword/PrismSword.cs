@@ -1,8 +1,11 @@
+using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
+using static Terraria.ModLoader.ModContent;
+using Terraria.Audio;
+using System;
+using KatanaZERO.Items.ZerosKatana;
 
 namespace KatanaZERO.Items.PrismSword
 {
@@ -43,13 +46,12 @@ namespace KatanaZERO.Items.PrismSword
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddIngredient(Mod, "ZerosKatana")
+                .AddIngredient(ItemType<ZeroKatana>())
                 .AddIngredient(ItemID.RedDye, 1)
                 .AddIngredient(ItemID.GreenDye, 1)
                 .AddIngredient(ItemID.BlueDye, 1)
                 .AddTile(TileID.MythrilAnvil)
-                .AddCustomShimmerResult(ItemID.Katana, 1)
-                .AddCustomShimmerResult(ItemID.SilverBar, 5)
+                .AddCustomShimmerResult(ItemType<ZeroKatana>())
                 .AddCustomShimmerResult(ItemID.RedDye, 1)
                 .AddCustomShimmerResult(ItemID.GreenDye, 1)
                 .AddCustomShimmerResult(ItemID.BlueDye, 1)

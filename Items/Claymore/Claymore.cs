@@ -3,7 +3,6 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
-using KatanaZERO.Items.ZerosKatana;
 
 namespace KatanaZERO.Items.Claymore
 {

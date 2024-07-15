@@ -1,10 +1,12 @@
+using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
-using System;
+using static Terraria.ModLoader.ModContent;
+using Terraria.Audio;
 using KatanaZERO.Dusts;
+using System;
+using KatanaZERO.Items.ZerosKatana;
 
 namespace KatanaZERO.Items.FifteensBlade
 {
@@ -13,9 +15,11 @@ namespace KatanaZERO.Items.FifteensBlade
         public static readonly SoundStyle Slash1 = new SoundStyle("KatanaZERO/Sounds/Items/FifteensBlade/fifteen_slash1");
         public static readonly SoundStyle Slash2 = new SoundStyle("KatanaZERO/Sounds/Items/FifteensBlade/fifteen_slash2");
         public static readonly SoundStyle Slash3 = new SoundStyle("KatanaZERO/Sounds/Items/FifteensBlade/fifteen_slash3");
+
         public static readonly SoundStyle Special1 = new SoundStyle("KatanaZERO/Sounds/Items/FifteensBlade/fifteen_special1");
         public static readonly SoundStyle Special2 = new SoundStyle("KatanaZERO/Sounds/Items/FifteensBlade/fifteen_special2");
         public static readonly SoundStyle Special3 = new SoundStyle("KatanaZERO/Sounds/Items/FifteensBlade/fifteen_special3");
+
         private float attackCooldown = 0f;
         private float dragonCooldown = 0f;
         public bool hasAttacked = false;
@@ -54,22 +58,21 @@ namespace KatanaZERO.Items.FifteensBlade
 
         public override void AddRecipes()
         {
-            Recipe recipe = CreateRecipe();
-            recipe.AddIngredient(Mod, "ZerosKatana");
-            recipe.AddIngredient(ItemID.FragmentSolar, 20);
-            recipe.AddIngredient(ItemID.FragmentStardust, 20);
-            recipe.AddIngredient(ItemID.FragmentVortex, 20);
-            recipe.AddIngredient(ItemID.FragmentNebula, 20);
-            recipe.AddIngredient(ItemID.LunarOre, 50);
-            recipe.AddTile(TileID.LunarCraftingStation);
-            recipe.AddCustomShimmerResult(ItemID.Katana, 1);
-            recipe.AddCustomShimmerResult(ItemID.SilverBar, 5);
-            recipe.AddCustomShimmerResult(ItemID.FragmentSolar, 20);
-            recipe.AddCustomShimmerResult(ItemID.FragmentStardust, 20);
-            recipe.AddCustomShimmerResult(ItemID.FragmentVortex, 20);
-            recipe.AddCustomShimmerResult(ItemID.FragmentNebula, 20);
-            recipe.AddCustomShimmerResult(ItemID.LunarOre, 50);
-            recipe.Register();
+            CreateRecipe()
+                .AddIngredient(ItemType<ZeroKatana>())
+                .AddIngredient(ItemID.FragmentSolar, 20)
+                .AddIngredient(ItemID.FragmentStardust, 20)
+                .AddIngredient(ItemID.FragmentVortex, 20)
+                .AddIngredient(ItemID.FragmentNebula, 20)
+                .AddIngredient(ItemID.LunarOre, 50)
+                .AddTile(TileID.LunarCraftingStation)
+                .AddCustomShimmerResult(ItemType<ZeroKatana>())
+                .AddCustomShimmerResult(ItemID.FragmentSolar, 20)
+                .AddCustomShimmerResult(ItemID.FragmentStardust, 20)
+                .AddCustomShimmerResult(ItemID.FragmentVortex, 20)
+                .AddCustomShimmerResult(ItemID.FragmentNebula, 20)
+                .AddCustomShimmerResult(ItemID.LunarOre, 50)
+                .Register();
         }
 
         public override bool? UseItem(Player player)
@@ -228,30 +231,25 @@ namespace KatanaZERO.Items.FifteensBlade
                 distanceToCursor = maxRadius;
             }
 
-
             Vector2 directionToCursor = Vector2.Normalize(cursorPosition - playerPosition);
             float moveDistance = distanceToCursor;
 
             bool collisionWithTerrain = false;
-            Vector2 newPosition = playerPosition;
+            Vector2 newPosition;
 
             while (moveDistance > 0)
             {
-
                 newPosition = playerPosition + directionToCursor * moveDistance;
-
 
                 collisionWithTerrain = Collision.SolidCollision(newPosition, player.width, player.height);
 
                 if (!collisionWithTerrain)
                 {
-
                     player.position = newPosition - new Vector2(player.width / 2, player.height / 2);
                     break;
                 }
                 else
                 {
-
                     moveDistance -= 1f;
                 }
             }
@@ -262,7 +260,6 @@ namespace KatanaZERO.Items.FifteensBlade
             }
             else
             {
-
                 Vector2 midPoint = (playerPosition + cursorPosition) / 2;
 
                 int hitboxWidth = player.width * 12;
@@ -278,13 +275,10 @@ namespace KatanaZERO.Items.FifteensBlade
                 Rectangle playerToMidHitbox = new Rectangle((int)playerPosition.X - hitboxWidth, (int)(playerPosition.Y - distanceToMid / 2) - hitboxHeight, hitboxWidth, (int)distanceToMid);
                 Rectangle midToCursorHitbox = new Rectangle((int)midPoint.X - hitboxWidth, (int)(midPoint.Y - distanceFromMidToCursor / 2) - hitboxHeight, hitboxWidth, (int)distanceFromMidToCursor);
 
-                bool hitEnemy = false;
-
                 foreach (NPC enemy in Main.npc)
                 {
                     if (!enemy.friendly && (enemy.Hitbox.Intersects(cursorHitbox) || enemy.Hitbox.Intersects(playerHitbox) || enemy.Hitbox.Intersects(midHitbox) || enemy.Hitbox.Intersects(playerToMidHitbox) || enemy.Hitbox.Intersects(midToCursorHitbox)))
                     {
-                        hitEnemy = true;
                         if (!enemy.boss)
                         {
                             enemy.SimpleStrikeNPC(Item.damage * 5, 0, true, 0, DamageClass.Melee, true, 0, false);
@@ -297,39 +291,19 @@ namespace KatanaZERO.Items.FifteensBlade
                         player.immuneTime = 60;
                     }
                 }
-
-                if (hitEnemy)
+                Random random = new Random();
+                int randomNumber = random.Next(1, 3);
+                switch (randomNumber)
                 {
-                    SoundEngine.PlaySound(Special3);
-                }
-                else
-                {
-                    Random random = new Random();
-                    int randomNumber = random.Next(1, 3);
-                    switch (randomNumber)
-                    {
-                        case 1:
-                            SoundEngine.PlaySound(Special1);
-                            break;
-                        case 2:
-                            SoundEngine.PlaySound(Special2);
-                            break;
-                    }
+                    case 1:
+                        SoundEngine.PlaySound(Special1);
+                        break;
+                    case 2:
+                        SoundEngine.PlaySound(Special2);
+                        break;
                 }
             }
-
             return true;
         }
-
-
-
-
-
-
-
-
-
-
-
     }
 }

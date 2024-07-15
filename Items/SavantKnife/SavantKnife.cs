@@ -1,8 +1,11 @@
+using Microsoft.Xna.Framework;
 using Terraria;
-using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
-using Microsoft.Xna.Framework;
+using static Terraria.ModLoader.ModContent;
+using Terraria.Audio;
+using System;
+using KatanaZERO.Items.ZerosKatana;
 
 namespace KatanaZERO.Items.SavantKnife
 {
@@ -43,14 +46,13 @@ namespace KatanaZERO.Items.SavantKnife
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddIngredient(Mod, "ZerosKatana")
+                .AddIngredient(ItemType<ZeroKatana>())
                 .AddIngredient(ItemID.ChlorophyteBar, 10)
                 .AddIngredient(ItemID.SoulofMight, 3)
                 .AddIngredient(ItemID.SoulofSight, 3)
                 .AddIngredient(ItemID.SoulofFright, 3)
                 .AddTile(TileID.SharpeningStation)
-                .AddCustomShimmerResult(ItemID.Katana, 1)
-                .AddCustomShimmerResult(ItemID.SilverBar, 5)
+                .AddCustomShimmerResult(ItemType<ZeroKatana>())
                 .AddCustomShimmerResult(ItemID.ChlorophyteBar, 10)
                 .AddCustomShimmerResult(ItemID.SoulofMight, 3)
                 .AddCustomShimmerResult(ItemID.SoulofSight, 3)

@@ -14,7 +14,7 @@ Items: {
 			'''
 	}
 
-	ZerosKatana: {
+	ZeroKatana: {
 		DisplayName: Катана
 		Tooltip:
 			'''
@@ -105,4 +105,5 @@ Projectiles: {
 	PhoenixSlash.DisplayName: Phoenix Slash
 	FifteensSlash.DisplayName: Fifteens Slash
 	PhoenixFlames.DisplayName: Phoenix Flames
+	// ZeroKatanaSlash.DisplayName: Zero Katana Slash
 }

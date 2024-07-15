@@ -6,6 +6,7 @@ using Terraria.ModLoader;
 using static Terraria.ModLoader.ModContent;
 using System;
 using Terraria.Audio;
+using KatanaZERO.Items.ZerosKatana;
 
 namespace KatanaZERO.Items.PhoenixEdge
 {
@@ -46,13 +47,12 @@ namespace KatanaZERO.Items.PhoenixEdge
         public override void AddRecipes()
         {
             CreateRecipe()
-                .AddIngredient(Mod, "ZerosKatana")
+                .AddIngredient(ItemType<ZeroKatana>())
                 .AddIngredient(ItemID.FragmentSolar, 10)
                 .AddIngredient(ItemID.LivingFireBlock, 5)
                 .AddIngredient(ItemID.CursedFlame, 3)
                 .AddTile(TileID.LunarCraftingStation)
-                .AddCustomShimmerResult(ItemID.Katana, 1)
-                .AddCustomShimmerResult(ItemID.SilverBar, 5)
+                .AddCustomShimmerResult(ItemType<ZeroKatana>())
                 .AddCustomShimmerResult(ItemID.FragmentSolar, 10)
                 .AddCustomShimmerResult(ItemID.LivingFireBlock, 5)
                 .AddCustomShimmerResult(ItemID.CursedFlame, 3)
