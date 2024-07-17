@@ -1,7 +1,7 @@
 # Katana ZERO Weapons
 Terraria mod that aims to add all 7 katanas from Katana ZERO into Terraria as their own weapons.
 
-Current mod status: Fifteen's Blade needs polishing but it works as intended.
+Current mod status: Fifteen's Blade needs minor tweaks, but works well.
 
 # Weapons Added:
 Zero's Katana: The original, no special effects, just bullet deflection 
