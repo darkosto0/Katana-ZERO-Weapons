@@ -17,9 +17,27 @@ These weapons have unique slashing animations, can deflect bullets, and lunge yo
 
 - Phoenix's Edge: Slow attack speed, very high range, shoots flames that burn enemies (Post-Cultist)
 
-- Fifteen's Blade: High attack speed, very high reach, teleports to the mouse cursor on holding and releasing right click, meant to most enemies in one hit (Post-Moonlord)
+- Fifteen's Blade: High attack speed, very high reach, teleports to the mouse cursor on holding and releasing right click, meant to most enemies in one hit (Legendary Weapon)
+Has 1/40000 chance to drop from any hostile enemy, or 1/9 to drop from Moon Lord.
 
 * Special Thanks To *
-- g113g for a Russian translation and for uploading the mod to Steam Workshop for me.
+- g113g for a Russian translation, code help and for uploading the mod to Steam Workshop for me.
+- Sequile for code help and balancing.
 
 Click on the Homepage button to view the source code.
+
+* Changelog *
+
+v1.1.0
+- Reworked Fifteen's Blade:
+	- Removed crafting recipe.
+	- Has 1/40000 chance to drop from hostile enemies, and 1/9 chance from Moon Lord.
+	- It's power scales off the strongest boss defeated in the world, compatible with Calamity and Thorium.
+	- Dragon Dash damage to enemies reduced to 5x Item's damage.
+	- Dragon dash damage to bosses reduced to 10x + 5% of Max HP
+- Dragon Dash no longer goes through solid walls.
+- Dragon Dash leaves a trail, like in the base game.
+
+
+v1.0.1
+- Finished Fifteen's Blade mechanics.

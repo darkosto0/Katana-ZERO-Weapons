@@ -7,6 +7,8 @@ using Terraria.Audio;
 using KatanaZERO.Dusts;
 using System;
 using KatanaZERO.Items.ZerosKatana;
+using Terraria.DataStructures;
+using Player = Terraria.Player;
 
 namespace KatanaZERO.Items.FifteensBlade
 {
@@ -20,11 +22,21 @@ namespace KatanaZERO.Items.FifteensBlade
         public static readonly SoundStyle Special2 = new SoundStyle("KatanaZERO/Sounds/Items/FifteensBlade/fifteen_special2");
         public static readonly SoundStyle Special3 = new SoundStyle("KatanaZERO/Sounds/Items/FifteensBlade/fifteen_special3");
 
-        private float attackCooldown = 0f;
-        private float dragonCooldown = 0f;
+        public static readonly SoundStyle SlowEngage = new SoundStyle("KatanaZERO/Sounds/slomo_engage");
+        public static readonly SoundStyle SlowDisengage = new SoundStyle("KatanaZERO/Sounds/slomo_disengage");
+
+
+        public float attackCooldown = 0f;
+        public float dragonCooldown = 0f;
+        public int SlowMoCounter = 0;
+        public int PowerLevel;
+
         public bool hasAttacked = false;
         public bool hasRightClicked = false;
         public bool hasReleasedRightClick = false;
+        public bool rightClickActivated = false; //i needed another right click bool (i think)
+        public bool playedSlomoEngage = false;
+
 
         public override void SetStaticDefaults()
         {
@@ -33,14 +45,14 @@ namespace KatanaZERO.Items.FifteensBlade
 
         public override void SetDefaults()
         {
-            Item.damage = 620;
+            Item.damage = 6;
             Item.DamageType = DamageClass.Melee;
             Item.width = 40;
             Item.height = 40;
             Item.rare = ItemRarityID.Master;
             Item.value = Item.sellPrice(gold: 99, silver: 99);
             Item.UseSound = Slash1;
-            Item.crit = 50;
+            Item.crit = 0;
 
             Item.useTime = 20;
             Item.useAnimation = 1;
@@ -56,6 +68,7 @@ namespace KatanaZERO.Items.FifteensBlade
             Item.shoot = ModContent.ProjectileType<FifteensSlash>();
         }
 
+        /*
         public override void AddRecipes()
         {
             CreateRecipe()
@@ -74,6 +87,7 @@ namespace KatanaZERO.Items.FifteensBlade
                 .AddCustomShimmerResult(ItemID.LunarOre, 50)
                 .Register();
         }
+        */
 
         public override bool? UseItem(Player player)
         {
@@ -118,6 +132,7 @@ namespace KatanaZERO.Items.FifteensBlade
                 if (Main.mouseRight)
                 {
                     hasRightClicked = true;
+
                 }
                 if (Main.mouseRight == false && hasRightClicked == true)
                 {
@@ -126,7 +141,9 @@ namespace KatanaZERO.Items.FifteensBlade
                     dragonCooldown = 180;
                 }
                 CreateAllDust(player); //create the big circle and the trajectory
+                SlowDown(player);
             }
+            StatChange();
         }
 
         public override void UpdateInventory(Player player)
@@ -140,10 +157,14 @@ namespace KatanaZERO.Items.FifteensBlade
             {
                 attackCooldown -= 1f;
             }
+
             if (dragonCooldown > 0f)
             {
                 dragonCooldown -= 1f;
             }
+
+
+
         }
         public override bool CanUseItem(Player player)
         {
@@ -162,7 +183,7 @@ namespace KatanaZERO.Items.FifteensBlade
             return false;
         }
 
-        public bool CreateAllDust(Player player)
+        public void CreateAllDust(Player player)
         {
             if (Main.mouseRight)
             {
@@ -212,10 +233,9 @@ namespace KatanaZERO.Items.FifteensBlade
                 }
                 player.velocity = Vector2.Zero;
             }
-            return true; //return true to make the dust spawn 
         }
 
-        public bool DragonDash(Player player)
+        public void DragonDash(Player player)
         {
             Vector2 cursorPosition = Main.MouseWorld;
             Vector2 playerPosition = player.Center;
@@ -281,11 +301,11 @@ namespace KatanaZERO.Items.FifteensBlade
                     {
                         if (!enemy.boss)
                         {
-                            enemy.SimpleStrikeNPC(Item.damage * 5, 0, true, 0, DamageClass.Melee, true, 0, false);
+                            enemy.SimpleStrikeNPC(Item.damage * 5, 0, false, 0, DamageClass.Melee, true, 0, false);
                         }
                         else
                         {
-                            enemy.SimpleStrikeNPC(enemy.lifeMax / 10, 0, true, 0, DamageClass.Melee, true, 0, false);
+                            enemy.SimpleStrikeNPC((Item.damage * 5) + enemy.lifeMax / 95, 0, true, 0, DamageClass.Melee, true, 0, false);
                         }
                         player.immune = true;
                         player.immuneTime = 60;
@@ -303,7 +323,165 @@ namespace KatanaZERO.Items.FifteensBlade
                         break;
                 }
             }
+        }
+
+        public bool SlowDown(Player player)
+        {
+
+            if (Main.mouseRight)
+            {
+                if (playedSlomoEngage == false)
+                {
+                    SoundEngine.PlaySound(SlowEngage);
+                    playedSlomoEngage = true;
+                }
+
+                foreach (NPC mob in Main.npc)
+                {
+                    if (mob.Distance(player.Center) < 2000f && mob.active && !mob.friendly)
+                    {
+                        mob.velocity /= 1.05f;
+                    }
+                }
+
+                foreach (Projectile projectile in Main.projectile)
+                {
+                    if (projectile.Distance(player.Center) < 2000f && projectile.active && !projectile.friendly)
+                    {
+                        projectile.velocity /= 1.05f;
+                    }
+                }
+                SlowMoCounter++;
+                rightClickActivated = true;
+            }
+            else if (Main.mouseRight == false && rightClickActivated == true) //right click released
+            {
+                SoundEngine.PlaySound(SlowDisengage);
+                foreach (NPC mob in Main.npc)
+                {
+                    if (mob.Distance(player.Center) < 2000f && mob.active && !mob.friendly)
+                    {
+                        // mob.velocity *= (SlowMoCounter * 1.05f);
+                    }
+                }
+
+                foreach (Projectile projectile in Main.projectile)
+                {
+                    if (projectile.Distance(player.Center) < 2000f && projectile.active && !projectile.friendly)
+                    {
+                        projectile.velocity *= (SlowMoCounter * 1.05f);
+                    }
+                }
+                playedSlomoEngage = false;
+                rightClickActivated = false;
+                SlowMoCounter = 0;
+            }
             return true;
+        }
+
+        public void StatChange() // lord forgive me for i have pulled a yandere simulator
+        {
+            Mod Calamity = ModLoader.GetMod("CalamityMod");
+            ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod);
+            if (Calamity != null || thoriumMod != null)
+            {
+                if ((bool)Calamity.Call("Downed", "bossrush")) { PowerLevel = 55; } // 55
+                else if ((bool)Calamity.Call("Downed", "supreme calamitas")) { PowerLevel = 54; } // 54
+                else if ((bool)Calamity.Call("Downed", "exomechs")) { PowerLevel = 53; } // 53
+                else if ((bool)Calamity.Call("Downed", "yharon")) { PowerLevel = 52; } // 52
+                else if ((bool)Calamity.Call("Downed", "devourerofgods")) { PowerLevel = 51; } // 51
+                else if ((bool)Calamity.Call("Downed", "oldduke")) { PowerLevel = 50; } // 50
+                else if ((bool)Calamity.Call("Downed", "polterghast")) { PowerLevel = 49; } // 49
+                else if ((bool)Calamity.Call("Downed", "signus")) { PowerLevel = 48; } // 48
+                else if ((bool)Calamity.Call("Downed", "stormweaver")) { PowerLevel = 47; } // 47
+                else if ((bool)Calamity.Call("Downed", "ceaselessvoid")) { PowerLevel = 46; } // 46
+                else if ((bool)thoriumMod.Call("GetDownedBoss", "ThePrimordials")) { PowerLevel = 45; } // 45
+                else if ((bool)Calamity.Call("Downed", "providence")) { PowerLevel = 44; } // 44
+                else if ((bool)Calamity.Call("Downed", "dragonfolly")) { PowerLevel = 43; } // 43
+                else if ((bool)Calamity.Call("Downed", "guardians")) { PowerLevel = 42; } // 42
+                else if ((bool)Calamity.Call("Downed", "astrumdeus")) { PowerLevel = 40; } // 40
+                else if ((bool)Calamity.Call("Downed", "ravager")) { PowerLevel = 38; } // 38
+                else if ((bool)Calamity.Call("Downed", "plaguebringergoliath")) { PowerLevel = 35; } // 35
+                else if ((bool)thoriumMod.Call("GetDownedBoss", "ForgottenOne")) { PowerLevel = 33; } // 33
+                else if ((bool)Calamity.Call("Downed", "astrumaureus")) { PowerLevel = 31; } // 31
+                else if ((bool)Calamity.Call("Downed", "anahitaleviathan")) { PowerLevel = 30; } // 30
+                else if ((bool)Calamity.Call("Downed", "calamitasclone")) { PowerLevel = 28; } // 28
+                else if ((bool)thoriumMod.Call("GetDownedBoss", "Lich")) { PowerLevel = 27; } // 27
+                else if ((bool)Calamity.Call("Downed", "brimstoneelemental")) { PowerLevel = 25; } // 25
+                else if ((bool)Calamity.Call("Downed", "aquaticscourge")) { PowerLevel = 23; } // 23
+                else if ((bool)Calamity.Call("Downed", "cryogen")) { PowerLevel = 21; } // 21
+                else if ((bool)thoriumMod.Call("GetDownedBoss", "FallenBeholder")) { PowerLevel = 19; } // 19
+                else if ((bool)thoriumMod.Call("GetDownedBoss", "BoreanStrider")) { PowerLevel = 18; } // 18
+                else if ((bool)thoriumMod.Call("GetDownedBoss", "StarScouter")) { PowerLevel = 16; } // 16
+                else if ((bool)Calamity.Call("Downed", "slimegod")) { PowerLevel = 15; } // 15
+                else if ((bool)thoriumMod.Call("GetDownedBoss", "BuriedChampion")) { PowerLevel = 14; } // 14
+                else if ((bool)thoriumMod.Call("GetDownedBoss", "GraniteEnergyStorm")) { PowerLevel = 13; } // 13
+                else if ((bool)Calamity.Call("Downed", "hivemind") || ((bool)Calamity.Call("Downed", "perforator"))) { PowerLevel = 9; } // 9
+                else if ((bool)thoriumMod.Call("GetDownedBoss", "Viscount")) { PowerLevel = 8; } // 8
+                else if ((bool)thoriumMod.Call("GetDownedBoss", "QueenJellyfish")) { PowerLevel = 7; } // 7
+                else if ((bool)Calamity.Call("Downed", "crabulon")) { PowerLevel = 5; } // 5
+                else if ((bool)Calamity.Call("Downed", "desertscourge")) { PowerLevel = 3; } // 3
+                else if ((bool)thoriumMod.Call("GetDownedBoss", "TheGrandThunderBird")) { PowerLevel = 1; } // 1
+            }
+
+            switch (PowerLevel)
+            {
+                case 1: Item.damage = 10; Item.crit = 2; break;
+                //case 2: Item.damage = 10; Item.crit = 4; break; // King Slime
+                case 3: Item.damage = 30; Item.crit = 5; break;
+                //case 4: Item.damage = 10; Item.crit = 7; break; // Eye of Cthulhu  
+                case 5: Item.damage = 42; Item.crit = 9; break;
+                //case 6: Item.damage = 10; Item.crit = 11; break; // Eater of Worlds
+                case 7: Item.damage = 45; Item.crit = 13; break;
+                case 8: Item.damage = 48; Item.crit = 15; break;
+                case 9: Item.damage = 51; Item.crit = 16; break;
+                //case 10: Item.damage = 10; Item.crit = 18; break; // Queen Bee
+                //case 11: Item.damage = 10; Item.crit = 20; break; // Skeletron
+                //case 12: Item.damage = 10; Item.crit = 22; break; // Deerclops
+                case 13: Item.damage = 55; Item.crit = 24; break;
+                case 14: Item.damage = 60; Item.crit = 25; break;
+                case 15: Item.damage = 64; Item.crit = 27; break;
+                case 16: Item.damage = 69; Item.crit = 29; break;
+                //case 17: Item.damage = 10; Item.crit = 31; break; // Wall of Flesh
+                case 18: Item.damage = 73; Item.crit = 33; break;
+                case 19: Item.damage = 73; Item.crit = 35; break;
+                //case 20: Item.damage = 10; Item.crit = 36; break; // Queen Slime
+                case 21: Item.damage = 74; Item.crit = 38; break;
+                //case 22: Item.damage = 10; Item.crit = 40; break; // The Twins
+                case 23: Item.damage = 90; Item.crit = 42; break;
+                //case 24: Item.damage = 10; Item.crit = 44; break; // The Destroyer
+                case 25: Item.damage = 110; Item.crit = 45; break;
+                //case 26: Item.damage = 10; Item.crit = 47; break; // Skeletron Prime
+                case 27: Item.damage = 140; Item.crit = 49; break;
+                case 28: Item.damage = 170; Item.crit = 51; break;
+                //case 29: Item.damage = 10; Item.crit = 53; break; // Plantera
+                case 30: Item.damage = 220; Item.crit = 55; break;
+                case 31: Item.damage = 260; Item.crit = 56; break;
+                //case 32: Item.damage = 10; Item.crit = 58; break; // Golem
+                case 33: Item.damage = 285; Item.crit = 60; break;
+                //case 34: Item.damage = 10; Item.crit = 62; break; // Duke Fishron
+                case 35: Item.damage = 300; Item.crit = 64; break;
+                // case 36: Item.damage = 10; Item.crit = 65; break; // Empress of Light
+                //case 37: Item.damage = 10; Item.crit = 67; break; // Betsy
+                case 38: Item.damage = 420; Item.crit = 69; break;
+                //case 39: Item.damage = 10; Item.crit = 71; break; // Lunatic Cultist
+                case 40: Item.damage = 540; Item.crit = 73; break;
+                //case 41: Item.damage = 10; Item.crit = 75; break; // Moon Lord
+                case 42: Item.damage = 620; Item.crit = 76; break;
+                case 43: Item.damage = 660; Item.crit = 78; break;
+                case 44: Item.damage = 750; Item.crit = 80; break;
+                case 45: Item.damage = 800; Item.crit = 82; break;
+                case 46: Item.damage = 1350; Item.crit = 84; break;
+                case 47: Item.damage = 1430; Item.crit = 86; break;
+                case 48: Item.damage = 1480; Item.crit = 88; break;
+                case 49: Item.damage = 1015; Item.crit = 90; break;
+                case 50: Item.damage = 1245; Item.crit = 92; break;
+                case 51: Item.damage = 1515; Item.crit = 94; break;
+                case 52: Item.damage = 3000; Item.crit = 96; break;
+                case 53: Item.damage = 3510; Item.crit = 98; break;
+                case 54: Item.damage = 4015; Item.crit = 100; break;
+                case 55: Item.damage = 5115; Item.crit = 100; break;
+            }
         }
     }
 }

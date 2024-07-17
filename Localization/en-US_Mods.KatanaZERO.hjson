@@ -82,13 +82,13 @@ Items: {
 		Tooltip:
 			'''
 			Can Deflect Bullets.
+			[c/00cc00:Legendary Weapon]
 			[c/e69900:Right click to perform Dragon Dash]
 			[c/e69900:Draogn Dash] teleports you to the mouse cursor, slicing everything in between to shreds.
-			If a boss is hit with [c/e69900:Draogn Dash], they will take a percentage of their Max HP as damage. 
-			If a regular enemy is hit with [c/e69900:Draogn Dash], they will take 5x this item's damage (Always a Crit).
+			If a boss is hit with [c/e69900:Draogn Dash], they will take 10x Damage + 5% of their Max HP as damage. 
+			If a regular enemy is hit with [c/e69900:Draogn Dash], they will take 5x Damage.
 			[c/e69900:Draogn Dash] has 3 second cooldown.
 			[c/e69900:Draogn Dash] gives 1 second of immunity if an enemy is hit.
-			 
 			''He is not the Dragon. [c/ff3300:I am].''
 			[c/ad51b8:Shimmerable]
 			'''
