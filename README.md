@@ -1,3 +1,8 @@
+# !! Before Downloading !!
+The Development branch on this repo is much better in comparison to main, always download the mod from the dev branch. 
+
+main is only for the current mod released on the workshop.
+
 # Katana ZERO Weapons
 Terraria mod that aims to add all 7 katanas from Katana ZERO into Terraria as their own weapons.
 
