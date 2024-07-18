@@ -9,6 +9,7 @@ using System;
 using KatanaZERO.Items.ZerosKatana;
 using Terraria.DataStructures;
 using Player = Terraria.Player;
+using System.IO;
 
 namespace KatanaZERO.Items.FifteensBlade
 {
@@ -235,7 +236,7 @@ namespace KatanaZERO.Items.FifteensBlade
             }
         }
 
-        public void DragonDash(Player player)
+        /* public bool DragonDash(Player player)
         {
             Vector2 cursorPosition = Main.MouseWorld;
             Vector2 playerPosition = player.Center;
@@ -323,11 +324,120 @@ namespace KatanaZERO.Items.FifteensBlade
                         break;
                 }
             }
+            return true;
+        } */
+        public bool DragonDash(Player player)
+        {
+            if (!Main.myPlayer.Equals(player.whoAmI))
+                return false;
+
+            Vector2 cursorPosition = Main.MouseWorld;
+            Vector2 playerPosition = player.Center;
+
+            float maxRadius = 464f;
+            float distanceToCursor = Vector2.Distance(playerPosition, cursorPosition);
+
+            if (distanceToCursor > maxRadius)
+            {
+                Vector2 direction = Vector2.Normalize(cursorPosition - playerPosition);
+                cursorPosition = playerPosition + direction * maxRadius;
+                distanceToCursor = maxRadius;
+            }
+
+            Vector2 directionToCursor = Vector2.Normalize(cursorPosition - playerPosition);
+            float moveDistance = distanceToCursor;
+
+            float dashSpeed = 520f;
+            float dashTime = moveDistance / dashSpeed;
+            float dashTicks = dashTime * 60;
+
+            player.immune = true;
+            player.immuneTime = (int)dashTicks;
+
+            int hitboxWidth = player.width;
+            int hitboxHeight = player.height;
+
+            Vector2 dashStep = directionToCursor * (dashSpeed / 60f);
+
+            for (int i = 0; i < dashTicks; i++)
+            {
+                Vector2 nextPosition = player.position + dashStep;
+                if (Collision.SolidCollision(nextPosition, player.width, player.height))
+                {
+                    break;
+                }
+
+                player.position = nextPosition;
+
+
+                if (Main.netMode == NetmodeID.MultiplayerClient)
+                {
+                    NetMessage.SendData(MessageID.PlayerControls, -1, -1, null, player.whoAmI);
+                }
+
+                Rectangle playerHitbox = new Rectangle((int)player.position.X - hitboxWidth / 2, (int)player.position.Y - hitboxHeight / 2, hitboxWidth, hitboxHeight);
+
+                foreach (NPC enemy in Main.npc)
+                {
+                    if (!enemy.friendly && enemy.Hitbox.Intersects(playerHitbox))
+                    {
+                        if (!enemy.boss)
+                        {
+                            enemy.SimpleStrikeNPC(Item.damage, 0, false, 0, DamageClass.Melee, true, 0, false);
+                        }
+                        else
+                        {
+                            enemy.SimpleStrikeNPC(Item.damage, 0, true, 0, DamageClass.Melee, true, 0, false);
+                        }
+                    }
+                }
+            }
+
+            Random random = new Random();
+            int randomNumber = random.Next(1, 3);
+            switch (randomNumber)
+            {
+                case 1:
+                    SoundEngine.PlaySound(Special1);
+                    break;
+                case 2:
+                    SoundEngine.PlaySound(Special2);
+                    break;
+            }
+
+            player.velocity = Vector2.Zero;
+
+
+            if (Main.netMode == NetmodeID.MultiplayerClient)
+            {
+                NetMessage.SendData(MessageID.PlayerControls, -1, -1, null, player.whoAmI);
+            }
+            return true;
         }
 
-        public bool SlowDown(Player player)
+        public override void NetReceive(BinaryReader reader)
         {
+            base.NetReceive(reader);
+            hasAttacked = reader.ReadBoolean();
+            attackCooldown = reader.ReadSingle();
+            dragonCooldown = reader.ReadSingle();
+            hasRightClicked = reader.ReadBoolean();
+            hasReleasedRightClick = reader.ReadBoolean();
+        }
 
+        public override void NetSend(BinaryWriter writer)
+        {
+            base.NetSend(writer);
+            writer.Write(hasAttacked);
+            writer.Write(attackCooldown);
+            writer.Write(dragonCooldown);
+            writer.Write(hasRightClicked);
+            writer.Write(hasReleasedRightClick);
+        }
+    
+
+    public bool SlowDown(Player player)
+        {
             if (Main.mouseRight)
             {
                 if (playedSlomoEngage == false)

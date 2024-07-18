@@ -36,7 +36,6 @@ v1.1.0
 	- Dragon Dash damage to enemies reduced to 5x Item's damage.
 	- Dragon dash damage to bosses reduced to 10x + 5% of Max HP
 - Dragon Dash no longer goes through solid walls.
-- Dragon Dash leaves a trail, like in the base game.
 
 
 v1.0.1
