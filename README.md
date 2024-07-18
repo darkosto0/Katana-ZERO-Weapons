@@ -31,6 +31,8 @@ Fifteen's Blade: High attack speed, very high reach, teleports to the mouse curs
 - [Sequile](https://github.com/Sequile) for code help and balancing the weapons.
 
 # Changelog
+v1.1.1 (Hotfix)
+- Fixed Dragon Dash Collision
 
 v1.1.0
 - Reworked Fifteen's Blade:
