@@ -1,6 +1,8 @@
 # Katana ZERO Weapons
 Terraria mod that aims to add all 7 katanas from Katana ZERO into Terraria as their own weapons.
 
+[Steam Workshop Link](https://steamcommunity.com/sharedfiles/filedetails/?id=3289273898)
+
 Current mod status: Fifteen's Blade scales properly with every boss, and it also works with Calamity or Thorium
 
 # Weapons Added:
@@ -46,3 +48,4 @@ v1.1.0
 
 v1.0.1
 - Finished Fifteen's Blade mechanics.
+
