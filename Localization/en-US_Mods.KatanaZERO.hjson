@@ -8,19 +8,17 @@ Items: {
 			Can Deflect Bullts
 			Shoots an otherworldly beam.
 			Inflicts [c/993399:Shadowflame]
-			 
 			''You stopped a suicide. With a [c/E11919:murder]''
 			[c/ad51b8:Shimmerable]
 			'''
 	}
 
-	ZerosKatana: {
+	ZeroKatana: {
 		DisplayName: Katana
 		Tooltip:
 			'''
 			Can Deflect Bullts
 			No Special Effects.
-			 
 			''It reminds me that [c/E67E39:no matter what I'm doing, I did something good once.]''
 			[c/ad51b8:Shimmerable]
 			'''
@@ -32,7 +30,6 @@ Items: {
 			'''
 			Can Deflect Bullts
 			The world is your canvas and blood is the paint
-			 
 			''Most people go right. You went left.''
 			[c/ad51b8:Shimmerable]
 			'''
@@ -45,7 +42,6 @@ Items: {
 			Can Deflect Bullts
 			A short blade with quick attack.
 			Deflects more bullets at once. 
-			  
 			''Didn't wake up [c/ffcc00:Leon.]''
 			[c/ad51b8:Shimmerable]
 			'''
@@ -58,7 +54,6 @@ Items: {
 			Can Deflect a Lot of Bullets at Once
 			Giant cleaver that crushes bullets and defenses.
 			Inflicts [c/999966:Broken Armor]
-			 
 			''Fulfilled your [c/009900:secondary goal] in the prison.''
 			[c/ad51b8:Shimmerable]
 			'''
@@ -71,7 +66,6 @@ Items: {
 			Can Deflect Bullets
 			Cuts through foes with the phoenix's flame slice.
 			Inflicts [c/ff9900:Daybroken]
-			 
 			''Found what the robber [c/006600:left behind.]''
 			[c/ad51b8:Shimmerable]
 			'''
@@ -82,13 +76,13 @@ Items: {
 		Tooltip:
 			'''
 			Can Deflect Bullets.
+			[c/00cc00:Legendary Weapon]
 			[c/e69900:Right click to perform Dragon Dash]
 			[c/e69900:Draogn Dash] teleports you to the mouse cursor, slicing everything in between to shreds.
-			If a boss is hit with [c/e69900:Draogn Dash], they will take a percentage of their Max HP as damage. 
-			If a regular enemy is hit with [c/e69900:Draogn Dash], they will take 5x this item's damage (Always a Crit).
+			If a boss is hit with [c/e69900:Draogn Dash], they will take 10x Damage + 5% of their Max HP as damage. 
+			If a regular enemy is hit with [c/e69900:Draogn Dash], they will take 5x Damage.
 			[c/e69900:Draogn Dash] has 3 second cooldown.
 			[c/e69900:Draogn Dash] gives 1 second of immunity if an enemy is hit.
-			 
 			''He is not the Dragon. [c/ff3300:I am].''
 			[c/ad51b8:Shimmerable]
 			'''
@@ -105,4 +99,5 @@ Projectiles: {
 	PhoenixSlash.DisplayName: Phoenix Slash
 	FifteensSlash.DisplayName: Fifteens Slash
 	PhoenixFlames.DisplayName: Phoenix Flames
+	ZeroKatanaSlash.DisplayName: Zero Katana Slash
 }

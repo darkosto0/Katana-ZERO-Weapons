@@ -8,19 +8,17 @@ Items: {
 			Может отражать снаряды.
 			Выстреливает потусторонним лучом.
 			Вызывает [c/993399:теневое пламя]
-			 
 			''Ты остановил суицид... [c/E11919:Убийством.]''
 			[c/ad51b8:Shimmerable]
 			'''
 	}
 
-	ZerosKatana: {
+	ZeroKatana: {
 		DisplayName: Катана
 		Tooltip:
 			'''
 			Может отражать снаряды.
 			Нет особенностей.
-			 
 			''Она напоминает что однажды я сделал что-то хорошее - [c/E67E39:и не важно, что я делаю сейчас.]''
 			[c/ad51b8:Shimmerable]
 			'''
@@ -32,7 +30,6 @@ Items: {
 			'''
 			Может отражать снаряды.
 			Весь мир — ваш холст, а кровь — всего лишь краска.
-
 			''Большинство идёт вправо. Ты идёшь влево.''
 			[c/ad51b8:Shimmerable]
 			'''
@@ -45,7 +42,6 @@ Items: {
 			Может отражать снаряды.
 			Короткий клинок с быстрой атакой.
 			Отражает несколько снарядов за раз. 
-			  
 			''Не разбудил [c/ffcc00:Леона.]''
 			[c/ad51b8:Shimmerable]
 			'''
@@ -58,7 +54,6 @@ Items: {
 			Может отразить очень много снарядов за раз.
 			Огромный тесак проламывающий броню.
 			Способствует [c/999966:пролому брони]
-			 
 			''Выполнил свою [c/009900:второстепенную цель,] в тюрьме.''
 			[c/ad51b8:Shimmerable]
 			'''
@@ -71,7 +66,6 @@ Items: {
 			Может отражать снаряды.
 			Не только разрубает плоть, но еще и поджигает ее.
 			[c/ff9900:Поджигает]
-			 
 			''Нашёл то, что вор [c/006600:оставил.]''
 			[c/ad51b8:Shimmerable]
 			'''
@@ -82,13 +76,13 @@ Items: {
 		Tooltip:
 			'''
 			Может отражать снаряды.
+			[c/00cc00:Legendary Weapon]
 			[c/e69900:Right click to perform Dragon Dash]
 			[c/e69900:Draogn Dash] teleports you to the mouse cursor, slicing everything in between to shreds.
-			If a boss is hit with [c/e69900:Draogn Dash], they will take a percentage of their Max HP as damage. 
-			If a regular enemy is hit with [c/e69900:Draogn Dash], they will take 5x this item's damage (Always a Crit).
+			If a boss is hit with [c/e69900:Draogn Dash], they will take 10x Damage + 5% of their Max HP as damage. 
+			If a regular enemy is hit with [c/e69900:Draogn Dash], they will take 5x Damage.
 			[c/e69900:Draogn Dash] has 3 second cooldown.
 			[c/e69900:Draogn Dash] gives 1 second of immunity if an enemy is hit.
-			 
 			''Он не Змей. [c/ff3300:Я Змей].''
 			[c/ad51b8:Shimmerable]
 			'''
@@ -105,4 +99,5 @@ Projectiles: {
 	PhoenixSlash.DisplayName: Phoenix Slash
 	FifteensSlash.DisplayName: Fifteens Slash
 	PhoenixFlames.DisplayName: Phoenix Flames
+	ZeroKatanaSlash.DisplayName: Zero Katana Slash
 }
