@@ -27,6 +27,8 @@ Has 1/40000 chance to drop from any hostile enemy, or 1/9 to drop from Moon Lord
 Click on the Homepage button to view the source code.
 
 * Changelog *
+v1.1.1
+Fixed major issues with boss scaling, now it works with vanilla, calamity or thorium.
 
 v1.1.0
 - Reworked Fifteen's Blade:
@@ -36,7 +38,6 @@ v1.1.0
 	- Dragon Dash damage to enemies reduced to 5x Item's damage.
 	- Dragon dash damage to bosses reduced to 10x + 5% of Max HP
 - Dragon Dash no longer goes through solid walls.
-
 
 v1.0.1
 - Finished Fifteen's Blade mechanics.
