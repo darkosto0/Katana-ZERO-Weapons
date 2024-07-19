@@ -32,7 +32,7 @@ Fifteen's Blade: High attack speed, very high reach, teleports to the mouse curs
 
 # Changelog
 v1.1.1
-Fixed major issues with boss scaling, now it works with vanilla, calamity or thorium.
+- Fixed major issues with boss scaling, now it works with vanilla, calamity or thorium.
 
 
 v1.1.0
