@@ -74,15 +74,14 @@ namespace KatanaZERO.Items.FifteensBlade
 
             if (bulletDeflectionAmount > 0) //check how many bullets you can deflect (infinite for claymore prototype)
             {
-                for (int i = 0; i < Main.maxProjectiles; ++i) //deflect projectiles in contact with the hitbox
+                foreach (Projectile p in Main.projectile) //deflect projectiles in contact with the hitbox
                 {
-                    Projectile p = Main.projectile[i];
                     if (p.active && p.hostile && p.getRect().Intersects(Projectile.getRect()))
                     {
-                        p.velocity *= -2;
-                        p.damage = Projectile.damage * 6;
                         p.hostile = false;
                         p.friendly = true;
+                        p.velocity *= -2;
+                        p.damage = Projectile.damage * 6;
                         SoundEngine.PlaySound(new SoundStyle("KatanaZERO/Sounds/bullet_deflect")
                         {
                             Volume = 0.5f,

@@ -9,6 +9,7 @@ using Player = Terraria.Player;
 using System.IO;
 using System.Collections.Generic;
 using static Terraria.ModLoader.ModLoader;
+using Microsoft.Build.Experimental.ProjectCache;
 
 namespace KatanaZERO.Items.FifteensBlade
 {
@@ -297,7 +298,8 @@ namespace KatanaZERO.Items.FifteensBlade
                             }
                             else
                             {
-                                enemy.SimpleStrikeNPC((Item.damage * 5) + enemy.lifeMax / 95, 0, true, 0, DamageClass.Melee, false, 0, false);
+                                double FivePercentDamage = enemy.lifeMax * 0.025;
+                                enemy.SimpleStrikeNPC((Item.damage * 5) + (int)FivePercentDamage, 0, true, 0, DamageClass.Melee, false, 0, false);
                             }
                         }
                     }
@@ -377,14 +379,9 @@ namespace KatanaZERO.Items.FifteensBlade
             else if (Main.mouseRight == false && rightClickActivated == true) //right click released
             {
                 SoundEngine.PlaySound(SlowDisengage);
-                foreach (NPC mob in Main.npc)
-                {
-                    if (mob.Distance(player.Center) < 2000f && mob.active && !mob.friendly)
-                    {
-                        // mob.velocity *= (SlowMoCounter * 1.05f);
-                    }
-                }
 
+                // Slowed down mobs do NOT need speed changes, their AI does that for them.
+                // Projectiles though, don't most of the time.
                 foreach (Projectile projectile in Main.projectile)
                 {
                     if (projectile.Distance(player.Center) < 2000f && projectile.active && !projectile.friendly)

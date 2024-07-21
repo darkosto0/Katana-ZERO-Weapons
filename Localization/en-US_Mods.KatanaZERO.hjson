@@ -87,6 +87,18 @@ Items: {
 			[c/ad51b8:Shimmerable]
 			'''
 	}
+
+	ZerosKatana: {
+		DisplayName: Katana
+		Tooltip:
+			'''
+			Can Deflect Bullts
+			No Special Effects.
+			 
+			''It reminds me that [c/E67E39:no matter what I'm doing, I did something good once.]''
+			[c/ad51b8:Shimmerable]
+			'''
+	}
 }
 
 Projectiles: {
@@ -101,3 +113,55 @@ Projectiles: {
 	PhoenixFlames.DisplayName: Phoenix Flames
 	ZeroKatanaSlash.DisplayName: Zero Katana Slash
 }
+
+"": {
+	Items: {
+		Claymore: {
+			DisplayName: Claymore
+			Tooltip: ""
+		}
+
+		FifteensBlade: {
+			DisplayName: Fifteens Blade
+			Tooltip: ""
+		}
+
+		MasterSword: {
+			DisplayName: Master Sword
+			Tooltip: ""
+		}
+
+		Phoenix: {
+			DisplayName: Phoenix
+			Tooltip: ""
+		}
+
+		PrismSword: {
+			DisplayName: Prism Sword
+			Tooltip: ""
+		}
+
+		SavantKnife: {
+			DisplayName: Savant Knife
+			Tooltip: ""
+		}
+
+		ZerosKatana: {
+			DisplayName: Zeros Katana
+			Tooltip: ""
+		}
+	}
+
+	Projectiles: {
+		ClaymoreSlash.DisplayName: Claymore Slash
+		FifteensSlash.DisplayName: Fifteens Slash
+		MasterSwordBeam.DisplayName: Master Sword Beam
+		MasterSwordSlash.DisplayName: Master Sword Slash
+		PhoenixFlames.DisplayName: Phoenix Flames
+		PhoenixSlash.DisplayName: Phoenix Slash
+		PrismSwordSlash.DisplayName: Prism Sword Slash
+		SavantSlash.DisplayName: Savant Slash
+		ZerosKatanaSlash.DisplayName: Zeros Katana Slash
+	}
+}# This file will automatically update with entries for new content after a build and reload
+
