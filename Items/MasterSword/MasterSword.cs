@@ -5,6 +5,7 @@ using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
 using System;
 using Terraria.DataStructures;
+using static Terraria.ModLoader.ModLoader;
 
 namespace KatanaZERO.Items.MasterSword
 {
@@ -28,8 +29,15 @@ namespace KatanaZERO.Items.MasterSword
             Item.UseSound = Slash1;
             Item.crit = 20;
 
-            Item.useTime = 20;
-            Item.useAnimation = 1;
+            Item.useTime = 30;
+            if (HasMod("FargowiltasSouls"))
+            {
+                Item.useAnimation = 30;
+            }
+            else
+            {
+                Item.useAnimation = 1;
+            }
 
             Item.useStyle = ItemUseStyleID.Rapier;
             Item.knockBack = 6;
@@ -76,7 +84,7 @@ namespace KatanaZERO.Items.MasterSword
 
             attackCooldown = 30f; //artificial cooldown
 
-            System.Random random = new System.Random();
+            Random random = new Random();
             int randomNumber = random.Next(1, 4);
             switch (randomNumber)
             {

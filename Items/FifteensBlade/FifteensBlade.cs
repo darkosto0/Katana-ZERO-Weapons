@@ -9,8 +9,6 @@ using Player = Terraria.Player;
 using System.IO;
 using System.Collections.Generic;
 using static Terraria.ModLoader.ModLoader;
-using Microsoft.Build.Experimental.ProjectCache;
-
 namespace KatanaZERO.Items.FifteensBlade
 {
     public class FifteensBlade : ModItem
@@ -56,7 +54,14 @@ namespace KatanaZERO.Items.FifteensBlade
             Item.crit = 0;
 
             Item.useTime = 20;
-            Item.useAnimation = 1;
+            if (HasMod("FargowiltasSouls"))
+            {
+                Item.useAnimation = 20;
+            }
+            else
+            {
+                Item.useAnimation = 1;
+            }
 
             Item.useStyle = ItemUseStyleID.Rapier;
             Item.holdStyle = ItemHoldStyleID.HoldRadio;

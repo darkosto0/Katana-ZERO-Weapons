@@ -7,6 +7,8 @@ using static Terraria.ModLoader.ModContent;
 using System;
 using Terraria.Audio;
 using KatanaZERO.Items.ZerosKatana;
+using static Terraria.ModLoader.ModLoader;
+
 
 namespace KatanaZERO.Items.PhoenixEdge
 {
@@ -31,8 +33,15 @@ namespace KatanaZERO.Items.PhoenixEdge
             Item.UseSound = Slash1;
             Item.crit = 45;
 
-            Item.useTime = 20;
-            Item.useAnimation = 1;
+            Item.useTime = 35;
+            if (HasMod("FargowiltasSouls"))
+            {
+                Item.useAnimation = 35;
+            }
+            else
+            {
+                Item.useAnimation = 1;
+            }
 
             Item.useStyle = ItemUseStyleID.Rapier;
             Item.holdStyle = ItemHoldStyleID.HoldRadio;

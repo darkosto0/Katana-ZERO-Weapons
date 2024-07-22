@@ -1,43 +1,52 @@
-The Katana ZERO Mod adds the seven katanas from the game Katana ZERO to Terraria. 
+The Katana ZERO Mod adds the seven katanas from the game Katana ZERO to Terraria.
 These weapons have unique slashing animations, can deflect bullets, and lunge you forward like the original game.
 
-* Weapons Added *
+---- Weapons Added ----
 
-- ZERO's Katana: The original, no special effects, just bullet deflection 
+* ZERO's Katana: The original, no special effects, just bullet deflection
 (Early Pre-Hardmode)
 
-- Prism Sword: Slightly increased stats from the original, with a colorful slash 
+* Prism Sword: Slightly increased stats from the original, with a colorful slash
 (Late Pre-Hardmode)
 
-- Sword of Masters: Slower attack speed, increased range, shoots a projectile, more hits per slash (Post-Destroyer)
+* Sword of Masters: Slower attack speed, increased range, shoots a projectile, more hits per slash
+(Post-Destroyer)
 
-- Savant Knife: Faster attack speed, low range, high amount of hits per slash (Post-Mechs)
+* Savant Knife: Faster attack speed, low range, high amount of hits per slash
+(Post-Mechs)
 
-- Claymore Prototype: Slow attack speed, big hit range and width, unlimited amount of bullet deflections per swing (Post-Golem)
+* Claymore Prototype: Slow attack speed, big hit range and width, unlimited amount of bullet deflections per swing (Post-Golem)
 
-- Phoenix's Edge: Slow attack speed, very high range, shoots flames that burn enemies (Post-Cultist)
+* Phoenix's Edge: Slow attack speed, very high range, shoots flames that burn enemies
+(Post-Cultist)
 
-- Fifteen's Blade: High attack speed, very high reach, teleports to the mouse cursor on holding and releasing right click, meant to most enemies in one hit (Legendary Weapon)
-Has 1/40000 chance to drop from any hostile enemy, or 1/9 to drop from Moon Lord.
+* Fifteen's Blade: High attack speed, very high reach, teleports to the mouse cursor on holding and releasing right click, meant to most enemies in one hit (Legendary Weapon)
+- Has 1/40000 chance to drop from any hostile enemy, or 1/9 to drop from Moon Lord.
 
-* Special Thanks To *
-- g113g for a Russian translation, code help and for uploading the mod to Steam Workshop for me.
-- Sequile for code help and balancing.
+---- Special Thanks To ----
+* g113g for a Russian translation, code help and for uploading the mod to Steam Workshop for me.
+* Sequile for code help and balancing the weapons.
 
-Click on the Homepage button to view the source code.
+The source code is available for everyone on GitHub[github.com].
 
-* Changelog *
+---- Changelog ----
+v1.1.3
+* Item use doesn't break with Fargos Souls Mod anymore.
+
+v1.1.2
+* Fixed damage formula for Dragon Dash, it should do 5% of max HP now.
+
 v1.1.1
-Fixed major issues with boss scaling, now it works with vanilla, calamity or thorium.
+* Fixed major issues with boss scaling, now it works with vanilla, calamity or thorium.
 
 v1.1.0
-- Reworked Fifteen's Blade:
-	- Removed crafting recipe.
-	- Has 1/40000 chance to drop from hostile enemies, and 1/9 chance from Moon Lord.
-	- It's power scales off the strongest boss defeated in the world, compatible with Calamity and Thorium.
-	- Dragon Dash damage to enemies reduced to 5x Item's damage.
-	- Dragon dash damage to bosses reduced to 10x + 5% of Max HP
+* Reworked Fifteen's Blade:
+- Removed crafting recipe.
+- Has 1/40000 chance to drop from hostile enemies, and 1/9 chance from Moon Lord.
+- It's power scales off the strongest boss defeated in the world, compatible with Calamity and Thorium.
+- Dragon Dash damage to enemies reduced to 5x Item's damage.
+- Dragon dash damage to bosses reduced to 10x + 5% of Max HP
 - Dragon Dash no longer goes through solid walls.
 
 v1.0.1
-- Finished Fifteen's Blade mechanics.
+* Finished Fifteen's Blade mechanics.

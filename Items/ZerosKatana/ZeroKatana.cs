@@ -3,6 +3,8 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
+using static Terraria.ModLoader.ModLoader;
+
 
 namespace KatanaZERO.Items.ZerosKatana
 {
@@ -26,8 +28,16 @@ namespace KatanaZERO.Items.ZerosKatana
             Item.UseSound = Slash1;
             Item.crit = 10;
 
+
             Item.useTime = 20;
-            Item.useAnimation = 1;
+            if (HasMod("FargowiltasSouls"))
+            {
+                Item.useAnimation = 20;
+            }
+            else
+            {
+                Item.useAnimation = 1;
+            }
 
             Item.useStyle = ItemUseStyleID.Swing;
             Item.holdStyle = ItemHoldStyleID.HoldRadio;

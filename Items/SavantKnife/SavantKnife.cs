@@ -6,6 +6,8 @@ using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 using System;
 using KatanaZERO.Items.ZerosKatana;
+using static Terraria.ModLoader.ModLoader;
+
 
 namespace KatanaZERO.Items.SavantKnife
 {
@@ -29,8 +31,16 @@ namespace KatanaZERO.Items.SavantKnife
             Item.UseSound = Slash1;
             Item.crit = 30;
 
+
             Item.useTime = 10;
-            Item.useAnimation = 1;
+            if (HasMod("FargowiltasSouls"))
+            {
+                Item.useAnimation = 10;
+            }
+            else
+            {
+                Item.useAnimation = 1;
+            }
 
             Item.useStyle = ItemUseStyleID.Rapier;
             Item.holdStyle = ItemHoldStyleID.HoldRadio;

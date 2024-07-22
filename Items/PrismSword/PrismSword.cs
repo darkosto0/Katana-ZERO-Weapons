@@ -6,6 +6,8 @@ using static Terraria.ModLoader.ModContent;
 using Terraria.Audio;
 using System;
 using KatanaZERO.Items.ZerosKatana;
+using static Terraria.ModLoader.ModLoader;
+
 
 namespace KatanaZERO.Items.PrismSword
 {
@@ -29,8 +31,16 @@ namespace KatanaZERO.Items.PrismSword
             Item.UseSound = Slash1;
             Item.crit = 15;
 
+
             Item.useTime = 20;
-            Item.useAnimation = 1;
+            if (HasMod("FargowiltasSouls"))
+            {
+                Item.useAnimation = 20;
+            }
+            else
+            {
+                Item.useAnimation = 1;
+            }
 
             Item.useStyle = ItemUseStyleID.Swing;
             Item.holdStyle = ItemHoldStyleID.HoldRadio;

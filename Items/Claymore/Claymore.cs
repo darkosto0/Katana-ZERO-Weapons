@@ -3,6 +3,7 @@ using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 using Microsoft.Xna.Framework;
+using static Terraria.ModLoader.ModLoader;
 
 namespace KatanaZERO.Items.Claymore
 {
@@ -26,8 +27,15 @@ namespace KatanaZERO.Items.Claymore
             Item.UseSound = Slash1;
             Item.crit = 40;
 
-            Item.useTime = 20;
-            Item.useAnimation = 1;
+            Item.useTime = 35;
+            if (HasMod("FargowiltasSouls"))
+            {
+                Item.useAnimation = 35;
+            }
+            else
+            {
+                Item.useAnimation = 1;
+            }
 
             Item.useStyle = ItemUseStyleID.Rapier;
             Item.holdStyle = ItemHoldStyleID.HoldRadio;
@@ -100,7 +108,8 @@ namespace KatanaZERO.Items.Claymore
         }
         public override bool CanUseItem(Player player)
         {
-            return attackCooldown <= 0f;
+            if (attackCooldown <= 0f) return true;
+            else return false;
         }
         public override void UpdateInventory(Player player)
         {
