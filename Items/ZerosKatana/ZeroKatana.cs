@@ -42,7 +42,7 @@ namespace KatanaZERO.Items.ZerosKatana
             Item.useStyle = ItemUseStyleID.Swing;
             Item.holdStyle = ItemHoldStyleID.HoldRadio;
             Item.holdStyle = 0;
-            Item.knockBack = 6;
+            Item.knockBack = 3;
 
             Item.autoReuse = false;
             Item.noUseGraphic = true;

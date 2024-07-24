@@ -45,7 +45,7 @@ namespace KatanaZERO.Items.SavantKnife
             Item.useStyle = ItemUseStyleID.Rapier;
             Item.holdStyle = ItemHoldStyleID.HoldRadio;
 
-            Item.knockBack = 6;
+            Item.knockBack = 3;
 
             Item.autoReuse = false;
             Item.noUseGraphic = true;

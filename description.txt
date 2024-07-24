@@ -30,6 +30,9 @@ These weapons have unique slashing animations, can deflect bullets, and lunge yo
 The source code is available for everyone on GitHub[github.com].
 
 ---- Changelog ----
+V1.1.4
+* Fixed Prism Sword recipe requiring Mythril Anvil in pre-hardmode.
+
 v1.1.3
 * Item use doesn't break with Fargos Souls Mod anymore.
 

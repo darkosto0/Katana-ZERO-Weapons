@@ -31,6 +31,9 @@ Current mod status: Fifteen's Blade scales properly with every boss, and it also
 - [Sequile](https://github.com/Sequile) for code help and balancing the weapons.
 
 # Changelog
+V1.1.4
+- Fixed Prism Sword recipe requiring Mythril Anvil in pre-hardmode.
+
 v1.1.3
 - Item use doesn't break with Fargos Souls Mod anymore.
 

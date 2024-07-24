@@ -45,12 +45,12 @@ namespace KatanaZERO.Items.PrismSword
             Item.useStyle = ItemUseStyleID.Swing;
             Item.holdStyle = ItemHoldStyleID.HoldRadio;
             Item.holdStyle = 0;
-            Item.knockBack = 6;
+            Item.knockBack = 3;
 
             Item.autoReuse = false;
             Item.noUseGraphic = true;
             Item.noMelee = true;
-            Item.shoot = ModContent.ProjectileType<PrismSwordSlash>();
+            Item.shoot = ProjectileType<PrismSwordSlash>();
         }
 
         public override void AddRecipes()
@@ -60,7 +60,7 @@ namespace KatanaZERO.Items.PrismSword
                 .AddIngredient(ItemID.RedDye, 1)
                 .AddIngredient(ItemID.GreenDye, 1)
                 .AddIngredient(ItemID.BlueDye, 1)
-                .AddTile(TileID.MythrilAnvil)
+                .AddTile(TileID.Anvils)
                 .AddCustomShimmerResult(ItemType<ZeroKatana>())
                 .AddCustomShimmerResult(ItemID.RedDye, 1)
                 .AddCustomShimmerResult(ItemID.GreenDye, 1)

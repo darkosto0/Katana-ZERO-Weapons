@@ -40,7 +40,7 @@ namespace KatanaZERO.Items.MasterSword
             }
 
             Item.useStyle = ItemUseStyleID.Rapier;
-            Item.knockBack = 6;
+            Item.knockBack = 3;
 
             Item.autoReuse = false;
             Item.noUseGraphic = true;
