@@ -39,7 +39,7 @@ namespace KatanaZERO.Items.Claymore
 
             Item.useStyle = ItemUseStyleID.Rapier;
             Item.holdStyle = ItemHoldStyleID.HoldRadio;
-            Item.knockBack = 6;
+            Item.knockBack = 4;
 
             Item.autoReuse = false;
             Item.noUseGraphic = true;

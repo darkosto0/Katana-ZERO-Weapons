@@ -1,0 +1,166 @@
+# This file will automatically update with entries for new content after a build and reload
+
+Items: {
+	MasterSword: {
+		DisplayName: Spada dei Maestri
+		Tooltip:
+			'''
+			Può deflettere i proiettili
+			Spara un raggio ultraterreno.
+			Infligge [c/993399:Shadowflame]
+			''Hai fermato un suicidio. Con un [c/E11919:omicidio]''
+			[c/ad51b8:Shimmerable]
+			'''
+	}
+
+	ZeroKatana: {
+		DisplayName: Katana
+		Tooltip:
+			'''
+			Può deflettere i proiettili
+			Nessun effetto speciale.
+			''Mi ricorda che, [c/E67E39:indipendentemente da quello che sto facendo, una volta ho fatto qualcosa di buono.]''
+			[c/ad51b8:Shimmerable]
+			'''
+	}
+
+	PrismSword: {
+		DisplayName: Spada Prismatica
+		Tooltip:
+			'''
+			Può deflettere i proiettili
+			Il mondo è la tua tela e il sangue è la pittura
+			''La maggior parte delle persone va a destra. Tu sei andato a sinistra.''
+			[c/ad51b8:Shimmerable]
+			'''
+	}
+
+	SavantKnife: {
+		DisplayName: Coltello da Esperto
+		Tooltip:
+			'''
+			Può deflettere i proiettili
+			Una lama corta con un attacco rapido.
+			Deflette più proiettili alla volta. 
+			''Non ho svegliato [c/ffcc00:Leon.]''
+			[c/ad51b8:Shimmerable]
+			'''
+	}
+
+	Claymore: {
+		DisplayName: Prototipo di Claymore
+		Tooltip:
+			'''
+			Può Deflettere Più Proiettili alla Volta
+			Un'enorme mannaia che frantuma proiettili e difese.
+			Infligge [c/999966:Armatura Rotta]
+			''Raggiunto il tuo [c/009900:obiettivo secondario] nella prigione.''
+			[c/ad51b8:Shimmerable]
+			'''
+	}
+
+	Phoenix: {
+		DisplayName: Lama della Fenice
+		Tooltip:
+			'''
+			Può deflettere i proiettili
+			Taglia i nemici con un colpo di fiamma della fenice.
+			Infligge [c/ff9900:Daybroken]
+			''Ho trovato quello che il ladro [c/006600:ha lasciato indietro.]''
+			[c/ad51b8:Shimmerable]
+			'''
+	}
+
+	FifteensBlade: {
+		DisplayName: Sussurro del Drago
+		Tooltip:
+			'''
+			Può deflettere i proiettili.
+			[c/00cc00:Arma Leggendaria]
+			[c/e69900:Fare click con tasto destro per eseguire lo Scatto del Drago]
+			[c/e69900:Scatto del Drago] ti teletrasporta al cursore del mouse facendo a brandelli tutto ciò che si trova in mezzo.
+			Quando un boss viene colpito con lo [c/e69900:Scatto del Drago], subirà Danni 10x + 5% dei suoi HP Massimi in danno. 
+			Se un nemico normale viene colpito lo [c/e69900:Scatto del Drago], subirà Danni 5x.
+			[c/e69900:Scatto del Drago] ha 3 secondi di ricarica.
+			[c/e69900:Scatto del Drago] dà 1 secondo di immunità se un nemico viene colpito.
+			''Lui non è il Drago. [c/ff3300:Io lo sono].''
+			'''
+	}
+
+	ZerosKatana: {
+		DisplayName: Katana
+		Tooltip:
+			'''
+			Può deflettere i proiettili
+			Nessun Effetto Speciale.
+			 
+			''Mi ricorda che, [c/E67E39:indipendentemente da quello che sto facendo, una volta ho fatto qualcosa di buono.]''
+			[c/ad51b8:Shimmerable]
+			'''
+	}
+}
+
+Projectiles: {
+	MasterSwordSlash.DisplayName: Colpo di Spada Maestra
+	MasterSwordBeam.DisplayName: Raggio della Spada Maestra
+	ZerosKatanaSlash.DisplayName: Colpo di Katana di Zero
+	PrismSwordSlash.DisplayName: Colpo di Spada Prismatica
+	SavantSlash.DisplayName: Colpo da Esperto
+	ClaymoreSlash.DisplayName: Colpo di Claymore
+	PhoenixSlash.DisplayName: Colpo della Fenice
+	FifteensSlash.DisplayName: Colpo dei Quindici
+	PhoenixFlames.DisplayName: Fiamme della Fenice
+	ZeroKatanaSlash.DisplayName: Colpo di Katana di Zero
+}
+
+"": {
+	Items: {
+		Claymore: {
+			DisplayName: Claymore
+			Tooltip: ""
+		}
+
+		FifteensBlade: {
+			DisplayName: Lama dei Quindici
+			Tooltip: ""
+		}
+
+		MasterSword: {
+			DisplayName: Spada Maestra
+			Tooltip: ""
+		}
+
+		Phoenix: {
+			DisplayName: Fenice
+			Tooltip: ""
+		}
+
+		PrismSword: {
+			DisplayName: Spada Prismatica
+			Tooltip: ""
+		}
+
+		SavantKnife: {
+			DisplayName: Coltello da Esperto
+			Tooltip: ""
+		}
+
+		ZerosKatana: {
+			DisplayName: Katana di Zero
+			Tooltip: ""
+		}
+	}
+
+	Projectiles: {
+		ClaymoreSlash.DisplayName: Colpo di Claymore
+		FifteensSlash.DisplayName: Colpo dei Quindici
+		MasterSwordBeam.DisplayName: Raggio della Spada Maestra
+		MasterSwordSlash.DisplayName: Colpo di Spada Maestra
+		PhoenixFlames.DisplayName: Fiamme della Fenice
+		PhoenixSlash.DisplayName: Colpo della Fenice
+		PrismSwordSlash.DisplayName: Colpo di Spada Prismatica
+		SavantSlash.DisplayName: Colpo da Esperto
+		ZerosKatanaSlash.DisplayName: Colpo di Katana di Zero
+	}
+}# This file will automatically update with entries for new content after a build and reload
+

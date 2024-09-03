@@ -19,7 +19,7 @@ namespace KatanaZERO.Items.ZerosKatana
             Projectile.width = 159; //default 185
             Projectile.height = 140; //default 45
             Projectile.knockBack = 3;
-            Projectile.aiStyle = 6;
+            Projectile.aiStyle = 2;
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Melee;
             Projectile.penetrate = -1;

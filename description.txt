@@ -26,11 +26,15 @@ These weapons have unique slashing animations, can deflect bullets, and lunge yo
 ---- Special Thanks To ----
 * g113g for a Russian translation, code help and for uploading the mod to Steam Workshop for me.
 * Sequile for code help and balancing the weapons.
+* ChrisGug for an Italian translation.
 
-The source code is available for everyone on GitHub[github.com].
+The source code is available for everyone on GitHub.
 
 ---- Changelog ----
-V1.1.4
+v1.1.5
+* Added an Italian translation.
+
+v1.1.4
 * Fixed Prism Sword recipe requiring Mythril Anvil in pre-hardmode.
 
 v1.1.3

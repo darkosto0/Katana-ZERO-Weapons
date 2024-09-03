@@ -31,9 +31,13 @@ Current mod status: Fifteen's Blade scales properly with every boss, and it also
 # Special Thanks To:
 - [g113g](https://github.com/g113g) for Russian translation, code help and for publishing the mod to the Steam Workshop.
 - [Sequile](https://github.com/Sequile) for code help and balancing the weapons.
+- [ChrisGug](https://steamcommunity.com/id/ChrisGug) for an Italian translation.
 
 # Changelog
-V1.1.4
+v1.1.5
+- Added an Italian translation.
+
+v1.1.4
 - Fixed Prism Sword recipe requiring Mythril Anvil in pre-hardmode.
 
 v1.1.3

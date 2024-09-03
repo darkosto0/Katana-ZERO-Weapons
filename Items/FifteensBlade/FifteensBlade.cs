@@ -9,6 +9,7 @@ using Player = Terraria.Player;
 using System.IO;
 using System.Collections.Generic;
 using static Terraria.ModLoader.ModLoader;
+
 namespace KatanaZERO.Items.FifteensBlade
 {
     public class FifteensBlade : ModItem
@@ -52,6 +53,7 @@ namespace KatanaZERO.Items.FifteensBlade
             Item.value = Item.sellPrice(gold: 99, silver: 99);
             Item.UseSound = Slash1;
             Item.crit = 0;
+            Item.knockBack = 4;
 
             Item.useTime = 20;
             if (HasMod("FargowiltasSouls"))
@@ -404,8 +406,8 @@ namespace KatanaZERO.Items.FifteensBlade
         public void StatChange() // lord forgive me for i have pulled a yandere simulator - Darkosto // So gosh darn true.. - Sequile
         {
             
-            ModLoader.TryGetMod("CalamityMod", out Mod Calamity);
-            ModLoader.TryGetMod("ThoriumMod", out Mod thoriumMod);
+            TryGetMod("CalamityMod", out Mod Calamity);
+            TryGetMod("ThoriumMod", out Mod thoriumMod);
 
             // ONLY CALAMITY
             if (HasMod("CalamityMod") && !HasMod("ThoriumMod"))
