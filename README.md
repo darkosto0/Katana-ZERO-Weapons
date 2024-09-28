@@ -34,6 +34,9 @@ Current mod status: Fifteen's Blade scales properly with every boss, and it also
 - [ChrisGug](https://steamcommunity.com/id/ChrisGug) for an Italian translation.
 
 # Changelog
+v1.1.6
+- Added config for the lunge mechanic.
+* 
 v1.1.5
 - Added an Italian translation.
 

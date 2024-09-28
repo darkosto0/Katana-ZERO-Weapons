@@ -7,6 +7,7 @@ using Terraria.Audio;
 using System;
 using KatanaZERO.Items.ZerosKatana;
 using static Terraria.ModLoader.ModLoader;
+using KatanaZERO.Systems;
 
 
 namespace KatanaZERO.Items.PrismSword
@@ -76,20 +77,22 @@ namespace KatanaZERO.Items.PrismSword
 
             player.direction = direction.X > 0 ? 1 : -1;
 
-            if (hasAttacked)
+            if (KatanaZERO.enableLunge)
             {
-                player.velocity = direction * 4f;
+                if (hasAttacked)
+                {
+                    player.velocity = direction * 4f;
+                }
+                else
+                {
+                    player.velocity = direction * 8f;
+                    hasAttacked = true;
+                }
             }
-            else
-            {
-                player.velocity = direction * 8f;
-                hasAttacked = true;
-            }
-
 
             attackCooldown = 20f; //artificial cooldown
 
-            System.Random random = new System.Random();
+            Random random = new Random();
             int randomNumber = random.Next(1, 4);
             switch (randomNumber)
             {

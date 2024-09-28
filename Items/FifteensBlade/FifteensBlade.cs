@@ -103,14 +103,17 @@ namespace KatanaZERO.Items.FifteensBlade
 
             player.direction = direction.X > 0 ? 1 : -1;
 
-            if (hasAttacked)
+            if (KatanaZERO.enableLunge)
             {
-                player.velocity = direction * 5f;
-            }
-            else
-            {
-                player.velocity = direction * 12f;
-                hasAttacked = true;
+                if (hasAttacked)
+                {
+                    player.velocity = direction * 5f;
+                }
+                else
+                {
+                    player.velocity = direction * 12f;
+                    hasAttacked = true;
+                }
             }
 
             attackCooldown = 20f; //artificial cooldown

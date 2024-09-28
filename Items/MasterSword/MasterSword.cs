@@ -6,6 +6,7 @@ using Microsoft.Xna.Framework;
 using System;
 using Terraria.DataStructures;
 using static Terraria.ModLoader.ModLoader;
+using KatanaZERO.Systems;
 
 namespace KatanaZERO.Items.MasterSword
 {
@@ -71,16 +72,18 @@ namespace KatanaZERO.Items.MasterSword
 
             player.direction = direction.X > 0 ? 1 : -1;
 
-            if (hasAttacked)
+            if (KatanaZERO.enableLunge)
             {
-                player.velocity = direction * 4f;
+                if (hasAttacked)
+                {
+                    player.velocity = direction * 4f;
+                }
+                else
+                {
+                    player.velocity = direction * 10f;
+                    hasAttacked = true;
+                }
             }
-            else
-            {
-                player.velocity = direction * 10f;
-                hasAttacked = true;
-            }
-
 
             attackCooldown = 30f; //artificial cooldown
 

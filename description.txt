@@ -31,6 +31,9 @@ These weapons have unique slashing animations, can deflect bullets, and lunge yo
 The source code is available for everyone on GitHub.
 
 ---- Changelog ----
+v1.1.6
+* Added config for the lunge mechanic.
+
 v1.1.5
 * Added an Italian translation.
 

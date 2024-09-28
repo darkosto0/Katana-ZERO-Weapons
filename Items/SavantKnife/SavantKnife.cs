@@ -7,6 +7,7 @@ using Terraria.Audio;
 using System;
 using KatanaZERO.Items.ZerosKatana;
 using static Terraria.ModLoader.ModLoader;
+using KatanaZERO.Systems;
 
 
 namespace KatanaZERO.Items.SavantKnife
@@ -78,20 +79,22 @@ namespace KatanaZERO.Items.SavantKnife
 
             player.direction = direction.X > 0 ? 1 : -1;
 
-            if (hasAttacked)
+            if (KatanaZERO.enableLunge)
             {
-                player.velocity = direction * 2.2f;
+                if (hasAttacked)
+                {
+                    player.velocity = direction * 2.2f;
+                }
+                else
+                {
+                    player.velocity = direction * 8f;
+                    hasAttacked = true;
+                }
             }
-            else
-            {
-                player.velocity = direction * 8f;
-                hasAttacked = true;
-            }
-
 
             attackCooldown = 10f; //artificial cooldown
 
-            System.Random random = new System.Random();
+            Random random = new Random();
             int randomNumber = random.Next(1, 4);
             switch (randomNumber)
             {

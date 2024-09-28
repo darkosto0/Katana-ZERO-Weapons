@@ -1,5 +1,3 @@
-# This file will automatically update with entries for new content after a build and reload
-
 Items: {
 	MasterSword: {
 		DisplayName: Spada dei Maestri
@@ -98,6 +96,13 @@ Items: {
 			[c/ad51b8:Shimmerable]
 			'''
 	}
+
+	Mods: {
+		KatanaZERO: {
+			// LungeLabel: Enable Lunge Mechanic
+			// LungeTooltip: Enable or disable the lunge mechanic. Requires a mod reload.
+		}
+	}
 }
 
 Projectiles: {
@@ -162,5 +167,9 @@ Projectiles: {
 		SavantSlash.DisplayName: Colpo da Esperto
 		ZerosKatanaSlash.DisplayName: Colpo di Katana di Zero
 	}
-}# This file will automatically update with entries for new content after a build and reload
+}
 
+// Configs.Settings.DisplayName: Settings
+// LungeLabel: Lunge Mechanic
+// LungeTooltip: Enable or disable the lunge mechanic. Requires a mod reload.
+// SwordSettingsHeader: Sword Settings

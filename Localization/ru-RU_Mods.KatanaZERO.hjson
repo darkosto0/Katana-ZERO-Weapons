@@ -1,5 +1,3 @@
-# This file will automatically update with entries for new content after a build and reload
-
 Items: {
 	MasterSword: {
 		DisplayName: Меч Мастеров
@@ -91,12 +89,19 @@ Items: {
 		// DisplayName: Katana
 		/* Tooltip:
 			'''
-			Can Deflect Bullts
+			Can Deflect Bullets
 			No Special Effects.
 			 
 			''It reminds me that [c/E67E39:no matter what I'm doing, I did something good once.]''
 			[c/ad51b8:Shimmerable]
 			''' */
+	}
+
+	Mods: {
+		KatanaZERO: {
+			// LungeLabel: Enable Lunge Mechanic
+			// LungeTooltip: Enable or disable the lunge mechanic. Requires a mod reload.
+		}
 	}
 }
 
@@ -162,5 +167,9 @@ Projectiles: {
 		// SavantSlash.DisplayName: Savant Slash
 		// ZerosKatanaSlash.DisplayName: Zeros Katana Slash
 	}
-}# This file will automatically update with entries for new content after a build and reload
+}
 
+// Configs.Settings.DisplayName: Settings
+// LungeLabel: Lunge Mechanic
+// LungeTooltip: Enable or disable the lunge mechanic. Requires a mod reload.
+// SwordSettingsHeader: Sword Settings

@@ -1,11 +1,9 @@
-# This file will automatically update with entries for new content after a build and reload
-
 Items: {
 	MasterSword: {
 		DisplayName: Sword of Masters
 		Tooltip:
 			'''
-			Can Deflect Bullts
+			Can Deflect Bullets
 			Shoots an otherworldly beam.
 			Inflicts [c/993399:Shadowflame]
 			''You stopped a suicide. With a [c/E11919:murder]''
@@ -17,7 +15,7 @@ Items: {
 		DisplayName: Katana
 		Tooltip:
 			'''
-			Can Deflect Bullts
+			Can Deflect Bullets
 			No Special Effects.
 			''It reminds me that [c/E67E39:no matter what I'm doing, I did something good once.]''
 			[c/ad51b8:Shimmerable]
@@ -28,7 +26,7 @@ Items: {
 		DisplayName: Prism Sword
 		Tooltip:
 			'''
-			Can Deflect Bullts
+			Can Deflect Bullets
 			The world is your canvas and blood is the paint
 			''Most people go right. You went left.''
 			[c/ad51b8:Shimmerable]
@@ -39,7 +37,7 @@ Items: {
 		DisplayName: Savant Knife
 		Tooltip:
 			'''
-			Can Deflect Bullts
+			Can Deflect Bullets
 			A short blade with quick attack.
 			Deflects more bullets at once. 
 			''Didn't wake up [c/ffcc00:Leon.]''
@@ -91,12 +89,19 @@ Items: {
 		DisplayName: Katana
 		Tooltip:
 			'''
-			Can Deflect Bullts
+			Can Deflect Bullets
 			No Special Effects.
 			 
 			''It reminds me that [c/E67E39:no matter what I'm doing, I did something good once.]''
 			[c/ad51b8:Shimmerable]
 			'''
+	}
+
+	Mods: {
+		KatanaZERO: {
+			LungeLabel: Enable Lunge Mechanic
+			LungeTooltip: Enable or disable the lunge mechanic. Requires a mod reload.
+		}
 	}
 }
 
@@ -162,5 +167,9 @@ Projectiles: {
 		SavantSlash.DisplayName: Savant Slash
 		ZerosKatanaSlash.DisplayName: Zeros Katana Slash
 	}
-}# This file will automatically update with entries for new content after a build and reload
+}
 
+Configs.Settings.DisplayName: Settings
+LungeLabel: Lunge Mechanic
+LungeTooltip: Enable or disable the lunge mechanic. Requires a mod reload.
+SwordSettingsHeader: Sword Settings
