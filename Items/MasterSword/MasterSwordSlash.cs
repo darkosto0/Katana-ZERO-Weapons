@@ -19,7 +19,7 @@ namespace KatanaZERO.Items.MasterSword
         {
             Projectile.width = 185; //default 185
             Projectile.height = 130; //default 45
-            Projectile.knockBack = 3;
+            Projectile.knockBack = 4;
             Projectile.aiStyle = 6;
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Melee;
@@ -49,20 +49,18 @@ namespace KatanaZERO.Items.MasterSword
                 }
             }
 
-            foreach (NPC target in Main.npc) //apply knockback to hit targets and give immunity
+            foreach (NPC target in Main.npc) //give immunity
             {
-                if (target.active && !target.friendly && !target.boss && Projectile.Hitbox.Intersects(target.Hitbox))
+                if (target.active && !target.friendly && Projectile.Hitbox.Intersects(target.Hitbox))
                 {
                     player.immune = true;
                     player.immuneTime = 10;
 
-                    float angleToTarget = (float)Math.Atan2(target.Center.Y - Projectile.Center.Y, target.Center.X - Projectile.Center.X);
-                    target.velocity = new Vector2((float)Math.Cos(angleToTarget), (float)Math.Sin(angleToTarget)) * Projectile.knockBack;
-                }
-                if (target.active && !target.friendly && target.boss && Projectile.Hitbox.Intersects(target.Hitbox))
-                {
-                    player.immune = true;
-                    player.immuneTime = 10;
+                    if (!target.boss && KatanaZERO.enableVectorKnockback)
+                    {
+                        float angleToTarget = (float)Math.Atan2(target.Center.Y - player.Center.Y, target.Center.X - player.Center.X);
+                        target.velocity = new Vector2((float)Math.Cos(angleToTarget), (float)Math.Sin(angleToTarget)) * Projectile.knockBack;
+                    }
                 }
             }
 

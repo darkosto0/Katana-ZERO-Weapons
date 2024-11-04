@@ -25,6 +25,11 @@ namespace KatanaZERO.Items.FifteensBlade
         public static readonly SoundStyle SlowEngage = new SoundStyle("KatanaZERO/Sounds/slomo_engage");
         public static readonly SoundStyle SlowDisengage = new SoundStyle("KatanaZERO/Sounds/slomo_disengage");
 
+        private Dictionary<int, float> originalNPCSpeeds = new Dictionary<int, float>();
+        private Dictionary<int, float> originalProjectileSpeeds = new Dictionary<int, float>();
+
+        const float slowdownFactor = 0.25f; // 
+        const float maxDistance = 2000f; // Maximum distance for effect
 
         public float attackCooldown = 0f;
         public float dragonCooldown = 0f;
@@ -141,6 +146,7 @@ namespace KatanaZERO.Items.FifteensBlade
             {
                 if (Main.mouseRight)
                 {
+
                     hasRightClicked = true;
 
                 }
@@ -151,7 +157,16 @@ namespace KatanaZERO.Items.FifteensBlade
                     dragonCooldown = 180;
                 }
                 CreateAllDust(player); //create the big circle and the trajectory
-                SlowDown(player);
+                if (KatanaZERO.enableTimeShift)
+                {
+                    SlowDown(player);
+                    SlomoSoundEffect();
+                }
+                else
+                {
+                    SlomoSoundEffect();
+                }
+
             }
         }
 
@@ -356,9 +371,93 @@ namespace KatanaZERO.Items.FifteensBlade
             writer.Write(hasRightClicked);
             writer.Write(hasReleasedRightClick);
         }
-    
 
-    public bool SlowDown(Player player)
+
+        public void SlowDown(Player player)
+        {
+            if (Main.mouseRight)
+            {
+                foreach (NPC mob in Main.npc)
+                {
+                    if (mob.active && !mob.friendly && mob.Distance(player.Center) < maxDistance)
+                    {
+                        if (!originalNPCSpeeds.ContainsKey(mob.whoAmI))
+                        {
+                            originalNPCSpeeds[mob.whoAmI] = mob.velocity.Length();
+                        }
+                        float originalSpeed = originalNPCSpeeds[mob.whoAmI];
+                        float desiredSpeed = originalSpeed * slowdownFactor;
+
+                        if (mob.velocity.Length() > desiredSpeed)
+                        {
+                            Vector2 currentDirection = mob.velocity.SafeNormalize(Vector2.Zero); // Avoid division by zero
+                            mob.velocity = currentDirection * desiredSpeed; // Set new velocity
+                        }
+                    }
+                    else
+                    {
+                        originalNPCSpeeds.Remove(mob.whoAmI);
+                    }
+                }
+
+                foreach (Projectile proj in Main.projectile)
+                {
+                    if (proj.active && proj.type != ProjectileID.WaterGun)
+                    {
+                        if (proj.Distance(player.Center) < maxDistance)
+                        {
+                            if (!originalProjectileSpeeds.ContainsKey(proj.whoAmI))
+                            {
+                                originalProjectileSpeeds[proj.whoAmI] = proj.velocity.Length();
+                            }
+                            float originalSpeed = originalProjectileSpeeds[proj.whoAmI];
+                            float desiredSpeed = originalSpeed * slowdownFactor;
+
+                            if (proj.velocity.Length() > desiredSpeed)
+                            {
+                                Vector2 currentDirection = proj.velocity.SafeNormalize(Vector2.Zero);
+                                proj.velocity = currentDirection * desiredSpeed;
+                            }
+                        }
+                        else
+                        {
+                            originalProjectileSpeeds.Remove(proj.whoAmI);
+                        }
+                    }
+                }
+            }
+            else if (Main.mouseRight == false && rightClickActivated == true) //right click released
+            {
+                RevertNormalSpeed();
+            }
+        }
+
+        public void RevertNormalSpeed()
+        {
+            foreach (NPC mob in Main.npc)
+            {
+                if (mob.active && originalNPCSpeeds.ContainsKey(mob.whoAmI))
+                {
+                    float originalSpeed = originalNPCSpeeds[mob.whoAmI];
+                    Vector2 currentDirection = mob.velocity.SafeNormalize(Vector2.Zero);
+                    mob.velocity = currentDirection * originalSpeed;
+                    originalNPCSpeeds.Remove(mob.whoAmI);
+                }
+            }
+
+            foreach (Projectile proj in Main.projectile)
+            {
+                if (proj.active && originalProjectileSpeeds.ContainsKey(proj.whoAmI))
+                {
+                    float originalSpeed = originalProjectileSpeeds[proj.whoAmI];
+                    Vector2 currentDirection = proj.velocity.SafeNormalize(Vector2.Zero);
+                    proj.velocity = currentDirection * originalSpeed;
+                    originalProjectileSpeeds.Remove(proj.whoAmI);
+                }
+            }
+        }
+
+        public bool SlomoSoundEffect()
         {
             if (Main.mouseRight)
             {
@@ -367,41 +466,14 @@ namespace KatanaZERO.Items.FifteensBlade
                     SoundEngine.PlaySound(SlowEngage);
                     playedSlomoEngage = true;
                 }
-
-                foreach (NPC mob in Main.npc)
-                {
-                    if (mob.Distance(player.Center) < 2000f && mob.active && !mob.friendly)
-                    {
-                        mob.velocity /= 1.05f;
-                    }
-                }
-
-                foreach (Projectile projectile in Main.projectile)
-                {
-                    if (projectile.Distance(player.Center) < 2000f && projectile.active && !projectile.friendly)
-                    {
-                        projectile.velocity /= 1.05f;
-                    }
-                }
-                SlowMoCounter++;
                 rightClickActivated = true;
             }
             else if (Main.mouseRight == false && rightClickActivated == true) //right click released
             {
                 SoundEngine.PlaySound(SlowDisengage);
 
-                // Slowed down mobs do NOT need speed changes, their AI does that for them.
-                // Projectiles though, don't most of the time.
-                foreach (Projectile projectile in Main.projectile)
-                {
-                    if (projectile.Distance(player.Center) < 2000f && projectile.active && !projectile.friendly)
-                    {
-                        projectile.velocity *= (SlowMoCounter * 1.05f);
-                    }
-                }
                 playedSlomoEngage = false;
                 rightClickActivated = false;
-                SlowMoCounter = 0;
             }
             return true;
         }

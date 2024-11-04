@@ -31,6 +31,13 @@ These weapons have unique slashing animations, can deflect bullets, and lunge yo
 The source code is available for everyone on [url=https://github.com/darkosto0/Katana-ZERO-Weapons]GitHub[/url].
 
 ---- Changelog ----
+v1.2.0
+* Reworked Fifteen's Sword slowdown entirely.
+	- Enemies and projectiles get slowed to a constant 1/4 of their original speed.
+	- Their speed gets restored exactly to their original (most of the time).
+* Changed knockback for all weapons and added config for vector-based knockback.
+* Added config for disabling Fifteen's Sword slowdown.
+
 v1.1.6
 * Added config for the lunge mechanic.
 
@@ -51,12 +58,12 @@ v1.1.1
 
 v1.1.0
 * Reworked Fifteen's Blade:
-- Removed crafting recipe.
-- Has 1/40000 chance to drop from hostile enemies, and 1/9 chance from Moon Lord.
-- It's power scales off the strongest boss defeated in the world, compatible with Calamity and Thorium.
-- Dragon Dash damage to enemies reduced to 5x Item's damage.
-- Dragon dash damage to bosses reduced to 10x + 5% of Max HP
-- Dragon Dash no longer goes through solid walls.
+	- Removed crafting recipe.
+	- Has 1/40000 chance to drop from hostile enemies, and 1/9 chance from Moon Lord.
+	- It's power scales off the strongest boss defeated in the world, compatible with Calamity and Thorium.
+	- Dragon Dash damage to enemies reduced to 5x Item's damage.
+	- Dragon dash damage to bosses reduced to 10x + 5% of Max HP
+	- Dragon Dash no longer goes through solid walls.
 
 v1.0.1
 * Finished Fifteen's Blade mechanics.

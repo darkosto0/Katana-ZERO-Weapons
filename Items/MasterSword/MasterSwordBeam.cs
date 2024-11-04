@@ -21,7 +21,7 @@ namespace KatanaZERO.Items.MasterSword
         {
             Projectile.width = 52; //default 52
             Projectile.height = 32; //default 32
-            Projectile.knockBack = 0;
+            Projectile.knockBack = 3;
           //  Projectile.aiStyle = 6;
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Melee;

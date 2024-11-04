@@ -20,7 +20,7 @@ namespace KatanaZERO.Items.FifteensBlade
         {
             Projectile.width = 188; 
             Projectile.height = 190;
-            Projectile.knockBack = 5;
+            Projectile.knockBack = 4;
             Projectile.aiStyle = 6;
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Melee;
@@ -56,14 +56,14 @@ namespace KatanaZERO.Items.FifteensBlade
                 }
             }
 
-            foreach (NPC target in Main.npc) //apply knockback to hit targets and give immunity
+            foreach (NPC target in Main.npc) // give immunity
             {
                 if (target.active && !target.friendly && !target.immortal && Projectile.Hitbox.Intersects(target.Hitbox))
                 {
                     player.immune = true;
                     player.immuneTime = 10;
 
-                    if (!target.boss)
+                    if (!target.boss && KatanaZERO.enableVectorKnockback)
                     {
                         float angleToTarget = (float)Math.Atan2(target.Center.Y - player.Center.Y, target.Center.X - player.Center.X);
                         target.velocity = new Vector2((float)Math.Cos(angleToTarget), (float)Math.Sin(angleToTarget)) * Projectile.knockBack;

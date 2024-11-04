@@ -16,7 +16,7 @@ namespace KatanaZERO.Items.PhoenixEdge
         {
             Projectile.width = 76; //default 52
             Projectile.height = 65; //default 32
-            Projectile.knockBack = 0;
+            Projectile.knockBack = 3;
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Melee;
             Projectile.penetrate = 3;

@@ -10,16 +10,17 @@ namespace KatanaZERO
 {
     public class KatanaZERO : Mod
     {
-        // Global variable to control the lunge mechanic
+        // Global variable
         public static bool enableLunge = true; // Default to true
-
+        public static bool enableTimeShift = true;
+        public static bool enableVectorKnockback = false;
         public override void Load()
         {
-            // Access the config and update the global variable based on the config setting
             Settings config = GetInstance<Settings>();
 
-            // Set the global enableLunge flag based on config
             enableLunge = config.Lunge;
+            enableTimeShift = config.TimeShift;
+            enableVectorKnockback = config.VectorKnockback;
         }
     }
 

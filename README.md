@@ -1,7 +1,7 @@
 # Katana ZERO Weapons
 Terraria mod that aims to add all 7 katanas from Katana ZERO into Terraria as their own weapons.
 
-Current mod status: Ive paused developing because im busy with school, but i will return to this one day
+Current mod status: Looking for feedback.
 
 [Steam Workshop Link](https://steamcommunity.com/sharedfiles/filedetails/?id=3289273898)
 
@@ -24,9 +24,9 @@ Current mod status: Ive paused developing because im busy with school, but i wil
 	- Has 1/40000 chance to drop from any hostile enemy, or 1/9 to drop from Moon Lord.
 
 # Extra Info
-- This mod is made by me in attempt to learn the ropes of programming, There might be bugs I haven't found yet that could break the mod.
-- If you are more experienced and want to help me making this weapon better, send me a DM on Discord (darkosto0) and I'll gladly reach back.
-- I plan on making the mod better with time like making special effects but that will be left for the future.
+- This mod is made by me in attempt to learn the ropes of programming, there might be bugs I haven't found yet that could break the mod.
+- If you are more experienced and want to help me make this mod better, send me a DM on Discord (darkosto0) and I'll gladly reach back.
+- I plan on maintaining the mod as long as I recieve feedback.
 
 # Special Thanks To:
 - [g113g](https://github.com/g113g) for Russian translation, code help and for publishing the mod to the Steam Workshop.
@@ -34,6 +34,13 @@ Current mod status: Ive paused developing because im busy with school, but i wil
 - [ChrisGug](https://steamcommunity.com/id/ChrisGug) for an Italian translation.
 
 # Changelog
+v1.2.0
+- Reworked Fifteen's Sword slowdown entirely.
+	- Enemies and projectiles get slowed to a constant 1/4 of their original speed.
+	- Their speed gets restored exactly to their original (most of the time).
+- Changed knockback for all weapons and added config for vector-based knockback.
+- Added config for disabling Fifteen's Sword slowdown.
+
 v1.1.6
 - Added config for the lunge mechanic.
 

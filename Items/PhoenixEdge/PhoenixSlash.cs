@@ -18,7 +18,7 @@ namespace KatanaZERO.Items.PhoenixEdge
         {
             Projectile.width = 154; //default 154
             Projectile.height = 160; //default 160
-            Projectile.knockBack = 3;
+            Projectile.knockBack = 4;
             Projectile.aiStyle = 6;
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Melee;
@@ -51,18 +51,16 @@ namespace KatanaZERO.Items.PhoenixEdge
 
             foreach (NPC target in Main.npc) //apply knockback to hit targets and give immunity
             {
-                if (target.active && !target.friendly && !target.boss && Projectile.Hitbox.Intersects(target.Hitbox))
+                if (target.active && !target.friendly && Projectile.Hitbox.Intersects(target.Hitbox))
                 {
                     player.immune = true;
                     player.immuneTime = 4;
 
-                    float angleToTarget = (float)Math.Atan2(target.Center.Y - Projectile.Center.Y, target.Center.X - Projectile.Center.X);
-                    target.velocity = new Vector2((float)Math.Cos(angleToTarget), (float)Math.Sin(angleToTarget)) * Projectile.knockBack;
-                }
-                if (target.active && !target.friendly && target.boss && Projectile.Hitbox.Intersects(target.Hitbox))
-                {
-                    player.immune = true;
-                    player.immuneTime = 4;
+                    if (!target.boss && KatanaZERO.enableVectorKnockback)
+                    {
+                        float angleToTarget = (float)Math.Atan2(target.Center.Y - player.Center.Y, target.Center.X - player.Center.X);
+                        target.velocity = new Vector2((float)Math.Cos(angleToTarget), (float)Math.Sin(angleToTarget)) * Projectile.knockBack;
+                    }
                 }
             }
 

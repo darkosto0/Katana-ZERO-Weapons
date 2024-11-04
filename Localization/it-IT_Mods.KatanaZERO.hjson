@@ -118,58 +118,20 @@ Projectiles: {
 	ZeroKatanaSlash.DisplayName: Colpo di Katana di Zero
 }
 
-"": {
-	Items: {
-		Claymore: {
-			DisplayName: Claymore
-			Tooltip: ""
-		}
-
-		FifteensBlade: {
-			DisplayName: Lama dei Quindici
-			Tooltip: ""
-		}
-
-		MasterSword: {
-			DisplayName: Spada Maestra
-			Tooltip: ""
-		}
-
-		Phoenix: {
-			DisplayName: Fenice
-			Tooltip: ""
-		}
-
-		PrismSword: {
-			DisplayName: Spada Prismatica
-			Tooltip: ""
-		}
-
-		SavantKnife: {
-			DisplayName: Coltello da Esperto
-			Tooltip: ""
-		}
-
-		ZerosKatana: {
-			DisplayName: Katana di Zero
-			Tooltip: ""
-		}
-	}
-
-	Projectiles: {
-		ClaymoreSlash.DisplayName: Colpo di Claymore
-		FifteensSlash.DisplayName: Colpo dei Quindici
-		MasterSwordBeam.DisplayName: Raggio della Spada Maestra
-		MasterSwordSlash.DisplayName: Colpo di Spada Maestra
-		PhoenixFlames.DisplayName: Fiamme della Fenice
-		PhoenixSlash.DisplayName: Colpo della Fenice
-		PrismSwordSlash.DisplayName: Colpo di Spada Prismatica
-		SavantSlash.DisplayName: Colpo da Esperto
-		ZerosKatanaSlash.DisplayName: Colpo di Katana di Zero
-	}
-}
-
 // Configs.Settings.DisplayName: Settings
 // LungeLabel: Lunge Mechanic
 // LungeTooltip: Enable or disable the lunge mechanic. Requires a mod reload.
 // SwordSettingsHeader: Sword Settings
+// TimeShiftLabel: Dragon Dash Slow-mo
+/* TimeShiftTooltip:
+	'''
+	WARNING: Sometimes works sometimes doesn't.
+	Enables or Disables projectile and enemy slowdown on Dragon's Whisper right click.
+	''' */
+// VectorKnockback: Vector-based knockback (Not Recommended, off by default)
+/* VectorKnockbackTooltip:
+	'''
+	Uses a vector to assign knockback to the weapons, increasing knockback by a lot 
+	but also indefinitely knocks back eternian portals and other unkillable entities that aren't bosses.
+	Use Carefully.
+	''' */
