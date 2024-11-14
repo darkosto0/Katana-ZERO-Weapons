@@ -1,6 +1,9 @@
 The Katana ZERO Mod adds the seven katanas from the game Katana ZERO to Terraria.
 These weapons have unique slashing animations, can deflect bullets, and lunge you forward like the original game.
 
+**If you want to report a bug or give me an idea or anything, please feel free to add me on Discord @darkosto0**
+**You don't have to leave a comment here that might never reach your notifications as i can't send any DMs on steam.**
+
 ---- Weapons Added ----
 
 * ZERO's Katana: The original, no special effects, just bullet deflection
@@ -20,17 +23,22 @@ These weapons have unique slashing animations, can deflect bullets, and lunge yo
 * Phoenix's Edge: Slow attack speed, very high range, shoots flames that burn enemies
 (Post-Cultist)
 
-* Fifteen's Blade: High attack speed, very high reach, teleports to the mouse cursor on holding and releasing right click, meant to most enemies in one hit (Legendary Weapon)
+* Fifteen's Blade: High attack speed, very high reach, teleports to the cursor on holding and releasing right click, meant to kill most enemies in one hit (Legendary Weapon)
 - Has 1/40000 chance to drop from any hostile enemy, or 1/9 to drop from Moon Lord.
 
 ---- Special Thanks To ----
-* [url=https://github.com/g113g]g113g[/url] for a Russian translation, code help and for uploading the mod to Steam Workshop for me.
-* [url=https://github.com/Sequile]Sequile[/url] for code help and balancing the weapons.
-* [url=https://steamcommunity.com/id/ChrisGug/]ChrisGug[/url] for an Italian translation.
+* [g113g](https://github.com/g113g) for a Russian translation, code help and for uploading the mod to Steam Workshop for me.
+* [Sequile](https://github.com/Sequile) for code help and balancing the weapons.
+* [ChrisGug](https://steamcommunity.com/id/ChrisGug) for an Italian translation.
 
-The source code is available for everyone on [url=https://github.com/darkosto0/Katana-ZERO-Weapons]GitHub[/url].
+The source code is available for everyone on [GitHub](https://github.com/darkosto0/Katana-ZERO-Weapons).
+
+I plan on maintaining the mod as long as I recieve any feedback (ideas, bugs, anything).
 
 ---- Changelog ----
+v1.2.1
+* Fixed bug of Fifteen's Blade that allows you to infinitely trigger Dragon Dash.
+
 v1.2.0
 * Reworked Fifteen's Sword slowdown entirely.
 	- Enemies and projectiles get slowed to a constant 1/4 of their original speed.

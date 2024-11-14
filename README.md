@@ -20,7 +20,7 @@ Current mod status: Looking for feedback.
 
 - Phoenix's Edge: Slow attack speed, very high range, shoots flames that burn enemies (Post-Cultist)
 
-- Fifteen's Blade: High attack speed, very high reach, teleports to the mouse cursor on holding and releasing right click, meant to most enemies in one hit (Legendary Weapon)
+- Fifteen's Blade: High attack speed, very high reach, teleports to the cursor on holding and releasing right click, meant to kill most enemies in one hit (Legendary Weapon)
 	- Has 1/40000 chance to drop from any hostile enemy, or 1/9 to drop from Moon Lord.
 
 # Extra Info
@@ -29,11 +29,14 @@ Current mod status: Looking for feedback.
 - I plan on maintaining the mod as long as I recieve feedback.
 
 # Special Thanks To:
-- [g113g](https://github.com/g113g) for Russian translation, code help and for publishing the mod to the Steam Workshop.
+- [g113g](https://github.com/g113g) for a Russian translation, code help and for uploading the mod to Steam Workshop for me.
 - [Sequile](https://github.com/Sequile) for code help and balancing the weapons.
 - [ChrisGug](https://steamcommunity.com/id/ChrisGug) for an Italian translation.
 
 # Changelog
+v1.2.1
+- Fixed bug of Fifteen's Blade that allows you to infinitely trigger Dragon Dash.
+
 v1.2.0
 - Reworked Fifteen's Sword slowdown entirely.
 	- Enemies and projectiles get slowed to a constant 1/4 of their original speed.

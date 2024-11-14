@@ -5,6 +5,8 @@ using KatanaZERO.Items.FifteensBlade;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
 using KatanaZERO.Systems;
+using System;
+using Microsoft.Xna.Framework;
 
 namespace KatanaZERO
 {
@@ -38,4 +40,19 @@ namespace KatanaZERO
             }
         }
     }
+
+    public static class ColorHelper
+    {
+        public static Color HexToColor(string hex)
+        {
+            hex = hex.Replace("#", "");
+
+            byte r = (byte)(Convert.ToInt32(hex.Substring(0, 2), 16)); // Red
+            byte g = (byte)(Convert.ToInt32(hex.Substring(2, 2), 16)); // Green
+            byte b = (byte)(Convert.ToInt32(hex.Substring(4, 2), 16)); // Blue
+
+            return new Color(r, g, b);
+        }
+    }
+
 }

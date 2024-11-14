@@ -132,6 +132,6 @@ Projectiles: {
 /* VectorKnockbackTooltip:
 	'''
 	Uses a vector to assign knockback to the weapons, increasing knockback by a lot 
-	but also indefinitely knocks back eternian portals and other unkillable entities that aren't bosses.
+	But also indefinitely knocks back eternian portals and other unkillable entities that aren't bosses.
 	Use Carefully.
 	''' */

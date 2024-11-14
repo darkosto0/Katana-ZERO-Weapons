@@ -35,12 +35,14 @@ namespace KatanaZERO.Items.FifteensBlade
         public float dragonCooldown = 0f;
         public int SlowMoCounter = 0;
         public int PowerLevel;
+        public Color glitchColor = ColorHelper.HexToColor("#00ccff");
 
         public bool hasAttacked = false;
+        public bool playedSlomoEngage = false;
+        //before looking at these bools below, i wanna tell you, i will one day rewrite the code of this to be more efficient, i am sure that a lot of stuff here is unneeded, forgive me
         public bool hasRightClicked = false;
         public bool hasReleasedRightClick = false;
-        public bool rightClickActivated = false; //i needed another right click bool (i think)
-        public bool playedSlomoEngage = false;
+        public bool rightClickActivated = false;
 
 
         public override void SetStaticDefaults()
@@ -79,27 +81,6 @@ namespace KatanaZERO.Items.FifteensBlade
 
             Item.shoot = ModContent.ProjectileType<FifteensSlash>();
         }
-
-        /*
-        public override void AddRecipes()
-        {
-            CreateRecipe()
-                .AddIngredient(ItemType<ZeroKatana>())
-                .AddIngredient(ItemID.FragmentSolar, 20)
-                .AddIngredient(ItemID.FragmentStardust, 20)
-                .AddIngredient(ItemID.FragmentVortex, 20)
-                .AddIngredient(ItemID.FragmentNebula, 20)
-                .AddIngredient(ItemID.LunarOre, 50)
-                .AddTile(TileID.LunarCraftingStation)
-                .AddCustomShimmerResult(ItemType<ZeroKatana>())
-                .AddCustomShimmerResult(ItemID.FragmentSolar, 20)
-                .AddCustomShimmerResult(ItemID.FragmentStardust, 20)
-                .AddCustomShimmerResult(ItemID.FragmentVortex, 20)
-                .AddCustomShimmerResult(ItemID.FragmentNebula, 20)
-                .AddCustomShimmerResult(ItemID.LunarOre, 50)
-                .Register();
-        }
-        */
 
         public override bool? UseItem(Player player)
         {
@@ -140,15 +121,13 @@ namespace KatanaZERO.Items.FifteensBlade
             return true;
         }
 
-        public override void HoldItem(Player player)
+        /*public override void HoldItem(Player player) //old
         {
             if (dragonCooldown <= 0f)
             {
                 if (Main.mouseRight)
                 {
-
                     hasRightClicked = true;
-
                 }
                 if (Main.mouseRight == false && hasRightClicked == true)
                 {
@@ -166,7 +145,39 @@ namespace KatanaZERO.Items.FifteensBlade
                 {
                     SlomoSoundEffect();
                 }
+            }
+        }*/
 
+        //DEBUG
+        public override void HoldItem(Player player)
+        {
+            if (dragonCooldown <= 0)
+            {
+                if (!Main.mouseItem.IsAir) //i tried adding an easter egg here if you try triggering the glitch, which is why it took me so long to publish the bugfix, i couldnt make it work properly
+                {
+                    hasRightClicked = false;
+                    return;
+                }
+                if (Main.mouseRight && !hasRightClicked)
+                {
+                    hasRightClicked = true;
+                }
+                if (!Main.mouseRight && hasRightClicked)
+                {
+                    DragonDash(player);
+                    hasRightClicked = false;
+                    dragonCooldown = 180;
+                }
+                CreateAllDust(player);
+                if (KatanaZERO.enableTimeShift)
+                {
+                    SlowDown(player);
+                    SlomoSoundEffect();
+                }
+                else
+                {
+                    SlomoSoundEffect();
+                }
             }
         }
 
@@ -480,7 +491,7 @@ namespace KatanaZERO.Items.FifteensBlade
 
         public void StatChange() // lord forgive me for i have pulled a yandere simulator - Darkosto // So gosh darn true.. - Sequile
         {
-            
+
             TryGetMod("CalamityMod", out Mod Calamity);
             TryGetMod("ThoriumMod", out Mod thoriumMod);
 
@@ -559,7 +570,7 @@ namespace KatanaZERO.Items.FifteensBlade
             // ONLY THORIUM
             if (!HasMod("CalamityMod") && HasMod("ThoriumMod"))
             {
-                     if ((bool)thoriumMod.Call("GetDownedBoss", "ThePrimordials")) { PowerLevel = 45; } // 45
+                if ((bool)thoriumMod.Call("GetDownedBoss", "ThePrimordials")) { PowerLevel = 45; } // 45
                 else if (NPC.downedMoonlord == true) { PowerLevel = 41; } // 41
                 else if (NPC.downedAncientCultist == true) { PowerLevel = 39; } // 39
                 // Betsy skip (downedBetsy doesnt exist)

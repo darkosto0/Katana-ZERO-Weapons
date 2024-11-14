@@ -20,7 +20,7 @@ These weapons have unique slashing animations, can deflect bullets, and lunge yo
 * Phoenix's Edge: Slow attack speed, very high range, shoots flames that burn enemies
 (Post-Cultist)
 
-* Fifteen's Blade: High attack speed, very high reach, teleports to the mouse cursor on holding and releasing right click, meant to most enemies in one hit (Legendary Weapon)
+* Fifteen's Blade: High attack speed, very high reach, teleports to the cursor on holding and releasing right click, meant to kill most enemies in one hit (Legendary Weapon)
 - Has 1/40000 chance to drop from any hostile enemy, or 1/9 to drop from Moon Lord.
 
 ---- Special Thanks To ----
@@ -28,9 +28,14 @@ These weapons have unique slashing animations, can deflect bullets, and lunge yo
 * Sequile for code help and balancing the weapons.
 * ChrisGug for an Italian translation.
 
-The source code is available for everyone on GitHub.
+The source code is available for everyone on GitHub. (The Homepage Button)
+
+I plan on maintaining the mod as long as I recieve any feedback (ideas, bugs, anything).
 
 ---- Changelog ----
+v1.2.1
+* Fixed bug of Fifteen's Blade that allows you to infinitely trigger Dragon Dash.
+
 v1.2.0
 * Reworked Fifteen's Sword slowdown entirely.
 	- Enemies and projectiles get slowed to a constant 1/4 of their original speed.
