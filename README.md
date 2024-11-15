@@ -34,42 +34,57 @@ Current mod status: Looking for feedback.
 - [ChrisGug](https://steamcommunity.com/id/ChrisGug) for an Italian translation.
 
 # Changelog
-v1.2.1
-- Fixed bug of Fifteen's Blade that allows you to infinitely trigger Dragon Dash.
+## **v1.2.1**
+**Bug Fixes**:
+- 🛠️ Fixed bug with Fifteen's Blade that allowed **infinite Dragon Dash triggers**.
 
-v1.2.0
-- Reworked Fifteen's Sword slowdown entirely.
-	- Enemies and projectiles get slowed to a constant 1/4 of their original speed.
-	- Their speed gets restored exactly to their original (most of the time).
-- Changed knockback for all weapons and added config for vector-based knockback.
-- Added config for disabling Fifteen's Sword slowdown.
+## **v1.2.0**
+**Rework**:
+- ✨ Completely reworked **Fifteen's Sword slowdown**:
+	- Enemies and projectiles now move at **1/4 of their original speed**.
+	- Speed is restored to original values (most of the time).
+	
+**Config Options**:
+- ⚙️ Added configuration for **vector-based knockback**.
+- ⚙️ Added option to disable **Fifteen's Sword slowdown**.
 
-v1.1.6
-- Added config for the lunge mechanic.
+**Balance Changes**:
+- ⚖️ Adjusted knockback for all weapons.
 
-v1.1.5
-- Added an Italian translation.
+## **v1.1.6**
+**Config Options**:
+- ⚙️ Added configuration for the **lunge mechanic**.
 
-v1.1.4
-- Fixed Prism Sword recipe requiring Mythril Anvil in pre-hardmode.
+## **v1.1.5**
+**Localization**:
+- 🌎 Added an Italian translation.
 
-v1.1.3
-- Item use doesn't break with Fargos Souls Mod anymore.
+## **v1.1.4**
+**Bug Fixes**:
+- 🛠️ Fixed Prism Sword recipe **requiring Mythril Anvil** in pre-hardmode.
 
-v1.1.2
-- Fixed damage formula for Dragon Dash, it should do 5% of max HP now.
+## **v1.1.3**
+**Bug Fixes**:
+- 🛠️ Item use doesn't break with **Fargos Souls Mod** anymore.
 
-v1.1.1
-- Fixed major issues with boss scaling, now it works with vanilla, calamity or thorium.
+## **v1.1.2**
+**Bug Fixes**:
+- 🛠️ Fixed damage formula for **Dragon Dash**, it should do 5% of max HP now.
 
-v1.1.0
-- Reworked Fifteen's Blade:
-	- Removed crafting recipe.
-	- Has 1/40000 chance to drop from hostile enemies, and 1/9 chance from Moon Lord.
-	- It's power scales off the strongest boss defeated in the world, compatible with Calamity and Thorium.
-	- Dragon Dash damage to enemies reduced to 5x Item's damage.
-	- Dragon dash damage to bosses reduced to 10x + 5% of Max HP
-	- Dragon Dash no longer goes through solid walls.
+## **v1.1.1**
+**Bug Fixes**:
+- 🛠️ Fixed major **issues with boss scaling**, now it works with **vanilla, calamity and thorium**.
 
-v1.0.1
-- Finished Fifteen's Blade mechanics.
+## **v1.1.0**
+**Rework**:
+- ✨ Reworked Fifteen's Blade:
+	- Removed **crafting recipe**.
+	- Has 1/40000 chance to **drop from hostile enemies**, and 1/9 chance from **Moon Lord**.
+	- It's power now scales off **the strongest boss defeated** in the world, compatible with **Calamity and Thorium**.
+	- Dragon Dash damage to enemies **reduced to 5x Item's damage**.
+	- Dragon dash damage to bosses **reduced to 10x + 5% of Max HP**.
+	- Dragon Dash no longer goes **through solid walls**.
+
+## **v1.0.1**
+**New Additions**:
+- ✨ Finished **Fifteen's Blade mechanics**.
