@@ -33,6 +33,12 @@ Current mod status: Looking for feedback.
 - [Sequile](https://github.com/Sequile) for code help and balancing the weapons.
 - [ChrisGug](https://steamcommunity.com/id/ChrisGug) for an Italian translation.
 
+# To-Do
+- Slider for controlling Dragon Dash's speed
+- Camera easing after a Dragon Dash
+- Baseline for immunity frames after a short Dragon Dash
+- Configurable sounds for each weapon 
+
 # Changelog
 v1.2.1
 - Fixed bug of Fifteen's Blade that allows you to infinitely trigger Dragon Dash.
