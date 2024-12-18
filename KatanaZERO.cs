@@ -1,12 +1,12 @@
-using Terraria.ModLoader;
-using Terraria;
-using static Terraria.ModLoader.ModContent;
 using KatanaZERO.Items.FifteensBlade;
+using KatanaZERO.Systems;
+using Microsoft.Xna.Framework;
+using System;
+using Terraria;
 using Terraria.GameContent.ItemDropRules;
 using Terraria.ID;
-using KatanaZERO.Systems;
-using System;
-using Microsoft.Xna.Framework;
+using Terraria.ModLoader;
+using static Terraria.ModLoader.ModContent;
 
 namespace KatanaZERO
 {
@@ -16,6 +16,14 @@ namespace KatanaZERO
         public static bool enableLunge = true; // Default to true
         public static bool enableTimeShift = true;
         public static bool enableVectorKnockback = false;
+        public string zeroKatanaSound;
+        public string prismSwordSound;
+        public string masterSwordSound;
+        public string savantKnifeSound;
+        public string claymoreSound;
+        public string phoenixEdgeSound;
+        public string fifteensKatanaSound;
+
         public override void Load()
         {
             Settings config = GetInstance<Settings>();
@@ -23,7 +31,16 @@ namespace KatanaZERO
             enableLunge = config.Lunge;
             enableTimeShift = config.TimeShift;
             enableVectorKnockback = config.VectorKnockback;
+
+            zeroKatanaSound = config.ZeroKatanaSound;
+            prismSwordSound = config.PrismSwordSound;
+            masterSwordSound = config.MasterSwordSound;
+            savantKnifeSound = config.SavantKnifeSound;
+            claymoreSound = config.ClaymoreSound;
+            phoenixEdgeSound = config.PhoenixEdgeSound;
+            fifteensKatanaSound = config.FifteensBladeSound;
         }
+
     }
 
     public class MyGlobalNPC : GlobalNPC
@@ -54,5 +71,4 @@ namespace KatanaZERO
             return new Color(r, g, b);
         }
     }
-
 }

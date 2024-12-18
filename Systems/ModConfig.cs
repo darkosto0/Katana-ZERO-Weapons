@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel;
 using Terraria.ModLoader.Config;
 
@@ -12,19 +13,69 @@ namespace KatanaZERO.Systems
         [TooltipKey("$Mods.KatanaZERO.LungeTooltip")]
         [ReloadRequired]
         [DefaultValue(true)]
-        public bool Lunge = true;
+        public bool Lunge;
 
-        
+
         [LabelKey("$Mods.KatanaZERO.TimeShiftLabel")]
         [TooltipKey("$Mods.KatanaZERO.TimeShiftTooltip")]
         [ReloadRequired]
         [DefaultValue(true)]
-        public bool TimeShift = true;
+        public bool TimeShift;
 
         [LabelKey("$Mods.KatanaZERO.VectorKnockback")]
         [TooltipKey("$Mods.KatanaZERO.VectorKnockbackTooltip")]
         [ReloadRequired]
         [DefaultValue(false)]
-        public bool VectorKnockback = false;
+        public bool VectorKnockback;
+
+        [Header("$Mods.KatanaZERO.SwordSoundEffects")]
+        [LabelKey("$Mods.KatanaZERO.ZerosKatanaSound")]
+        [TooltipKey("$Mods.KatanaZERO.ZerosKatanaSoundTooltip")]
+        [OptionStrings(["Zero's Katana", "Prism Sword", "Master Sword", "Savant Knife", "Claymore Prototype", "Phoenix Edge", "Dragon's Whisper"])]
+        [DefaultValue("Zero's Katana")]
+        [ReloadRequired]
+        public string ZeroKatanaSound;
+
+        [LabelKey("$Mods.KatanaZERO.PrismSwordSound")]
+        [TooltipKey("$Mods.KatanaZERO.PrismSwordSoundTooltip")]
+        [OptionStrings(["Zero's Katana", "Prism Sword", "Master Sword", "Savant Knife", "Claymore Prototype", "Phoenix Edge", "Dragon's Whisper"])]
+        [DefaultValue("Prism Sword")]
+        [ReloadRequired]
+        public string PrismSwordSound;
+
+        [LabelKey("$Mods.KatanaZERO.MasterSwordSound")]
+        [TooltipKey("$Mods.KatanaZERO.MasterSwordSoundTooltip")]
+        [OptionStrings(["Zero's Katana", "Prism Sword", "Master Sword", "Savant Knife", "Claymore Prototype", "Phoenix Edge", "Dragon's Whisper"])]
+        [DefaultValue("Master Sword")]
+        [ReloadRequired]
+        public string MasterSwordSound;
+
+        [LabelKey("$Mods.KatanaZERO.SavantKnifeSound")]
+        [TooltipKey("$Mods.KatanaZERO.SavantKnifeSoundTooltip")]
+        [OptionStrings(["Zero's Katana", "Prism Sword", "Master Sword", "Savant Knife", "Claymore Prototype", "Phoenix Edge", "Dragon's Whisper"])]
+        [DefaultValue("Savant Knife")]
+        [ReloadRequired]
+        public string SavantKnifeSound;
+
+        [LabelKey("$Mods.KatanaZERO.ClaymoreSound")]
+        [TooltipKey("$Mods.KatanaZERO.ClaymoreSoundTooltip")]
+        [OptionStrings(["Zero's Katana", "Prism Sword", "Master Sword", "Savant Knife", "Claymore Prototype", "Phoenix Edge", "Dragon's Whisper"])]
+        [DefaultValue("Claymore Prototype")]
+        [ReloadRequired]
+        public string ClaymoreSound;
+
+        [LabelKey("$Mods.KatanaZERO.PhoenixEdgeSound")]
+        [TooltipKey("$Mods.KatanaZERO.PhoenixEdgeSoundTooltip")]
+        [OptionStrings(["Zero's Katana", "Prism Sword", "Master Sword", "Savant Knife", "Claymore Prototype", "Phoenix Edge", "Dragon's Whisper"])]
+        [DefaultValue("Phoenix Edge")]
+        [ReloadRequired]
+        public string PhoenixEdgeSound;
+
+        [LabelKey("$Mods.KatanaZERO.FifteensKatanaSound")]
+        [TooltipKey("$Mods.KatanaZERO.FifteensKatanaSoundTooltip")]
+        [OptionStrings([ "Zero's Katana", "Prism Sword", "Master Sword", "Savant Knife", "Claymore Prototype", "Phoenix Edge", "Dragon's Whisper"])]
+        [DefaultValue("Dragon's Whisper")]
+        [ReloadRequired]
+        public string FifteensBladeSound;
     }
 }

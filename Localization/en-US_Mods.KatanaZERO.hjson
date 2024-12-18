@@ -118,10 +118,20 @@ Projectiles: {
 	ZeroKatanaSlash.DisplayName: Zero Katana Slash
 }
 
-Configs.Settings.DisplayName: Settings
+Configs: {
+	Settings: {
+		DisplayName: Settings
+
+		SelectedSound: {
+			Label: Select Weapon Sound
+			Tooltip: ""
+		}
+	}
+}
+
 LungeLabel: Lunge Mechanic
 LungeTooltip: Enable or disable the lunge mechanic. Requires a mod reload.
-SwordSettingsHeader: Sword Settings
+SwordSettingsHeader: Universal Sword Settings
 TimeShiftLabel: Dragon Dash Slow-mo
 TimeShiftTooltip:
 	'''
@@ -135,3 +145,18 @@ VectorKnockbackTooltip:
 	But also indefinitely knocks back eternian portals and other unkillable entities that aren't bosses.
 	Use Carefully.
 	'''
+SwordSoundEffects: Sword Sounds
+ZerosKatanaSound: Zero's Katana
+ZerosKatanaSoundTooltip: Adjusting these settings will produce a different slashing sound for each sword
+PrismSwordSound: Prism Sword
+PrismSwordSoundTooltip: Adjusting these settings will produce a different slashing sound for each sword
+MasterSwordSound: Master Sword
+MasterSwordSoundTooltip: Adjusting these settings will produce a different slashing sound for each sword
+SavantKnifeSound: Savant Knife
+SavantKnifeSoundTooltip: Adjusting these settings will produce a different slashing sound for each sword
+ClaymoreSound: Claymore Prototype
+ClaymoreSoundTooltip: Adjusting these settings will produce a different slashing sound for each sword
+PhoenixEdgeSound: Phoenix Edge
+PhoenixEdgeSoundTooltip: Adjusting these settings will produce a different slashing sound for each sword
+FifteensKatanaSound: Dragon's Whisper
+FifteensKatanaSoundTooltip: Adjusting these settings will produce a different slashing sound for each sword
