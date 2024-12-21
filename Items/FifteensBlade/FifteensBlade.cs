@@ -325,7 +325,7 @@ namespace KatanaZERO.Items.FifteensBlade
             float dashTicks = dashTime * 60;
 
             player.immune = true;
-            player.immuneTime = (int)dashTicks;
+            player.immuneTime = ((int)dashTicks < 30) ? 30 : ((int)dashTicks * 2);
 
             int hitboxWidth = player.width * 3;
             int hitboxHeight = player.height * 3;
