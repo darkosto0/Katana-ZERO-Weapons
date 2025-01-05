@@ -33,6 +33,21 @@ The source code is available for everyone on GitHub. (The Homepage Button)
 I plan on maintaining the mod as long as I recieve any feedback (ideas, bugs, anything).
 
 ---- Changelog ----
+v1.2.2
+* Added trails for Dragon Dash: Default Fireflies or Disabled
+
+* Sword of Masters' projectile on collision now spawns its dust with velocity to it.
+
+* Added a baseline for how many immunity frames you get if you do a short Dragon Dash (30 frames/half a second).
+* Changed the size of Dragon Whisper's right click dust, now making a smooth circle and trajectory all around.
+
+* Added configuration for sound effects for every sword.
+* Added config for Dragon Dash trails
+	- Default
+	- Fireflies (my favorite)
+	- Disabled
+* Added more headers in the config for better organization and look.
+
 v1.2.1
 * Fixed bug of Fifteen's Blade that allows you to infinitely trigger Dragon Dash.
 

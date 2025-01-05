@@ -42,7 +42,7 @@ Current mod status: Looking for feedback.
 - ✨ Added trails for Dragon Dash: **Default**, **Fireflies** or **Disabled**.
 
 **Changes**:
-- 🔧 Sword of Masters' projectile on kill now **spawns its dust** with **velocity** to it.
+- 🔧 Sword of Masters' projectile on collision now **spawns its dust** with **velocity** to it.
 
 **Bug Fixes**:
 - 🛠️ Added a **baseline** for how many **immunity frames** you get if you do a **short Dragon Dash** (30 frames/half a second).
