@@ -58,8 +58,8 @@ namespace KatanaZERO.Items.FifteensBlade
         private Dictionary<int, float> originalNPCSpeeds = new Dictionary<int, float>();
         private Dictionary<int, float> originalProjectileSpeeds = new Dictionary<int, float>();
 
-        const float slowdownFactor = 0.25f; // 
-        const float maxDistance = 2000f; // Maximum distance for effect
+        const float slowdownFactor = 0.25f;
+        const float maxDistance = 2000f;
 
         public float attackCooldown = 0f;
         public float dragonCooldown = 0f;
@@ -153,33 +153,6 @@ namespace KatanaZERO.Items.FifteensBlade
             return true;
         }
 
-        /*public override void HoldItem(Player player) //old
-        {
-            if (dragonCooldown <= 0f)
-            {
-                if (Main.mouseRight)
-                {
-                    hasRightClicked = true;
-                }
-                if (Main.mouseRight == false && hasRightClicked == true)
-                {
-                    DragonDash(player);
-                    hasRightClicked = false;
-                    dragonCooldown = 180;
-                }
-                CreateAllDust(player); //create the big circle and the trajectory
-                if (KatanaZERO.enableTimeShift)
-                {
-                    SlowDown(player);
-                    SlomoSoundEffect();
-                }
-                else
-                {
-                    SlomoSoundEffect();
-                }
-            }
-        }*/
-
         public override void HoldItem(Player player)
         {
             if (dragonCooldown <= 0)
@@ -251,9 +224,9 @@ namespace KatanaZERO.Items.FifteensBlade
         {
             if (Main.mouseRight)
             {
-                int dustAmount = 800; // Total number of dust particles in the circle
-                float radius = 464f; // Radius for the circle
-                int dustType = ModContent.DustType<FifteenDust>(); // Dust type
+                int dustAmount = 800;
+                float radius = 464f;
+                int dustType = ModContent.DustType<FifteenDust>();
 
                 for (int i = 0; i < dustAmount; i++) //create circle
                 {
@@ -267,12 +240,12 @@ namespace KatanaZERO.Items.FifteensBlade
                 float distanceToCursor = Vector2.Distance(player.Center, Main.MouseWorld);
                 float maxLerpAmount = Math.Min(1f, radius / distanceToCursor);
 
-                for (float lerpAmount = 0; lerpAmount <= maxLerpAmount; lerpAmount += 0.004f) // Use smaller increments for smoother trajectory
+                for (float lerpAmount = 0; lerpAmount <= maxLerpAmount; lerpAmount += 0.004f)
                 {
                     Vector2 barPosition = Vector2.Lerp(player.Center, Main.MouseWorld, lerpAmount);
                     if (Collision.SolidCollision(barPosition, 10, 10))
                     {
-                        break; // Stop drawing when collision occurs
+                        break; //stop drawing when collision occurs
                     }
 
                     Dust dust = Dust.NewDustPerfect(barPosition, dustType);
@@ -281,21 +254,87 @@ namespace KatanaZERO.Items.FifteensBlade
 
                 Vector2 endPosition = Vector2.Lerp(player.Center, Main.MouseWorld, maxLerpAmount);
                 int dustAmount1 = 10;
-                // Create a larger circle centered at the end position
-                float largerRadius = 3.3f; // Adjust the size as needed
+
+                float largerRadius = 3.3f;
                 for (int i = 0; i < dustAmount1; i++)
                 {
                     float angle = MathHelper.TwoPi / dustAmount1 * i;
                     Vector2 position = endPosition + largerRadius * new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle));
                     if (Collision.SolidCollision(position, 1, 1))
                     {
-                        break; // Stop drawing when collision occurs
+                        break;
                     }
                     Dust dustLargerCircle = Dust.NewDustPerfect(position, dustType);
                     dustLargerCircle.noGravity = true;
                     dustLargerCircle.noLight = true;
                 }
                 player.velocity = Vector2.Zero;
+            }
+        }
+
+        public void CreateDashDust(Vector2 position, Player player, float Xoffsetter, float Yoffsetter, bool topDust, bool middleDust, bool bottomDust)
+        {
+            position += new Vector2((player.width / 2) - Xoffsetter, (player.height / 2 - 20) + Yoffsetter);
+
+            if (topDust) //yandere simulator final boss
+            {
+                if (mod.dashTrailStyle != "Fireflies") //"i shall, set the seas ablaze!"
+                {
+                    Color dustColor = ColorHelper.HexToColor("03FFB0");
+                    Dust dust = Dust.NewDustDirect(position, 0, 0, ModContent.DustType<DashDust>(), 0f, 0f, 0, dustColor, 1f);
+                }
+                else
+                {
+                    Dust dust = Dust.NewDustPerfect(position, DustID.Firefly, null, 0, default, 1);
+                }
+            }
+            else if (Yoffsetter == 10)
+            {
+                if (mod.dashTrailStyle != "Fireflies")
+                {
+                    Color dustColor = ColorHelper.HexToColor("FC9DCE");
+                    Dust dust = Dust.NewDustDirect(position, 0, 0, ModContent.DustType<DashDust>(), 0f, 0f, 0, dustColor, 1f);
+                }
+                else
+                {
+                    Dust dust = Dust.NewDustPerfect(position, DustID.Firefly, null, 0, default, 1);
+                }
+            }
+            else if (middleDust)
+            {
+                if (mod.dashTrailStyle != "Fireflies")
+                {
+                    Color dustColor = ColorHelper.HexToColor("AC408E");
+                    Dust dust = Dust.NewDustDirect(position, 0, 0, ModContent.DustType<DashDust>(), 0f, 0f, 0, dustColor, 1f);
+                }
+                else
+                {
+                    Dust dust = Dust.NewDustPerfect(position, DustID.Firefly, null, 0, default, 1);
+                }
+            }
+            else if (Yoffsetter == 32)
+            {
+                if (mod.dashTrailStyle != "Fireflies")
+                {
+                    Color dustColor = ColorHelper.HexToColor("2F92BC");
+                    Dust dust = Dust.NewDustDirect(position, 0, 0, ModContent.DustType<DashDust>(), 0f, 0f, 0, dustColor, 1f);
+                }
+                else
+                {
+                    Dust dust = Dust.NewDustPerfect(position, DustID.Firefly, null, 0, default, 1);
+                }
+            }
+            else if (bottomDust)
+            {
+                if (mod.dashTrailStyle != "Fireflies")
+                {
+                    Color dustColor = ColorHelper.HexToColor("393073");
+                    Dust dust = Dust.NewDustDirect(position, 0, 0, ModContent.DustType<DashDust>(), 0f, 0f, 0, dustColor, 1f);
+                }
+                else
+                {
+                    Dust dust = Dust.NewDustPerfect(position, DustID.Firefly, null, 0, default, 1);
+                }
             }
         }
 
@@ -306,6 +345,9 @@ namespace KatanaZERO.Items.FifteensBlade
 
             Vector2 cursorPosition = Main.MouseWorld;
             Vector2 playerPosition = player.Center;
+
+            float x, y;
+            bool isLookingLeft;
 
             float maxRadius = 464f;
             float distanceToCursor = Vector2.Distance(playerPosition, cursorPosition);
@@ -330,13 +372,74 @@ namespace KatanaZERO.Items.FifteensBlade
             int hitboxWidth = player.width * 3;
             int hitboxHeight = player.height * 3;
 
-            Vector2 dashStep = directionToCursor * (dashSpeed / 60f);
+            Vector2 dashStep = (directionToCursor * (dashSpeed / 60f));
 
             Dictionary<int, bool> hitEnemies = new Dictionary<int, bool>();
 
-            for (int i = 0; i < dashTicks; i++)
+            bool topDust = false;
+            bool middleDust = false;
+            bool bottomDust = false;
+
+            for (float i = 0; i < dashTicks; i++)
             {
                 Vector2 nextPosition = player.position + dashStep;
+
+                if (mod.dashTrailStyle != "Disabled")
+                {
+                    isLookingLeft = Main.MouseWorld.X < player.Center.X;
+                    x = isLookingLeft ? 6f : -6f; // Start at 9 for left, -9 for right
+
+                    for (y = 0; y < 40; y += 2)
+                    {
+                        if (isLookingLeft)
+                        {
+                            if (x > 0 && y <= 8)
+                            {
+                                topDust = true;
+                                CreateDashDust(nextPosition, player, x, y, topDust, middleDust, bottomDust);
+                                x -= 1.5f;
+                                topDust = false;
+                            }
+                            else if (x == 0 && y > 7 && y < 31)
+                            {
+                                middleDust = true;
+                                CreateDashDust(nextPosition, player, x, y, topDust, middleDust, bottomDust);
+                                middleDust = false;
+                            }
+                            else if (x >= 0)
+                            {
+                                bottomDust = true;
+                                x += 1.5f;
+                                CreateDashDust(nextPosition, player, x, y, topDust, middleDust, bottomDust);
+                                bottomDust = false;
+                            }
+                        }
+                        else
+                        {
+                            if (x < 0 && y <= 8)
+                            {
+                                topDust = true;
+                                CreateDashDust(nextPosition, player, x, y, topDust, middleDust, bottomDust);
+                                x += 1.5f;
+                                topDust = false;
+                            }
+                            else if (x == 0 && y > 7 && y < 31)
+                            {
+                                middleDust = true;
+                                CreateDashDust(nextPosition, player, x, y, topDust, middleDust, bottomDust);
+                                middleDust = false;
+                            }
+                            else if (x <= 0)
+                            {
+                                bottomDust = true;
+                                x -= 1.5f;
+                                CreateDashDust(nextPosition, player, x, y, topDust, middleDust, bottomDust);
+                                bottomDust = false;
+                            }
+                        }
+                    }
+                }
+
                 if (Collision.SolidCollision(nextPosition, player.width, player.height))
                 {
                     break;
@@ -413,7 +516,6 @@ namespace KatanaZERO.Items.FifteensBlade
             writer.Write(hasRightClicked);
             writer.Write(hasReleasedRightClick);
         }
-
 
         public void SlowDown(Player player)
         {

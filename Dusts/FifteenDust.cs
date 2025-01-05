@@ -1,5 +1,7 @@
 using Terraria;
 using Terraria.ModLoader;
+using Microsoft.Xna.Framework;
+
 
 namespace KatanaZERO.Dusts
 {
@@ -8,12 +10,14 @@ namespace KatanaZERO.Dusts
         public override void OnSpawn(Dust dust)
         {
             dust.scale = 0.8f;
+            dust.noGravity = true;
+	        dust.frame = new Rectangle(0, 0, 8, 8);
         }
 
         public override bool Update(Dust dust)
         {
             dust.scale -= 0.001f;
-            if (dust.scale <0.799f)
+            if (dust.scale < 0.799f)
             {
                 dust.active = false;
             }
@@ -21,8 +25,6 @@ namespace KatanaZERO.Dusts
             {
                 Lighting.AddLight(dust.position, 0.25f, 1.02f, 1.02f);
             }
-
-            dust.noGravity = true;
             return false;
         }
     }

@@ -34,8 +34,9 @@ Current mod status: Looking for feedback.
 - [ChrisGug](https://steamcommunity.com/id/ChrisGug) for an Italian translation.
 
 # To-Do
-- ~~Slider for controlling Dragon Dash's speed~~ I'll have to rewrite a major portion of the code for this
+- ~~Slider for controlling Dragon Dash's speed~~ I'll cut my losses on this one
 - Camera easing after a Dragon Dash
+- ~~Dragon Dash trail~~ Done
 - ~~Baseline for immunity frames after a short Dragon Dash~~ Done
 - ~~Configurable sounds for each weapon~~ Done
 

@@ -23,6 +23,7 @@ namespace KatanaZERO
         public string claymoreSound;
         public string phoenixEdgeSound;
         public string fifteensKatanaSound;
+        public string dashTrailStyle;
 
         public override void Load()
         {
@@ -39,6 +40,7 @@ namespace KatanaZERO
             claymoreSound = config.ClaymoreSound;
             phoenixEdgeSound = config.PhoenixEdgeSound;
             fifteensKatanaSound = config.FifteensBladeSound;
+            dashTrailStyle = config.DashTrailStyle;
         }
 
     }

@@ -16,18 +16,30 @@ namespace KatanaZERO.Systems
         [DefaultValue(true)]
         public bool Lunge;
 
+        [LabelKey("$Mods.KatanaZERO.VectorKnockback")]
+        [TooltipKey("$Mods.KatanaZERO.VectorKnockbackTooltip")]
+        [ReloadRequired]
+        [DefaultValue(false)]
+        public bool VectorKnockback;
+        ///
+        /// seperators
+        ///
+        [Header("$Mods.KatanaZERO.FifteensBladeHeader")]
         [LabelKey("$Mods.KatanaZERO.TimeShiftLabel")]
         [TooltipKey("$Mods.KatanaZERO.TimeShiftTooltip")]
         [ReloadRequired]
         [DefaultValue(true)]
         public bool TimeShift;
 
-        [LabelKey("$Mods.KatanaZERO.VectorKnockback")]
-        [TooltipKey("$Mods.KatanaZERO.VectorKnockbackTooltip")]
+        [LabelKey("$Mods.KatanaZERO.DashTrailStyle")]
+        [TooltipKey("$Mods.KatanaZERO.DashTrailStyleTooltip")]
+        [OptionStrings(["Default", "Fireflies", "Disabled"])]
+        [DefaultValue("Default")]
         [ReloadRequired]
-        [DefaultValue(false)]
-        public bool VectorKnockback;
-
+        public string DashTrailStyle;
+        /// 
+        /// 
+        /// 
         [Header("$Mods.KatanaZERO.SwordSoundEffects")]
         [LabelKey("$Mods.KatanaZERO.ZerosKatanaSound")]
         [TooltipKey("$Mods.KatanaZERO.SwordSoundTooltip")]
@@ -77,5 +89,10 @@ namespace KatanaZERO.Systems
         [DefaultValue("Dragon's Whisper")]
         [ReloadRequired]
         public string FifteensBladeSound;
+
+        [Header("$Mods.KatanaZERO.DeveloperNoteHeader")]
+        [LabelKey("$Mods.KatanaZERO.DeveloperNote")]
+        [TooltipKey("$Mods.KatanaZERO.DeveloperNoteTooltip")]
+        public bool placeholder;
     }
 }

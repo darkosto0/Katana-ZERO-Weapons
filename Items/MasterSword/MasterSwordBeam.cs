@@ -13,8 +13,7 @@ namespace KatanaZERO.Items.MasterSword
     {
         public static readonly SoundStyle Shoot = new SoundStyle("KatanaZERO/Sounds/Items/MasterSword/sound_player_mastersword_shot_01");
 
-        private const float DistanceFromCore = 132f; //offset from the center of the player to the sprite
-                                                     //like the empty space between a hydrogen atom core and its electron
+        private const float DistanceFromCore = 132f;
         private const float projectileSpeed = 10f;
         
         public override void SetDefaults()
@@ -22,7 +21,6 @@ namespace KatanaZERO.Items.MasterSword
             Projectile.width = 52; //default 52
             Projectile.height = 32; //default 32
             Projectile.knockBack = 3;
-          //  Projectile.aiStyle = 6;
             Projectile.friendly = true;
             Projectile.DamageType = DamageClass.Melee;
             Projectile.penetrate = 5;
@@ -49,15 +47,8 @@ namespace KatanaZERO.Items.MasterSword
                     Projectile.frame = 0;
                 }
             }
-            Dust dust = Dust.NewDustPerfect(
-                    Position: Projectile.Center,
-                    Type: 45,
-                    Velocity: Vector2.Zero,
-                    Alpha: 100,
-                    Scale: 0.9f
-                    ); 
-            dust.noGravity = true; // Dust don't have gravity
-           // dust.fadeIn = -1f;
+            Dust dust = Dust.NewDustPerfect(Position: Projectile.Center, DustID.MagicMirror, Velocity: Vector2.Zero, Alpha: 100, Scale: 0.9f); 
+            dust.noGravity = true;
         }
 
         public override void OnSpawn(IEntitySource source)
@@ -83,7 +74,7 @@ namespace KatanaZERO.Items.MasterSword
         }
         public override void OnHitNPC(NPC target, NPC.HitInfo hit, int damageDone)
         {
-            SoundStyle Impact = new SoundStyle("KatanaZERO/Sounds/Items/MasterSword/sound_player_mastersword_impact_01") { Volume = 0.5f };
+            SoundStyle Impact = new SoundStyle("KatanaZERO/Sounds/Items/MasterSword/impact_01") { Volume = 0.5f };
             SoundEngine.PlaySound(Impact, Entity.Center);
             target.AddBuff(BuffID.ShadowFlame, 10 * 60);
         }
@@ -91,9 +82,10 @@ namespace KatanaZERO.Items.MasterSword
         public override void OnKill(int timeLeft)
         {
             Player player = Main.player[Projectile.owner];
-            for (int d = 0; d < 30; d++)
+            for (int i = 0; i < 30; i++)
             {
-                Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.MagicMirror, 0f, 0f, 150, default(Color), 1.5f);
+                //Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, DustID.MagicMirror, 0f, 0f, 150, default(Color), 1.5f);
+                Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, DustID.MagicMirror, Projectile.velocity.X / 2, Projectile.velocity.Y / 2, 0, default, 1);
             }
             SoundEngine.PlaySound(SoundID.Item10, Projectile.Center);
 
