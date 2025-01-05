@@ -155,8 +155,6 @@ SavantKnifeSound: Savant Knife
 ClaymoreSound: Claymore Prototype
 PhoenixEdgeSound: Phoenix Edge
 FifteensKatanaSound: Dragon's Whisper
-DragonDashSpeed: Dragon Dash Speed
-DragonDashSpeedTooltip: Adjusts the speed of Dragon Dash, from 100% to 10%
 FifteensBladeHeader: Dragon's Whisper Settings
 DashTrailStyle: Dash Trail Style
 DashTrailStyleTooltip: Here you can disable the trail made by Dragon's Whisper or change it to something else.
@@ -165,7 +163,7 @@ DeveloperNote: Note
 DeveloperNoteTooltip:
 	'''
 	As you can see, every config that you change will force you to reload the mod.
-	This is because I've tested everything and confirmed that changes don't take effect without a reload.
+	I made it that way because I've tested everything and confirmed that changes don't take effect without a reload.
 	If you have any experience in modding or programming in general, I will be more than happy to work with you in fixing this.
 	You can add me on Discord @darkosto0 (It's a zero at the end) if you're interested.
 

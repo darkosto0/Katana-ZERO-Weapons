@@ -34,13 +34,25 @@ Current mod status: Looking for feedback.
 - [ChrisGug](https://steamcommunity.com/id/ChrisGug) for an Italian translation.
 
 # To-Do
-- ~~Slider for controlling Dragon Dash's speed~~ I'll cut my losses on this one
 - Camera easing after a Dragon Dash
-- ~~Dragon Dash trail~~ Done
-- ~~Baseline for immunity frames after a short Dragon Dash~~ Done
-- ~~Configurable sounds for each weapon~~ Done
 
 # Changelog
+## **v1.2.2**
+**New Features**:
+- ✨ Added trails for Dragon Dash: **Default**, **Fireflies** or **Disabled**.
+
+**Changes**:
+- 🔧 Sword of Masters' projectile on kill now **spawns its dust** with **velocity** to it.
+
+**Bug Fixes**:
+- 🛠️ Added a **baseline** for how many **immunity frames** you get if you do a **short Dragon Dash** (30 frames/half a second).
+- 🛠 Changed the **size of Dragon Whisper's right click dust**, now making a **smooth circle and trajectory** all around.
+
+**Config Options**:
+- ⚙️ Added **configuration for sound effects for every sword**.
+- ⚙️ Added option to **disable Dragon Dash trail**, change it to Firefly dust, or keep it at default.
+- ⚙️ Added **more headers** in the config for better organization and look.
+
 ## **v1.2.1**
 **Bug Fixes**:
 - 🛠️ Fixed bug with Fifteen's Blade that allowed **infinite Dragon Dash triggers**.
