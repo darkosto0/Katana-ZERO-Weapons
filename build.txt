@@ -1,5 +1,5 @@
 displayName = Katana ZERO Weapons
 author = Darkosto, g113g and Sequile
-version = 1.2.1
+version = 1.2.2
 homepage = https://github.com/darkosto0/Katana-ZERO-Weapons
 buildIgnore = bin\*, obj\*, *.csproj, Properties\*, bin\*, README.md, LICENSE, .vs\*
