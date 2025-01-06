@@ -1,8 +1,8 @@
 The Katana ZERO Mod adds the seven katanas from the game Katana ZERO to Terraria.
 These weapons have unique slashing animations, can deflect bullets, and lunge you forward like the original game.
 
-**If you want to report a bug or give me an idea or anything, please feel free to add me on Discord @darkosto0**
-**You don't have to leave a comment here that might never reach your notifications as i can't send any DMs on steam.**
+[b]If you want to report a bug or give me an idea or anything, please feel free to add me on Discord @darkosto0[/b]
+[b]You don't have to leave a comment here that might never reach your notifications as i can't send any DMs on steam.[/b]
 
 ---- Weapons Added ----
 
@@ -27,11 +27,11 @@ These weapons have unique slashing animations, can deflect bullets, and lunge yo
 - Has 1/40000 chance to drop from any hostile enemy, or 1/9 to drop from Moon Lord.
 
 ---- Special Thanks To ----
-* [g113g](https://github.com/g113g) for a Russian translation, code help and for uploading the mod to Steam Workshop for me.
-* [Sequile](https://github.com/Sequile) for code help and balancing the weapons.
-* [ChrisGug](https://steamcommunity.com/id/ChrisGug) for an Italian translation.
+* [url=https://github.com/g113g]g113g[/url] for a Russian translation, code help and for uploading the mod to Steam Workshop for me.
+* [url=https://github.com/Sequile]Sequile[/url] for code help and balancing the weapons.
+* [url=https://steamcommunity.com/id/ChrisGug/]ChrisGug[/url] for an Italian translation.
 
-The source code is available for everyone on [GitHub](https://github.com/darkosto0/Katana-ZERO-Weapons).
+The source code is available for everyone on [url=https://github.com/darkosto0/Katana-ZERO-Weapons]GitHub[/url].
 
 I plan on maintaining the mod as long as I recieve any feedback (ideas, bugs, anything).
 
