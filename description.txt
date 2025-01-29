@@ -33,8 +33,15 @@ The source code is available for everyone on GitHub. (The Homepage Button)
 I plan on maintaining the mod as long as I recieve any feedback (ideas, bugs, anything).
 
 ---- Changelog ----
+v1.2.3
+* Fixed multiple multiplayer bugs regarding Dragon's Whisper:
+	- Dragon Dash circle creating for every player.
+	- Enemy slowdown not working.
+
+* Buffed EVERY hardmode sword's damage by 33%
+
 v1.2.2
-* Added trails for Dragon Dash: Default Fireflies or Disabled
+* Added trails for Dragon Dash: Default Fireflies or Disabled.
 
 * Sword of Masters' projectile on collision now spawns its dust with velocity to it.
 
@@ -42,7 +49,7 @@ v1.2.2
 * Changed the size of Dragon Whisper's right click dust, now making a smooth circle and trajectory all around.
 
 * Added configuration for sound effects for every sword.
-* Added config for Dragon Dash trails
+* Added config for Dragon Dash trails:
 	- Default
 	- Fireflies (my favorite)
 	- Disabled
@@ -52,7 +59,7 @@ v1.2.1
 * Fixed bug of Fifteen's Blade that allows you to infinitely trigger Dragon Dash.
 
 v1.2.0
-* Reworked Fifteen's Sword slowdown entirely.
+* Reworked Fifteen's Sword slowdown entirely:
 	- Enemies and projectiles get slowed to a constant 1/4 of their original speed.
 	- Their speed gets restored exactly to their original (most of the time).
 * Changed knockback for all weapons and added config for vector-based knockback.

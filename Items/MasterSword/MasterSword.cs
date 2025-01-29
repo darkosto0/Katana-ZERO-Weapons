@@ -54,7 +54,7 @@ namespace KatanaZERO.Items.MasterSword
         {
             string selectedWeaponSound = mod.masterSwordSound;
 
-            Item.damage = 50;
+            Item.damage = 63;
             Item.DamageType = DamageClass.Melee;
             Item.width = 40;
             Item.height = 40;

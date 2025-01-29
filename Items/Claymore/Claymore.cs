@@ -53,7 +53,7 @@ namespace KatanaZERO.Items.Claymore
         {
             string selectedWeaponSound = mod.claymoreSound;
 
-            Item.damage = 101;
+            Item.damage = 126;
             Item.DamageType = DamageClass.Melee;
             Item.width = 40;
             Item.height = 40;

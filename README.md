@@ -37,6 +37,15 @@ Current mod status: Looking for feedback.
 - Camera easing after a Dragon Dash
 
 # Changelog
+## **v1.2.3**
+**Bug Fixes**:
+- 🛠️ Fixed **multiple multiplayer bugs** regarding Dragon's Whisper:
+	- Dragon Dash circle getting created for every player.
+	- Enemy **slowdown not working**.
+
+**Balance Changes**:
+- ⚖️ Buffed EVERY hardmode sword's damage by 25%
+
 ## **v1.2.2**
 **New Features**:
 - ✨ Added trails for Dragon Dash: **Default**, **Fireflies** or **Disabled**.

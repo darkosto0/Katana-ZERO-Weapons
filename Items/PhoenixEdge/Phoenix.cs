@@ -8,8 +8,6 @@ using System;
 using Terraria.Audio;
 using KatanaZERO.Items.ZerosKatana;
 using static Terraria.ModLoader.ModLoader;
-using KatanaZERO.Systems;
-
 
 namespace KatanaZERO.Items.PhoenixEdge
 {
@@ -58,7 +56,7 @@ namespace KatanaZERO.Items.PhoenixEdge
         {
             string selectedWeaponSound = mod.phoenixEdgeSound;
 
-            Item.damage = 179;
+            Item.damage = 224;
             Item.DamageType = DamageClass.Melee;
             Item.width = 40;
             Item.height = 40;

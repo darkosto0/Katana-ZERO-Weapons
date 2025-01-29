@@ -55,7 +55,7 @@ namespace KatanaZERO.Items.SavantKnife
         {
             string selectedWeaponSound = mod.savantKnifeSound;
 
-            Item.damage = 76;
+            Item.damage = 95;
             Item.DamageType = DamageClass.Melee;
             Item.width = 40;
             Item.height = 40;

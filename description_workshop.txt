@@ -36,6 +36,13 @@ The source code is available for everyone on [url=https://github.com/darkosto0/K
 I plan on maintaining the mod as long as I recieve any feedback (ideas, bugs, anything).
 
 ---- Changelog ----
+v1.2.3
+* Fixed multiple multiplayer bugs regarding Dragon's Whisper:
+	- Dragon Dash circle creating for every player.
+	- Enemy slowdown not working.
+
+* Buffed EVERY hardmode sword's damage by 33%
+
 v1.2.2
 * Added trails for Dragon Dash: Default Fireflies or Disabled
 
