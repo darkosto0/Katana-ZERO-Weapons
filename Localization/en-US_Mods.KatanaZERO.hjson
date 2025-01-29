@@ -37,7 +37,7 @@ Items: {
 		DisplayName: Savant Knife
 		Tooltip:
 			'''
-			Can Deflect Bullets
+			Can Deflect Greater Amount of Bullets
 			A short blade with quick attack.
 			Deflects more bullets at once. 
 			''Didn't wake up [c/ffcc00:Leon.]''
@@ -49,7 +49,7 @@ Items: {
 		DisplayName: Claymore Prototype
 		Tooltip:
 			'''
-			Can Deflect a Lot of Bullets at Once
+			Can Deflect Greater Amount of Bullets
 			Giant cleaver that crushes bullets and defenses.
 			Inflicts [c/999966:Broken Armor]
 			''Fulfilled your [c/009900:secondary goal] in the prison.''
@@ -80,7 +80,7 @@ Items: {
 			If a boss is hit with [c/e69900:Draogn Dash], they will take 10x Damage + 5% of their Max HP as damage. 
 			If a regular enemy is hit with [c/e69900:Draogn Dash], they will take 5x Damage.
 			[c/e69900:Draogn Dash] has 3 second cooldown.
-			[c/e69900:Draogn Dash] gives 1 second of immunity if an enemy is hit.
+			[c/e69900:Draogn Dash] gives immunity based on how far you dash. (Minimum 0.5 seconds)
 			''He is not the Dragon. [c/ff3300:I am].''
 			'''
 	}

@@ -176,11 +176,11 @@ namespace KatanaZERO.Items.FifteensBlade
                 if (KatanaZERO.enableTimeShift)
                 {
                     SlowDown(player);
-                    SlomoSoundEffect();
+                    SlomoSoundEffect(player);
                 }
                 else
                 {
-                    SlomoSoundEffect();
+                    SlomoSoundEffect(player);
                 }
             }
         }
@@ -222,6 +222,9 @@ namespace KatanaZERO.Items.FifteensBlade
 
         public static void CreateAllDust(Player player)
         {
+            if (Main.myPlayer != player.whoAmI)
+                return;
+
             if (Main.mouseRight)
             {
                 int dustAmount = 800;
@@ -274,6 +277,9 @@ namespace KatanaZERO.Items.FifteensBlade
 
         public void CreateDashDust(Vector2 position, Player player, float Xoffsetter, float Yoffsetter, bool topDust, bool middleDust, bool bottomDust)
         {
+            if (Main.myPlayer != player.whoAmI)
+                return;
+
             position += new Vector2((player.width / 2) - Xoffsetter, (player.height / 2 - 20) + Yoffsetter);
 
             if (topDust) //yandere simulator final boss
@@ -340,7 +346,7 @@ namespace KatanaZERO.Items.FifteensBlade
 
         public bool DragonDash(Player player)
         {
-            if (!Main.myPlayer.Equals(player.whoAmI))
+            if (Main.myPlayer != player.whoAmI)
                 return false;
 
             Vector2 cursorPosition = Main.MouseWorld;
@@ -505,6 +511,26 @@ namespace KatanaZERO.Items.FifteensBlade
             dragonCooldown = reader.ReadSingle();
             hasRightClicked = reader.ReadBoolean();
             hasReleasedRightClick = reader.ReadBoolean();
+
+            byte packetType = reader.ReadByte();
+            switch (packetType)
+            {
+                case 1: // NPC velocity change
+                    int npcID = reader.ReadInt32();
+                    Vector2 npcVelocity = new Vector2(reader.ReadSingle(), reader.ReadSingle());
+                    Main.npc[npcID].velocity = npcVelocity;
+                    break;
+                case 2: // Projectile velocity change
+                    int projID = reader.ReadInt32();
+                    Vector2 projVelocity = new Vector2(reader.ReadSingle(), reader.ReadSingle());
+                    Main.projectile[projID].velocity = projVelocity;
+                    break;
+                case 3: // Dust creation
+                    Vector2 dustPosition = reader.ReadVector2();
+                    int dustType = reader.ReadInt32();
+                    Dust.NewDustPerfect(dustPosition, dustType);
+                    break;
+            }
         }
 
         public override void NetSend(BinaryWriter writer)
@@ -534,8 +560,14 @@ namespace KatanaZERO.Items.FifteensBlade
 
                         if (mob.velocity.Length() > desiredSpeed)
                         {
-                            Vector2 currentDirection = mob.velocity.SafeNormalize(Vector2.Zero); // Avoid division by zero
-                            mob.velocity = currentDirection * desiredSpeed; // Set new velocity
+                            Vector2 currentDirection = mob.velocity.SafeNormalize(Vector2.Zero);
+                            Vector2 newVelocity = currentDirection * desiredSpeed;
+                            mob.velocity = newVelocity;
+
+                            if (Main.netMode == NetmodeID.Server)
+                            {
+                                SendNPCVelocityChange(mob.whoAmI, newVelocity);
+                            }
                         }
                     }
                     else
@@ -560,8 +592,16 @@ namespace KatanaZERO.Items.FifteensBlade
                             if (proj.velocity.Length() > desiredSpeed)
                             {
                                 Vector2 currentDirection = proj.velocity.SafeNormalize(Vector2.Zero);
-                                proj.velocity = currentDirection * desiredSpeed;
+                                Vector2 newVelocity = currentDirection * desiredSpeed;
+                                proj.velocity = newVelocity;
+
+                                if (Main.netMode == NetmodeID.Server)
+                                {
+                                    SendProjectileVelocityChange(proj.whoAmI, newVelocity);
+                                }
                             }
+
+                            
                         }
                         else
                         {
@@ -584,7 +624,15 @@ namespace KatanaZERO.Items.FifteensBlade
                 {
                     float originalSpeed = originalNPCSpeeds[mob.whoAmI];
                     Vector2 currentDirection = mob.velocity.SafeNormalize(Vector2.Zero);
-                    mob.velocity = currentDirection * originalSpeed;
+                    Vector2 newVelocity = currentDirection * originalSpeed;
+                    mob.velocity = newVelocity;
+
+                    // Send the reverted velocity to all clients
+                    if (Main.netMode == NetmodeID.Server)
+                    {
+                        SendNPCVelocityChange(mob.whoAmI, newVelocity);
+                    }
+
                     originalNPCSpeeds.Remove(mob.whoAmI);
                 }
             }
@@ -595,14 +643,45 @@ namespace KatanaZERO.Items.FifteensBlade
                 {
                     float originalSpeed = originalProjectileSpeeds[proj.whoAmI];
                     Vector2 currentDirection = proj.velocity.SafeNormalize(Vector2.Zero);
-                    proj.velocity = currentDirection * originalSpeed;
+                    Vector2 newVelocity = currentDirection * originalSpeed;
+                    proj.velocity = newVelocity;
+
+                    // Send the reverted velocity to all clients
+                    if (Main.netMode == NetmodeID.Server)
+                    {
+                        SendProjectileVelocityChange(proj.whoAmI, newVelocity);
+                    }
+
                     originalProjectileSpeeds.Remove(proj.whoAmI);
                 }
             }
         }
 
-        public bool SlomoSoundEffect()
+        private void SendNPCVelocityChange(int npcID, Vector2 newVelocity)
         {
+            ModPacket packet = mod.GetPacket();
+            packet.Write((byte)1);
+            packet.Write(npcID);
+            packet.Write(newVelocity.X);
+            packet.Write(newVelocity.Y);
+            packet.Send();
+        }
+
+        private void SendProjectileVelocityChange(int projID, Vector2 newVelocity)
+        {
+            ModPacket packet = mod.GetPacket();
+            packet.Write((byte)2);
+            packet.Write(projID);
+            packet.Write(newVelocity.X);
+            packet.Write(newVelocity.Y);
+            packet.Send();
+        }
+
+        public bool SlomoSoundEffect(Player player)
+        {
+            if (Main.myPlayer != player.whoAmI)
+                return false;
+
             if (Main.mouseRight)
             {
                 if (playedSlomoEngage == false)
