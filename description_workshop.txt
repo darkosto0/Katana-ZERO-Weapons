@@ -41,7 +41,7 @@ v1.2.3
 	- Dragon Dash circle creating for every player.
 	- Enemy slowdown not working.
 
-* Buffed EVERY hardmode sword's damage by 33%
+* Buffed EVERY hardmode sword's damage by 25%
 
 v1.2.2
 * Added trails for Dragon Dash: Default Fireflies or Disabled
