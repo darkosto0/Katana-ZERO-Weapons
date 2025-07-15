@@ -76,12 +76,12 @@ Items: {
 			Can Deflect Bullets.
 			[c/00cc00:Legendary Weapon]
 			[c/e69900:Right click to perform Dragon Dash]
-			[c/e69900:Draogn Dash] teleports you to the mouse cursor, slicing everything in between to shreds.
-			If a boss is hit with [c/e69900:Draogn Dash], they will take 10x Damage + 5% of their Max HP as damage. 
-			If a regular enemy is hit with [c/e69900:Draogn Dash], they will take 5x Damage.
-			Holding down [c/e69900:Draogn Dash] uses a lot of [c/3333cc: Mana].
-			[c/e69900:Draogn Dash] has 3 second cooldown.
-			[c/e69900:Draogn Dash] gives immunity based on how far you dash. (Minimum 0.5 seconds)
+			[c/e69900:Dragon Dash] teleports you to the mouse cursor, slicing everything in between to shreds.
+			If a boss is hit with [c/e69900:Dragon Dash], they will take 10x Damage + 5% of their Max HP as damage. 
+			If a regular enemy is hit with [c/e69900:Dragon Dash], they will take 5x Damage.
+			Holding down [c/e69900:Dragon Dash] uses a lot of [c/3333cc:Mana].
+			[c/e69900:Dragon Dash] has 3 second cooldown.
+			[c/e69900:Dragon Dash] gives immunity based on how far you dash. (Minimum 0.5 seconds)
 			''He is not the Dragon. [c/ff3300:I am].''
 			'''
 	}
@@ -124,18 +124,13 @@ Configs: {
 }
 
 LungeLabel: Lunge Mechanic
-LungeTooltip:
-	'''
-	Enable or disable the lunge mechanic.
-	On by default.
-	'''
+LungeTooltip: Enable or disable the lunge mechanic.
 SwordSettingsHeader: Universal Sword Settings
 TimeShiftLabel: Dragon Dash Slow-mo
 TimeShiftTooltip:
 	'''
 	WARNING: Sometimes works, sometimes doesn't.
 	Enables or Disables projectile and enemy slowdown on Dragon's Whisper right click.
-	On by default.
 	'''
 VectorKnockback: Vector-based knockback (Not Recommended, off by default)
 VectorKnockbackTooltip:
@@ -158,15 +153,10 @@ FifteensBladeHeader: Dragon's Whisper Settings
 DashTrailStyle: Dash Trail Style
 DashTrailStyleTooltip: Here you can disable the trail made by Dragon's Whisper or change it to something else.
 ToggleDropLabel: Toggle Dragon's Whisper drop
-ToggleDropTooltip:
-	'''
-	Here you can toggle off dropping Dragon's Whisper from enemies if you stumble upon a bug or for whatever reason.
-	On by default.
-	'''
+ToggleDropTooltip: Here you can toggle off dropping Dragon's Whisper from enemies if you stumble upon a bug or for whatever reason.
 ProgressionDamage: Katana Progression Scaling
 ProgressionDamageTooltip:
 	'''
 	Makes all katanas increase their damage and crit when you kill a boss, similar to Dragon's Whisper. 
 	What can I say, you have every right to play the game however you want. Have fun.
-	Off by default.
 	'''

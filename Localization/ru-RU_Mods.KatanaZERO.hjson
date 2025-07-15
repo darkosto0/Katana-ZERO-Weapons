@@ -123,18 +123,13 @@ Configs: {
 }
 
 // LungeLabel: Lunge Mechanic
-/* LungeTooltip:
-	'''
-	Enable or disable the lunge mechanic.
-	On by default.
-	''' */
+// LungeTooltip: Enable or disable the lunge mechanic.
 // SwordSettingsHeader: Universal Sword Settings
 // TimeShiftLabel: Dragon Dash Slow-mo
 /* TimeShiftTooltip:
 	'''
 	WARNING: Sometimes works, sometimes doesn't.
 	Enables or Disables projectile and enemy slowdown on Dragon's Whisper right click.
-	On by default.
 	''' */
 // VectorKnockback: Vector-based knockback (Not Recommended, off by default)
 /* VectorKnockbackTooltip:
@@ -157,15 +152,10 @@ Configs: {
 // DashTrailStyle: Dash Trail Style
 // DashTrailStyleTooltip: Here you can disable the trail made by Dragon's Whisper or change it to something else.
 // ToggleDropLabel: Toggle Dragon's Whisper drop
-/* ToggleDropTooltip:
-	'''
-	Here you can toggle off dropping Dragon's Whisper from enemies if you stumble upon a bug or for whatever reason.
-	On by default.
-	''' */
+// ToggleDropTooltip: Here you can toggle off dropping Dragon's Whisper from enemies if you stumble upon a bug or for whatever reason.
 // ProgressionDamage: Katana Progression Scaling
 /* ProgressionDamageTooltip:
 	'''
 	Makes all katanas increase their damage and crit when you kill a boss, similar to Dragon's Whisper. 
 	What can I say, you have every right to play the game however you want. Have fun.
-	Off by default.
 	''' */
