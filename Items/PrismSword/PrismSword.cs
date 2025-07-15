@@ -53,16 +53,25 @@ namespace KatanaZERO.Items.PrismSword
 
         public override void SetDefaults()
         {
-            string selectedWeaponSound = mod.prismSwordSound;
+            string selectedWeaponSound = KatanaZERO.prismSwordSound;
 
-            Item.damage = 30;
+            if (KatanaZERO.progressionDamage)
+            {
+                PowerLevelManager power = new();
+                power.Apply(Item);
+            }
+            else
+            {
+                Item.damage = 30;
+                Item.crit = 15;
+            }
+
             Item.DamageType = DamageClass.Melee;
             Item.width = 40;
             Item.height = 40;
             Item.rare = ItemRarityID.Expert;
             Item.value = Item.sellPrice(gold: 5, silver: 10);
             Item.UseSound = GetRandomWeaponSound(selectedWeaponSound);
-            Item.crit = 15;
 
 
             Item.useTime = 20;
@@ -127,7 +136,7 @@ namespace KatanaZERO.Items.PrismSword
             Random random = new Random();
             int randomNumber = random.Next(1, 4);
 
-            string selectedWeaponSound = mod.prismSwordSound;
+            string selectedWeaponSound = KatanaZERO.prismSwordSound;
 
             SoundStyle weaponSound = GetRandomWeaponSound(selectedWeaponSound);
 
@@ -143,6 +152,7 @@ namespace KatanaZERO.Items.PrismSword
                     Item.UseSound = weaponSound;
                     break;
             }
+            SetDefaults();
             return true;
         }
         public override void HoldItem(Player player)

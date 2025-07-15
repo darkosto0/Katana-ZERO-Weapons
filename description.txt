@@ -32,11 +32,32 @@ The source code is available for everyone on GitHub. (The Homepage Button)
 
 I plan on maintaining the mod as long as I recieve any feedback (ideas, bugs, anything).
 
+---- Disclaimer ----
+This is a fan-made project inspired by Katana ZERO. All rights to the original IP, assets, and sounds belong to Askiisoft and Devolver Digital. 
+No profit is made from this mod. If requested, I will respectfully take it down.
+
 ---- Changelog ----
+v1.3.0
+* Fixed logic with Dragon Dash character staying in place.
+
+* Added toggle to enable scaling damage on all katanas depending on bosses killed.
+
+* Refactored and optimized the code used for power level sclaing.
+
+* Fixed the config so now it is hot swappable.
+
+* Fixed inconvenience where opening a chest does Dragaon Dash when using Dragon's Whisper.
+
+* Dragon's Whisper 1/40000 drop can now be toggled off in configs.
+
+* Fixed bug where Eternian Portals can get broken with Dragon Dash.
+
+* Added mana usage when using Dragon Dash with time slow-down.
+	- No mana is used when slow-down is turned off in configs.
+
 v1.2.3
 * Fixed multiple multiplayer bugs regarding Dragon's Whisper:
 	- Dragon Dash circle creating for every player.
-	- Enemy slowdown not working.
 
 * Buffed EVERY hardmode sword's damage by 25%
 

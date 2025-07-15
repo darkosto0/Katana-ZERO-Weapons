@@ -51,16 +51,25 @@ namespace KatanaZERO.Items.Claymore
 
         public override void SetDefaults()
         {
-            string selectedWeaponSound = mod.claymoreSound;
+            string selectedWeaponSound = KatanaZERO.claymoreSound;
 
-            Item.damage = 126;
+            if (KatanaZERO.progressionDamage)
+            {
+                PowerLevelManager power = new();
+                power.Apply(Item);
+            }
+            else
+            {
+                Item.damage = 126;
+                Item.crit = 40;
+            }
+
             Item.DamageType = DamageClass.Melee;
             Item.width = 40;
             Item.height = 40;
             Item.rare = ItemRarityID.LightRed;
             Item.value = Item.sellPrice(gold: 17, silver: 79);
             Item.UseSound = GetRandomWeaponSound(selectedWeaponSound);
-            Item.crit = 40;
 
             Item.useTime = 35;
             if (HasMod("FargowiltasSouls"))
@@ -123,7 +132,7 @@ namespace KatanaZERO.Items.Claymore
             Random random = new Random();
             int randomNumber = random.Next(1, 4);
 
-            string selectedWeaponSound = mod.claymoreSound;
+            string selectedWeaponSound = KatanaZERO.claymoreSound;
 
             SoundStyle weaponSound = GetRandomWeaponSound(selectedWeaponSound);
 
@@ -139,6 +148,7 @@ namespace KatanaZERO.Items.Claymore
                     Item.UseSound = weaponSound;
                     break;
             }
+            SetDefaults();
             return true;
         }
         public override void HoldItem(Player player)

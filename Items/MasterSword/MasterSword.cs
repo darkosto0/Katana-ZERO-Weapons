@@ -48,20 +48,28 @@ namespace KatanaZERO.Items.MasterSword
 
         private float attackCooldown;
         public bool hasAttacked = false;
-        private readonly KatanaZERO mod = ModContent.GetInstance<KatanaZERO>();
 
         public override void SetDefaults()
         {
-            string selectedWeaponSound = mod.masterSwordSound;
+            string selectedWeaponSound = KatanaZERO.masterSwordSound;
 
-            Item.damage = 63;
+            if (KatanaZERO.progressionDamage)
+            {
+                PowerLevelManager power = new();
+                power.Apply(Item);
+            }
+            else
+            {
+                Item.damage = 63;
+                Item.crit = 20;
+            }
+
             Item.DamageType = DamageClass.Melee;
             Item.width = 40;
             Item.height = 40;
             Item.rare = ItemRarityID.Cyan;
             Item.value = Item.sellPrice(gold: 15, silver: 57);
             Item.UseSound = GetRandomWeaponSound(selectedWeaponSound);
-            Item.crit = 20;
 
             Item.useTime = 30;
             if (HasMod("FargowiltasSouls"))
@@ -123,7 +131,7 @@ namespace KatanaZERO.Items.MasterSword
             Random random = new Random();
             int randomNumber = random.Next(1, 4);
 
-            string selectedWeaponSound = mod.masterSwordSound;
+            string selectedWeaponSound = KatanaZERO.masterSwordSound;
 
             SoundStyle weaponSound = GetRandomWeaponSound(selectedWeaponSound);
 
@@ -139,6 +147,7 @@ namespace KatanaZERO.Items.MasterSword
                     Item.UseSound = weaponSound;
                     break;
             }
+            SetDefaults();
             return true;
         }
         public override bool Shoot(Player player, EntitySource_ItemUse_WithAmmo source, Vector2 position, Vector2 velocity, int type, int damage, float knockback)

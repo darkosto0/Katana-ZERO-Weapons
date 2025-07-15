@@ -47,20 +47,29 @@ namespace KatanaZERO.Items.ZerosKatana
 
         private float attackCooldown = 0f;
         public bool hasAttacked = false;
-        private readonly KatanaZERO mod = ModContent.GetInstance<KatanaZERO>();
 
         public override void SetDefaults()
         {
-            string selectedWeaponSound = mod.zeroKatanaSound;
+            string selectedWeaponSound = KatanaZERO.zeroKatanaSound;
 
-            Item.damage = 15;
+            if (KatanaZERO.progressionDamage)
+            {
+                PowerLevelManager power = new();
+                power.Apply(Item);
+            }
+            else
+            {
+                Item.damage = 15;
+                Item.crit = 10;
+            }
+
+
             Item.DamageType = DamageClass.Melee;
             Item.width = 40;
             Item.height = 40;
             Item.rare = ItemRarityID.White;
             Item.value = Item.sellPrice(gold: 1, silver: 10); //same sell price as katana and 5 silver bars
             Item.UseSound = GetRandomWeaponSound(selectedWeaponSound);
-            Item.crit = 10;
 
 
             Item.useTime = 20;
@@ -119,7 +128,7 @@ namespace KatanaZERO.Items.ZerosKatana
             Random random = new Random();
             int randomNumber = random.Next(1, 4);
 
-            string selectedWeaponSound = mod.zeroKatanaSound;
+            string selectedWeaponSound = KatanaZERO.zeroKatanaSound;
 
             SoundStyle weaponSound = GetRandomWeaponSound(selectedWeaponSound);
 
@@ -135,6 +144,7 @@ namespace KatanaZERO.Items.ZerosKatana
                     Item.UseSound = weaponSound;
                     break;
             }
+            SetDefaults();
             return true;
         }
         public override void HoldItem(Player player)

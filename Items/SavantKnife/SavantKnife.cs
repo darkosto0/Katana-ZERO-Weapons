@@ -53,16 +53,26 @@ namespace KatanaZERO.Items.SavantKnife
 
         public override void SetDefaults()
         {
-            string selectedWeaponSound = mod.savantKnifeSound;
+            string selectedWeaponSound = KatanaZERO.savantKnifeSound;
 
-            Item.damage = 95;
+            if (KatanaZERO.progressionDamage)
+            {
+                PowerLevelManager power = new();
+                power.Apply(Item);
+            }
+            else
+            {
+                Item.damage = 95;
+                Item.crit = 30;
+            }
+
+
             Item.DamageType = DamageClass.Melee;
             Item.width = 40;
             Item.height = 40;
             Item.rare = ItemRarityID.Purple;
             Item.value = Item.sellPrice(gold: 10, silver: 24);
             Item.UseSound = GetRandomWeaponSound(selectedWeaponSound);
-            Item.crit = 30;
 
 
             Item.useTime = 10;
@@ -129,7 +139,7 @@ namespace KatanaZERO.Items.SavantKnife
             Random random = new Random();
             int randomNumber = random.Next(1, 4);
 
-            string selectedWeaponSound = mod.savantKnifeSound;
+            string selectedWeaponSound = KatanaZERO.savantKnifeSound;
 
             SoundStyle weaponSound = GetRandomWeaponSound(selectedWeaponSound);
 
@@ -145,6 +155,7 @@ namespace KatanaZERO.Items.SavantKnife
                     Item.UseSound = weaponSound;
                     break;
             }
+            SetDefaults();
             return true;
         }
         public override void HoldItem(Player player)

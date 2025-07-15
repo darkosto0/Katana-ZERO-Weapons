@@ -54,18 +54,28 @@ namespace KatanaZERO.Items.PhoenixEdge
 
         public override void SetDefaults()
         {
-            string selectedWeaponSound = mod.phoenixEdgeSound;
+            string selectedWeaponSound = KatanaZERO.phoenixEdgeSound;
 
-            Item.damage = 224;
+            if (KatanaZERO.progressionDamage)
+            {
+                PowerLevelManager power = new();
+                power.Apply(Item);
+            }
+            else
+            {
+                Item.damage = 224;
+                Item.crit = 45;
+            }
+
             Item.DamageType = DamageClass.Melee;
             Item.width = 40;
             Item.height = 40;
             Item.rare = ItemRarityID.Quest;
             Item.value = Item.sellPrice(gold: 29, silver: 79);
             Item.UseSound = GetRandomWeaponSound(selectedWeaponSound);
-            Item.crit = 45;
 
             Item.useTime = 35;
+
             if (HasMod("FargowiltasSouls"))
             {
                 Item.useAnimation = 35;
@@ -125,8 +135,8 @@ namespace KatanaZERO.Items.PhoenixEdge
 
             Random random = new Random();
             int randomNumber = random.Next(1, 4);
-
-            string selectedWeaponSound = mod.phoenixEdgeSound;
+                
+            string selectedWeaponSound = KatanaZERO.phoenixEdgeSound;
 
             SoundStyle weaponSound = GetRandomWeaponSound(selectedWeaponSound);
 
@@ -142,6 +152,7 @@ namespace KatanaZERO.Items.PhoenixEdge
                     Item.UseSound = weaponSound;
                     break;
             }
+            SetDefaults();
             return true;
         }
         public override void HoldItem(Player player)

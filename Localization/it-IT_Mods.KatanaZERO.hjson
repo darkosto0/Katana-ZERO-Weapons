@@ -96,13 +96,6 @@ Items: {
 			[c/ad51b8:Shimmerable]
 			'''
 	}
-
-	Mods: {
-		KatanaZERO: {
-			// LungeLabel: Enable Lunge Mechanic
-			// LungeTooltip: Enable or disable the lunge mechanic. Requires a mod reload.
-		}
-	}
 }
 
 Projectiles: {
@@ -130,13 +123,18 @@ Configs: {
 }
 
 // LungeLabel: Lunge Mechanic
-// LungeTooltip: Enable or disable the lunge mechanic.
+/* LungeTooltip:
+	'''
+	Enable or disable the lunge mechanic.
+	On by default.
+	''' */
 // SwordSettingsHeader: Universal Sword Settings
 // TimeShiftLabel: Dragon Dash Slow-mo
 /* TimeShiftTooltip:
 	'''
 	WARNING: Sometimes works, sometimes doesn't.
 	Enables or Disables projectile and enemy slowdown on Dragon's Whisper right click.
+	On by default.
 	''' */
 // VectorKnockback: Vector-based knockback (Not Recommended, off by default)
 /* VectorKnockbackTooltip:
@@ -147,7 +145,7 @@ Configs: {
 	''' */
 // SwordSoundEffects: Sword Sounds
 // SwordSounds: Zero's Katana
-// SwordSoundTooltip: Adjusting these settings will produce a different slashing sound for each sword
+// SwordSoundTooltip: Adjusting these settings will produce a different slashing sound for each sword.
 // ZerosKatanaSound: Zero's Katana
 // PrismSwordSound: Prism Sword
 // MasterSwordSound: Master Sword
@@ -158,14 +156,16 @@ Configs: {
 // FifteensBladeHeader: Dragon's Whisper Settings
 // DashTrailStyle: Dash Trail Style
 // DashTrailStyleTooltip: Here you can disable the trail made by Dragon's Whisper or change it to something else.
-// DeveloperNoteHeader: Developer's Note
-// DeveloperNote: Note
-/* DeveloperNoteTooltip:
+// ToggleDropLabel: Toggle Dragon's Whisper drop
+/* ToggleDropTooltip:
 	'''
-	As you can see, every config that you change will force you to reload the mod.
-	I made it that way because I've tested everything and confirmed that changes don't take effect without a reload.
-	If you have any experience in modding or programming in general, I will be more than happy to work with you in fixing this.
-	You can add me on Discord @darkosto0 (It's a zero at the end) if you're interested.
-
-	Toggling this does nothing
+	Here you can toggle off dropping Dragon's Whisper from enemies if you stumble upon a bug or for whatever reason.
+	On by default.
+	''' */
+// ProgressionDamage: Katana Progression Scaling
+/* ProgressionDamageTooltip:
+	'''
+	Makes all katanas increase their damage and crit when you kill a boss, similar to Dragon's Whisper. 
+	What can I say, you have every right to play the game however you want. Have fun.
+	Off by default.
 	''' */

@@ -1,3 +1,6 @@
+# Disclaimer
+This is a fan-made project inspired by Katana ZERO. All rights to the original IP, assets, and sounds belong to Askiisoft and Devolver Digital. No profit is made from this mod. If requested, I will respectfully take it down.
+
 # Katana ZERO Weapons
 Terraria mod that aims to add all 7 katanas from Katana ZERO into Terraria as their own weapons.
 
@@ -26,7 +29,7 @@ Current mod status: Looking for feedback.
 # Extra Info
 - This mod is made by me in attempt to learn the ropes of programming, there might be bugs I haven't found yet that could break the mod.
 - If you are more experienced and want to help me make this mod better, send me a DM on Discord (darkosto0) and I'll gladly reach back.
-- I plan on maintaining the mod as long as I recieve feedback.
+- I plan on maintaining the mod as long as I receive feedback.
 
 # Special Thanks To:
 - [g113g](https://github.com/g113g) for a Russian translation, code help and for uploading the mod to Steam Workshop for me.
@@ -34,9 +37,30 @@ Current mod status: Looking for feedback.
 - [ChrisGug](https://steamcommunity.com/id/ChrisGug) for an Italian translation.
 
 # To-Do
-- Camera easing after a Dragon Dash
+- ~~Camera easing after a Dragon Dash~~
+- WeaponOut Lite mod visual bug
 
 # Changelog
+## **v1.3.0**
+**Bug Fixes**
+- 🛠️ Fixed logic with **Dragon Dash character** staying in place.
+- 🛠️ Fixed the config so now it is **hot swappable**.
+- 🛠️ Fixed bug where **Eternian Portals get killed by Dragon Dash**.
+
+**Changes**
+- 🔧 Fixed **inconvenience** where opening a chest does **Dragaon Dash when using Dragon's Whisper**.
+
+**Balance Changes**
+- ⚖️ Added **mana usage** when using Dragon Dash with **time slow-down**.
+		- **No mana is used** when slow-down is turned off in configs.
+
+**Config Options**
+- ⚙️ Added toggle to **enable scaling damage** on **all katanas** depending on bosses killed.
+- ⚙️ Dragon's Whisper **1/40000 drop** can now be **toggled off** in configs.
+
+**Code**
+- 🧬 **Refactored** and **optimized** the code used for **item damage sclaing**.
+
 ## **v1.2.3**
 **Bug Fixes**:
 - 🛠️ Fixed **multiple multiplayer bugs** regarding Dragon's Whisper:
