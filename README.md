@@ -52,7 +52,7 @@ Current mod status: Looking for feedback.
 
 **Balance Changes**
 - ⚖️ Added **mana usage** when using Dragon Dash with **time slow-down**.
-		- **No mana is used** when slow-down is turned off in configs.
+	- **No mana is used** when slow-down is turned off in configs.
 
 **Config Options**
 - ⚙️ Added toggle to **enable scaling damage** on **all katanas** depending on bosses killed.
