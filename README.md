@@ -48,7 +48,7 @@ Current mod status: Russian and Italian translations will be updated soon
 - 🛠️ Fixed bug where **Eternian Portals get killed by Dragon Dash**.
 
 **Changes**
-- 🔧 Fixed **inconvenience** where opening a chest does **Dragaon Dash when using Dragon's Whisper**.
+- 🔧 Fixed **inconvenience** where opening a chest does **Dragon Dash when using Dragon's Whisper**.
 
 **Balance Changes**
 - ⚖️ Added **mana usage** when using Dragon Dash with **time slow-down**.
@@ -59,7 +59,7 @@ Current mod status: Russian and Italian translations will be updated soon
 - ⚙️ Dragon's Whisper **1/40000 drop** can now be **toggled off** in configs.
 
 **Code**
-- 🧬 **Refactored** and **optimized** the code used for **item damage sclaing**.
+- 🧬 **Refactored** and **optimized** the code used for **item damage scaling**.
 
 ## **v1.2.3**
 **Bug Fixes**:
