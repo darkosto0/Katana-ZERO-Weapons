@@ -36,9 +36,9 @@ Current mod status: Russian and Italian translations will be updated soon
 - [Sequile](https://github.com/Sequile) for code help and balancing the weapons.
 - [ChrisGug](https://steamcommunity.com/id/ChrisGug) for an Italian translation.
 
-# To-Do
-- ~~Camera easing after a Dragon Dash~~
+# Known Issues
 - WeaponOut Lite mod visual bug
+- TBD...
 
 # Changelog
 ## **v1.3.0**
