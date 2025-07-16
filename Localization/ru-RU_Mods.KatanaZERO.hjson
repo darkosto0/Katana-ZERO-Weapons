@@ -23,7 +23,7 @@ Items: {
 	}
 
 	PrismSword: {
-		DisplayName: Хроматическая катана
+		DisplayName: Хроматическая Катана
 		Tooltip:
 			'''
 			Может отражать снаряды.
@@ -50,7 +50,7 @@ Items: {
 		Tooltip:
 			'''
 			Может отразить очень много снарядов за раз.
-			Огромный тесак проламывающий броню.
+			Огромный тесак проламывающий пули и броню.
 			Способствует [c/999966:пролому брони]
 			''Выполнил свою [c/009900:второстепенную цель,] в тюрьме.''
 			[c/ad51b8:Shimmerable]
@@ -70,18 +70,19 @@ Items: {
 	}
 
 	FifteensBlade: {
-		DisplayName: Клинок Пятнадцатого
+		DisplayName: Шёпот Дракона
 		Tooltip:
 			'''
 			Может отражать снаряды.
-			[c/00cc00:Legendary Weapon]
-			[c/e69900:Right click to perform Dragon Dash]
-			[c/e69900:Draogn Dash] teleports you to the mouse cursor, slicing everything in between to shreds.
-			If a boss is hit with [c/e69900:Draogn Dash], they will take 10x Damage + 5% of their Max HP as damage. 
-			If a regular enemy is hit with [c/e69900:Draogn Dash], they will take 5x Damage.
-			[c/e69900:Draogn Dash] has 3 second cooldown.
-			[c/e69900:Draogn Dash] gives 1 second of immunity if an enemy is hit.
-			''Он не Змей. [c/ff3300:Я Змей].''
+			[c/00cc00:Легендарное Оружие]
+			[c/e69900:ПКМ что бы выполнить Рывок Дракона]
+			[c/e69900:Рывок Дракона] телепортирует к курсору мыши, разрезая всё по пути на мелкие кусочки.
+			Если босс получил урон [c/e69900:Рывком Дракона], он получит 10х урон от меча + 5% от их максимального здоровья. 
+			Если обычный противник получит урон [c/e69900:Рывком Дракона], он получит 5х урон от меча.
+			Удержание [c/e69900:Рывка Дракона] потребляет много [c/3333cc:Маны].
+			[c/e69900:Рывок Дракона] имеет 3х секундную задержку между атаками.
+			[c/e69900:Рывок Дракона] даёт иммунитет в зависимости от расстояния рывка. (Минимум пол секунды)
+			''Он не змей. [c/ff3300:Я змей].''
 			'''
 	}
 
@@ -113,49 +114,49 @@ Projectiles: {
 
 Configs: {
 	Settings: {
-		// DisplayName: Settings
+		DisplayName: Настройки
 
 		SelectedSound: {
-			// Label: Select Weapon Sound
-			// Tooltip: ""
+			Label: Выберите звук оружия
+			Tooltip: ""
 		}
 	}
 }
 
-// LungeLabel: Lunge Mechanic
-// LungeTooltip: Enable or disable the lunge mechanic.
-// SwordSettingsHeader: Universal Sword Settings
-// TimeShiftLabel: Dragon Dash Slow-mo
-/* TimeShiftTooltip:
+LungeLabel: Рывок при ударе
+LungeTooltip: Включает или отключает рывок при обычном ударе.
+SwordSettingsHeader: Глобальные настройки мечей
+TimeShiftLabel: Слоу-мо Рывка Дракона
+TimeShiftTooltip:
 	'''
-	WARNING: Sometimes works, sometimes doesn't.
-	Enables or Disables projectile and enemy slowdown on Dragon's Whisper right click.
-	''' */
-// VectorKnockback: Vector-based knockback (Not Recommended, off by default)
-/* VectorKnockbackTooltip:
+	ПРЕДУПРИЖДЕНИЕ: Иногда оно работает, иногда нет.
+	Включает или отключает замедление снарядов при удержании Рывка Дракона.
 	'''
-	Uses a vector to assign knockback to the weapons, increasing knockback by a lot 
-	But also indefinitely knocks back eternian portals and other unkillable entities that aren't bosses.
-	Use Carefully.
-	''' */
-// SwordSoundEffects: Sword Sounds
-// SwordSounds: Zero's Katana
-// SwordSoundTooltip: Adjusting these settings will produce a different slashing sound for each sword.
-// ZerosKatanaSound: Zero's Katana
-// PrismSwordSound: Prism Sword
-// MasterSwordSound: Master Sword
-// SavantKnifeSound: Savant Knife
-// ClaymoreSound: Claymore Prototype
-// PhoenixEdgeSound: Phoenix Edge
-// FifteensKatanaSound: Dragon's Whisper
-// FifteensBladeHeader: Dragon's Whisper Settings
-// DashTrailStyle: Dash Trail Style
-// DashTrailStyleTooltip: Here you can disable the trail made by Dragon's Whisper or change it to something else.
-// ToggleDropLabel: Toggle Dragon's Whisper drop
-// ToggleDropTooltip: Here you can toggle off dropping Dragon's Whisper from enemies if you stumble upon a bug or for whatever reason.
-// ProgressionDamage: Katana Progression Scaling
-/* ProgressionDamageTooltip:
+VectorKnockback: Основанное на векторе отбрасывание (Не рекомендованно, отключено по умолчанию)
+VectorKnockbackTooltip:
 	'''
-	Makes all katanas increase their damage and crit when you kill a boss, similar to Dragon's Whisper. 
-	What can I say, you have every right to play the game however you want. Have fun.
-	''' */
+	Использует вектор для отбрасывания атакой, сильно его увиличевает  
+	Но также позволяет отбрасывать любые недвижимые предметы(манекены и портал Этернии).
+	Использовать осторожно.
+	'''
+SwordSoundEffects: Звуки меча
+SwordSounds: Катана
+SwordSoundTooltip: Изменение этих настроек позволяет изменить звук каждого меча.
+ZerosKatanaSound: Катана
+PrismSwordSound: Хроматическая Катана
+MasterSwordSound: Меч Мастеров
+SavantKnifeSound: Нож Гения
+ClaymoreSound: Прототип Клеймора
+PhoenixEdgeSound: Клинок Феникса
+FifteensKatanaSound: Шёпот Дракона
+FifteensBladeHeader: Настройки Шёпота Дракона
+DashTrailStyle: Стиль следа рывка
+DashTrailStyleTooltip: Здесь ты можешь включить или отключить след Рывка Дракона или изменить его вовсе.
+ToggleDropLabel: Включить или отключить выпадение клинка.
+ToggleDropTooltip: Можно отключить выпадение Шёпота Дракона из-за багов или любой другой причины.
+ProgressionDamage: Прогрессия Катан
+ProgressionDamageTooltip:
+	'''
+	Даёт всем катанам возможность увеличивать урон и крит от убитых боссов, аналогично Шёпоту Дракона. 
+	Ну, ты имеешь право играть как хочешь, веселись.
+	'''
