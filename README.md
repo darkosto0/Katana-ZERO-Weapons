@@ -4,7 +4,7 @@ This is a fan-made project inspired by Katana ZERO. All rights to the original I
 # Katana ZERO Weapons
 Terraria mod that aims to add all 7 katanas from Katana ZERO into Terraria as their own weapons.
 
-Current mod status: Looking for feedback.
+Current mod status: Russian and Italian translations will be updated soon
 
 [Steam Workshop Link](https://steamcommunity.com/sharedfiles/filedetails/?id=3289273898)
 
