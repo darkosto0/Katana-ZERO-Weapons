@@ -52,7 +52,7 @@ Items: {
 			Può Deflettere Più Proiettili alla Volta
 			Un'enorme mannaia che frantuma proiettili e difese.
 			Infligge [c/999966:Armatura Rotta]
-			''Raggiunto il tuo [c/009900:obiettivo secondario] nella prigione.''
+			''Hai raggiunto il tuo [c/009900:obiettivo secondario] nella prigione.''
 			[c/ad51b8:Shimmerable]
 			'''
 	}
@@ -75,10 +75,11 @@ Items: {
 			'''
 			Può deflettere i proiettili.
 			[c/00cc00:Arma Leggendaria]
-			[c/e69900:Fare click con tasto destro per eseguire lo Scatto del Drago]
+			[c/e69900:Premere tasto destro per eseguire lo Scatto del Drago]
 			[c/e69900:Scatto del Drago] ti teletrasporta al cursore del mouse facendo a brandelli tutto ciò che si trova in mezzo.
 			Quando un boss viene colpito con lo [c/e69900:Scatto del Drago], subirà Danni 10x + 5% dei suoi HP Massimi in danno. 
-			Se un nemico normale viene colpito lo [c/e69900:Scatto del Drago], subirà Danni 5x.
+			Se un nemico normale viene colpito dallo [c/e69900:Scatto del Drago], subirà Danni 5x.
+			Tenere premuto lo [c/e69900:Scatto del Drago] consuma molto più [c/3333cc:Mana].
 			[c/e69900:Scatto del Drago] ha 3 secondi di ricarica.
 			[c/e69900:Scatto del Drago] dà 1 secondo di immunità se un nemico viene colpito.
 			''Lui non è il Drago. [c/ff3300:Io lo sono].''
@@ -91,7 +92,6 @@ Items: {
 			'''
 			Può deflettere i proiettili
 			Nessun Effetto Speciale.
-			 
 			''Mi ricorda che, [c/E67E39:indipendentemente da quello che sto facendo, una volta ho fatto qualcosa di buono.]''
 			[c/ad51b8:Shimmerable]
 			'''
@@ -113,49 +113,49 @@ Projectiles: {
 
 Configs: {
 	Settings: {
-		// DisplayName: Settings
+		DisplayName: Impostazioni
 
 		SelectedSound: {
-			// Label: Select Weapon Sound
-			// Tooltip: ""
+			Label: Selezione il Suono dell'Arma
+			Tooltip: ""
 		}
 	}
 }
 
-// LungeLabel: Lunge Mechanic
-// LungeTooltip: Enable or disable the lunge mechanic.
-// SwordSettingsHeader: Universal Sword Settings
-// TimeShiftLabel: Dragon Dash Slow-mo
-/* TimeShiftTooltip:
+LungeLabel: Meccanica dell'Affondo
+LungeTooltip: Abilita o disabilita la Meccanica dell'Affondo.
+SwordSettingsHeader: Impostazioni Universali della Spada
+TimeShiftLabel: Scatto del Drago al Rallentatore
+TimeShiftTooltip:
 	'''
-	WARNING: Sometimes works, sometimes doesn't.
-	Enables or Disables projectile and enemy slowdown on Dragon's Whisper right click.
-	''' */
-// VectorKnockback: Vector-based knockback (Not Recommended, off by default)
-/* VectorKnockbackTooltip:
+	ATTENZIONE: Alcune volte funziona, altre no.
+	Abilita o Disabilita il rallentamento dei proiettili e dei nemici premendo tasto destro con il Sussurro del Drago.
 	'''
-	Uses a vector to assign knockback to the weapons, increasing knockback by a lot 
-	But also indefinitely knocks back eternian portals and other unkillable entities that aren't bosses.
-	Use Carefully.
-	''' */
-// SwordSoundEffects: Sword Sounds
-// SwordSounds: Zero's Katana
-// SwordSoundTooltip: Adjusting these settings will produce a different slashing sound for each sword.
-// ZerosKatanaSound: Zero's Katana
-// PrismSwordSound: Prism Sword
-// MasterSwordSound: Master Sword
-// SavantKnifeSound: Savant Knife
-// ClaymoreSound: Claymore Prototype
-// PhoenixEdgeSound: Phoenix Edge
-// FifteensKatanaSound: Dragon's Whisper
-// FifteensBladeHeader: Dragon's Whisper Settings
-// DashTrailStyle: Dash Trail Style
-// DashTrailStyleTooltip: Here you can disable the trail made by Dragon's Whisper or change it to something else.
-// ToggleDropLabel: Toggle Dragon's Whisper drop
-// ToggleDropTooltip: Here you can toggle off dropping Dragon's Whisper from enemies if you stumble upon a bug or for whatever reason.
-// ProgressionDamage: Katana Progression Scaling
-/* ProgressionDamageTooltip:
+VectorKnockback: Contraccolpo basato sui vettori (Non Consigliato, disattivato per impostazione predefinita)
+VectorKnockbackTooltip:
 	'''
-	Makes all katanas increase their damage and crit when you kill a boss, similar to Dragon's Whisper. 
-	What can I say, you have every right to play the game however you want. Have fun.
-	''' */
+	Utilizza un vettore per assegnare il contraccolpo alle armi, aumentando notevolmente il contraccolpo 
+	Ma respinge anche indefinitamente i portali eterni e altre entità indistruttibili che non sono boss.
+	Usare con Cautela.
+	'''
+SwordSoundEffects: Suoni della Spada
+SwordSounds: Katana di Zero
+SwordSoundTooltip: Modificando queste impostazioni verrà riprodotto un suono di taglio diverso per ogni spada.
+ZerosKatanaSound: Katana di Zero
+PrismSwordSound: Spada Prismatica
+MasterSwordSound: Spada dei Maestri
+SavantKnifeSound: Coltello da Esperto
+ClaymoreSound: Prototipo di Claymore
+PhoenixEdgeSound: Lama della Fenice
+FifteensKatanaSound: Sussurro del Drago
+FifteensBladeHeader: Impostazioni del Sussurro del Drago
+DashTrailStyle: Stile Scia dello Scatto
+DashTrailStyleTooltip: Qua puoi disabilitare la scia dal Sussurro del Drago o cambiarla in qualcos'altro.
+ToggleDropLabel: Attiva/Disattiva il rilascio del Sussurro del Drago
+ToggleDropTooltip: Qua puoi disattivare il rilascio del Sussurro del Drago dai nemici se ti imbatti in un bug o per qualsiasi altro motivo.
+ProgressionDamage: Adattamento Progressivo della Katana
+ProgressionDamageTooltip:
+	'''
+	Fa in modo che tutte le katane aumentino il loro danno e il loro effetto critico quando uccidi un boss, simile al Sussurro del Drago. 
+	Che posso dire, hai tutto il diritto di giocare come vuoi. Divertiti.
+	'''

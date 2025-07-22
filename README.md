@@ -59,7 +59,7 @@ Current mod status: Russian and Italian translations will be updated soon
 - ⚙️ Dragon's Whisper **1/40000 drop** can now be **toggled off** in configs.
 
 **Localization**
-- 🌎 Re-done Russian and Italian(soon) Translation
+- 🌎 Updated **Russian** and **Italian** Translation
 
 **Code**
 - 🧬 **Refactored** and **optimized** the code used for **item damage scaling**.

@@ -54,6 +54,8 @@ v1.3.0
 
 * Added mana usage when using Dragon Dash with time slow-down.
 	- No mana is used when slow-down is turned off in configs.
+	
+* Updated Russian and Italian translation.
 
 v1.2.3
 * Fixed multiple multiplayer bugs regarding Dragon's Whisper:
