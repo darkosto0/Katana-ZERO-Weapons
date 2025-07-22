@@ -1,5 +1,6 @@
 # Disclaimer
-This is a fan-made project inspired by Katana ZERO. All rights to the original IP, assets, and sounds belong to Askiisoft and Devolver Digital. No profit is made from this mod. If requested, I will respectfully take it down.
+This is a fan-made project inspired by Katana ZERO. All rights to the original IP, assets, and sounds belong to Askiisoft and Devolver Digital. 
+No profit is made from this mod. If requested, I will respectfully take it down.
 
 # Katana ZERO Weapons
 Terraria mod that aims to add all 7 katanas from Katana ZERO into Terraria as their own weapons.
