@@ -6,7 +6,7 @@ No profit is made from this mod. If requested, I will respectfully take it down.
 # Katana ZERO Weapons
 Terraria mod that aims to add all 7 katanas from Katana ZERO into Terraria as their own weapons.
 
-Current mod status: Russian and Italian translations will be updated soon
+Current mod status: Looking for feedback
 
 [Steam Workshop Link](https://steamcommunity.com/sharedfiles/filedetails/?id=3289273898)
 
